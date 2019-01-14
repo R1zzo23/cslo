@@ -3,11 +3,6 @@
   margin-bottom: 40px;
   background-color: $main-black-color;
 
-  .bwm-search {
-    height: 50px;
-    width: 300px !important;
-  }
-
   .navbar-brand {
     margin-right: 30px;
     font-size: 27px;
@@ -17,22 +12,7 @@
   }
 
   .nav-item {
-    font-size: 14px;
-  }
-
-  .btn-bwm-search {
-    border-color: $main-color;
+    font-size: 20px;
     color: $main-color;
-
-    &:hover, &:focus, &:active {
-      background-color: transparent !important;
-      border-color: $main-color !important;
-      color: $main-color !important;
-      box-shadow: none;
-    }
-  }
-
-  .nav-item {
-    color: $main-white-color;
   }
 }

@@ -6,7 +6,7 @@ import logo from './logo.svg';
 import './App.css';
 
 // import components
-import {Header} from './shared/Header'
+import Header from './shared/Header'
 
 class App extends Component {
   render() {
