@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import About from './components/About/About'
 
 // import CSS files
 //import './styles/header/header.css'
@@ -13,7 +14,11 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        I am APP COMPONENT
+        <div className="container">
+          <div className="row">
+            <About />
+          </div>
+        </div>
       </div>
     );
   }
