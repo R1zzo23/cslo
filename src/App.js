@@ -8,6 +8,7 @@ import './App.css';
 
 // import components
 import Header from './shared/Header'
+import Footer from './shared/Footer'
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
             <About />
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
