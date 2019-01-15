@@ -1,0 +1,34 @@
+import React from 'react'
+
+const AboutMe = () =>
+  <div className='col-md-12'>
+    <h1>About Me</h1>
+    <p>
+      My name is <span className='name'>Adam Rizzo</span> and I am a self-taught freelance programmer.
+      I have been actively learning programming - namely <span className='name'>JavaScript</span> and <span className='name'>C#</span> over the past five years. Most of my free time is spent trying to
+      extend my knowledge in the fields of web and software development.
+    </p>
+    <p>
+      My current career is as an 8th grade math teacher. This is my 10th year in the profession and I
+      currently hold a Master's degree in math education. Beore teaching math, I was an instructional
+      technology teacher at the same middle school. To me, teaching and learning go hand-in-hand and
+      you can't be great at one of them if you stop doing the other. When it comes to programming, I
+      took it upon myself to try to teach others in need when I could.
+      These two articles - <a href='https://medium.com/programmer-helping-programmers/php-blog-wherefore-art-thou-challenge-f5dc3b6764be'>HERE</a> and <a href='https://medium.com/programmer-helping-programmers/php-manipulating-complex-objects-challenge-fddb974a0c21'>HERE</a> were
+      my attempts to give back to those who needed help.
+    </p>
+    <p>
+      <span className='name'>While I love numbers
+      and technology, my true passion is problem solving.</span> Whether that's with a
+      difficult math problem, debugging code or learning a new programming language, I <span className='name'>thrive</span> on
+      being challenged mentally.
+    </p>
+    <p>
+      Whether you are looking for website/web app or developing a new piece of software for your
+      business to utilize on a day-to-day basis, <span className='name'>I want to help you reach your
+      potential however I can!</span> If you decide that I'm someone you'd love to work with, you're getting
+      an individual that excels with communication, customization and a tireless work ethic.
+    </p>
+  </div>
+
+  export default AboutMe
