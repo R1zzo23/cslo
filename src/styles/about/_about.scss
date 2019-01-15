@@ -1,8 +1,23 @@
 .skillIcon img {
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
 }
 
 .name {
   color: $main-color;
+}
+
+.skills {
+  text-align: center;
+}
+
+.skillRow {
+  display: flex;
+  justify-content: center;
+}
+
+.contactRow a {
+  display: flex;
+  justify-content: center;
+}
 }

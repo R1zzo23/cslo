@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import About from './components/About/About'
+import Contact from './components/Contact/Contact'
 
 // import CSS files
 //import './styles/header/header.css'
@@ -18,6 +19,7 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <About />
+            <Contact />
           </div>
         </div>
         <Footer />
