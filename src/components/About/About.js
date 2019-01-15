@@ -6,10 +6,10 @@ import AboutMe from './AboutMe'
 import Goal from './Goal'
 
 const About = () =>
-  <div className="skills text-center">
+  <div className="skills">
     <h1>My Skills</h1>
     <br />
-    <div className="row">
+    <div className="row skillRow">
       { skills.map((skill, i) =>
         <Skills key={i} {...skill} />
       )}
