@@ -18,7 +18,6 @@ class App extends Component {
         <Header />
         <div className="container">
           <div className="row">
-            <About />
             <Contact />
           </div>
         </div>
