@@ -6,7 +6,7 @@ import AboutMe from './AboutMe'
 import Goal from './Goal'
 
 const About = () =>
-  <div className="skills">
+  <div>
     <h1>My Skills</h1>
     <br />
     <div className="row skillRow">

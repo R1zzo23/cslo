@@ -6,7 +6,7 @@ const Home = () =>
     <br />
     <img id='logo' src='/img/AJR_Designs.png' />
     <br />
-    <h2 className="welcome">where my goal is to give you and your business or personal interest a website to call home!</h2>
+    <h1 className="welcome">where my goal is to give you and your business or personal interest a website to call home!</h1>
   </div>
 
   export default Home
