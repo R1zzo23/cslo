@@ -3,7 +3,7 @@ import React from 'react'
 const Contact = () =>
   <div>
     <h1>Contact Me!</h1>
-    <p>
+    <p className='contact-message'>
       Feel free to reach out to me on any of the mediums below. I'll be sure to respond as soon as possible,
        almost always within 12 hours, and we can discuss a time to setup a phone conference.
     </p>
