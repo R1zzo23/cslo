@@ -1,14 +1,9 @@
 [
   {
-    "p": "My name is <span className='name'>Adam Rizzo</span> and I am a self-taught freelance programmer.
-    I have been actively learning programming - namely <span className='name'>JavaScript</span> and
-    <span className='name'>C#</span> over the past five years. Most of my free time is spent trying to
-    extend my knowledge in the fields of web and software development."
+    "p": "My name is <span className='name'>Adam Rizzo</span> and I am a self-taught freelance programmer. I have been actively learning programming - namely <span className='name'>JavaScript</span> and <span className='name'>C#</span> over the past five years. Most of my free time is spent trying to extend my knowledge in the fields of web and software development."
   },
   {
-    "p": "My current career is as an 8th grade math teacher. This is my 10th year in the profession and I
-    currently hold a Master's degree in math education. Beore teaching math, I was an instructional
-    technology teacher at the same middle school. To me, teaching and learning go hand-in-hand and
+    "p": "My current career is as an 8th grade math teacher. This is my 10th year in the profession and I currently hold a Master's degree in math education. Beore teaching math, I was an instructional technology teacher at the same middle school. To me, teaching and learning go hand-in-hand and
     you can't be great at one of them if you stop doing the other. When it comes to programming, I
     took it upon myself to try to teach others in need when I could. These two articles -
     <a href='https://medium.com/programmer-helping-programmers/php-blog-wherefore-art-thou-challenge-f5dc3b6764be'>HERE</a>
