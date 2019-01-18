@@ -16,10 +16,10 @@ const About = () =>
     </div>
     <br />
     <div className='row'>
-      <AboutMe />
+      <Goal />
     </div>
     <div className='row'>
-      <Goal />
+      <AboutMe />
     </div>
   </div>
 
