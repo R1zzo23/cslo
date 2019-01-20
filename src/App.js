@@ -8,11 +8,9 @@ import './App.css';
 
 // import components
 import Header from './shared/Header'
-import Footer from './shared/Footer'
 import Home from './components/Home/Home'
-import About from './components/About/About'
-import Contact from './components/Contact/Contact'
-import Portfolio from './components/Portfolio/Portfolio'
+import DraftClass from './components/DraftClass/DraftClass'
+import SendScouts from './components/SendScouts/SendScouts'
 
 class App extends Component {
   render() {
@@ -22,11 +20,9 @@ class App extends Component {
           <Header />
           <div className="container">
             <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/portfolio" component={Portfolio} />
-            <Route exact path="/contact" component={Contact} />
+            <Route exact path="/draftclass" component={DraftClass} />
+            <Route exact path="/sendscouts" component={SendScouts} />
           </div>
-          <Footer />
         </div>
       </BrowserRouter>
     );

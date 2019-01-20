@@ -2,18 +2,30 @@
   padding: 20px;
   margin-bottom: 40px;
   background-color: #20232a; }
+  .navbar .csl-search {
+    height: 50px;
+    width: 250px !important; }
   .navbar .navbar-brand {
     margin-right: 30px;
     font-size: 27px;
     letter-spacing: 1px;
-    color: #27b5f2 !important;
+    color: #ffa800 !important;
     font-weight: 500; }
   .navbar .nav-item {
-    font-size: 20px;
-    color: #27b5f2; }
+    font-size: 14px; }
+  .navbar .btn-csl-search {
+    border-color: #ffa800;
+    color: #ffa800; }
+    .navbar .btn-csl-search:hover, .navbar .btn-csl-search:focus, .navbar .btn-csl-search:active {
+      background-color: transparent !important;
+      border-color: #ffa800 !important;
+      color: #ffa800 !important;
+      box-shadow: none; }
+  .navbar .nav-item {
+    color: #ededed; }
 
 .fab {
-  color: #27b5f2; }
+  color: #ffa800; }
 
 #footer {
   position: fixed;
@@ -39,21 +51,21 @@
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; }
 
 .welcome {
-  color: #27b5f2; }
+  color: #ffa800; }
 
 #logo {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 25%;
-  color: #27b5f2; }
+  color: #ffa800; }
 
 .skillIcon img {
   height: 100px;
   width: 100px; }
 
 .name {
-  color: #27b5f2; }
+  color: #ffa800; }
 
 .skills {
   text-align: center; }
@@ -72,7 +84,7 @@
 h1, h2, h3, h4, h5, h6 {
   text-align: center !important;
   font-family: Georgia, serif !important;
-  color: #27b5f2 !important;
+  color: #ffa800 !important;
   font-weight: bold !important;
   text-decoration: underline !important; }
 

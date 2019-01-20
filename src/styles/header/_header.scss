@@ -3,6 +3,15 @@
   margin-bottom: 40px;
   background-color: $main-black-color;
 
+  img {
+    height: 100px;
+  }
+
+  .csl-search {
+    height: 50px;
+    width: 250px !important;
+  }
+
   .navbar-brand {
     margin-right: 30px;
     font-size: 27px;
@@ -12,7 +21,22 @@
   }
 
   .nav-item {
-    font-size: 20px;
+    font-size: 14px;
+  }
+
+  .btn-csl-search {
+    border-color: $main-color;
     color: $main-color;
+
+    &:hover, &:focus, &:active {
+      background-color: transparent !important;
+      border-color: $main-color !important;
+      color: $main-color !important;
+      box-shadow: none;
+    }
+  }
+
+  .nav-item {
+    color: $main-white-color;
   }
 }
