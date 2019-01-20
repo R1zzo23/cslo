@@ -10,7 +10,7 @@ const AboutMe = () =>
     </p>
     <p>
       My current career is as an 8th grade math teacher. This is my 10th year in the profession and I
-      currently hold a Master's degree in math education. Beore teaching math, I was an instructional
+      currently hold a Master's degree in math education. Before teaching math, I was an instructional
       technology teacher at the same middle school. To me, teaching and learning go hand-in-hand and
       you can't be great at one of them if you stop doing the other. When it comes to programming, I
       took it upon myself to try to teach others in need when I could.
