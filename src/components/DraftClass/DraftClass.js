@@ -5,7 +5,10 @@ import ProspectInfo from './ProspectInfo'
 const DraftClass = () =>
   <div>
     <h1>#### Draft Class</h1>
-    <table className="table table-striped table-bordered">
+    { class24.map((prospect, i) =>
+      <ProspectInfo key={i} {...prospect} />
+    )}
+    /*<table className="table table-striped table-bordered">
       <thead className='thead-dark'>
         <tr>
           <th>First</th>
@@ -21,7 +24,7 @@ const DraftClass = () =>
           <ProspectInfo key={i} {...prospect} />
         )}
       </tbody>
-    </table>
+    </table>*/
   </div>
 
   export default DraftClass

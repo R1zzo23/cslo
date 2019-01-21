@@ -23,7 +23,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/draftclass" component={DraftClass} />
             <Route exact path="/sendscouts" component={SendScouts} />
-            <Route exact path="/prospectcard" component={ProspectCard} />
+            <Route exact path="/prospectcard/:id" component={ProspectCard} />
           </div>
         </div>
       </BrowserRouter>

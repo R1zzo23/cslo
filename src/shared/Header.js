@@ -7,16 +7,16 @@ const Header = () =>
         <Link className='navbar-brand' to='/'>CSL Online</Link>
         <form className='form-inline my-2 my-lg-0'>
           <a className='nav-item nav-link' href='http://www.championsimleague.com/index.php' target='_blank'>Forums</a>
-          <li class="nav-item nav-link dropdown">
-            <a class="nav-item nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <li className="nav-item nav-link dropdown">
+            <a className="nav-item nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Draft Classes
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <Link class="dropdown-item" to="/draftclass">2024</Link>
-              <div class="dropdown-divider"></div>
-              <Link class="dropdown-item" to="/draftclass">2025</Link>
-              <div class="dropdown-divider"></div>
-              <Link class="dropdown-item" to="/draftclass">2026</Link>
+            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <Link className="dropdown-item" to="/draftclass">2024</Link>
+              <div className="dropdown-divider"></div>
+              <Link className="dropdown-item" to="/draftclass">2025</Link>
+              <div className="dropdown-divider"></div>
+              <Link className="dropdown-item" to="/draftclass">2026</Link>
             </div>
           </li>
           <Link className='nav-item nav-link' to='/sendscouts'>Send Scouts</Link>
