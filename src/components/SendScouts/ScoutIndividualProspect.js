@@ -1,11 +1,12 @@
 import React from 'react'
+import class24 from '../DraftClass/2024class.json'
 
 const ScoutIndividualProspect = () =>
   <div>
     <select>
-      <option value="zion-williamson">Zion Williamson</option>
-      <option value="rj-barrett">R.J. Barrett</option>
-      <option value="cam-reddish">Cam Reddish</option>
+    { class24.map((prospect, i) =>
+      <option>{prospect.LastName}, {prospect.FirstName}</option>
+    )}
     </select>
   </div>
 
