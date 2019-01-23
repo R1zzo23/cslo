@@ -11,7 +11,7 @@ import Header from './shared/Header'
 import Home from './components/Home/Home'
 import DraftClass from './components/DraftClass/DraftClass'
 import SendScouts from './components/SendScouts/SendScouts'
-import ProspectCard from './components/Prospects/ProspectCard'
+import {ProspectCard} from './components/Prospects/ProspectCard'
 
 class App extends Component {
   render() {
@@ -23,7 +23,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/draftclass" component={DraftClass} />
             <Route exact path="/sendscouts" component={SendScouts} />
-            <Route exact path="/prospectcard/:id" component={ProspectCard} />
+            <Route exact path="/prospect/:id" component={ProspectCard} />
           </div>
         </div>
       </BrowserRouter>

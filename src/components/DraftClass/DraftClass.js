@@ -6,7 +6,7 @@ const DraftClass = () =>
   <div>
     <h1>#### Draft Class</h1>
     { class24.map((prospect, i) =>
-      <ProspectInfo key={i} {...prospect} />
+      <ProspectInfo key={i} id={i} {...prospect} />
     )}
     /*<table className="table table-striped table-bordered">
       <thead className='thead-dark'>
