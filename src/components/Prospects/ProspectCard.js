@@ -1,7 +1,8 @@
 import React from 'react'
-import BasicInfo from './BasicInfo'
+import {BasicInfo} from './BasicInfo'
 import PersonalityTraits from './PersonalityTraits'
 import class24 from '../DraftClass/2024class.json'
+import ShootingAbility from './ShootingAbility'
 
 export class ProspectCard extends React.Component {
   render() {
@@ -11,9 +12,19 @@ export class ProspectCard extends React.Component {
 
     return (
         <div>
-            <p>{this.props.match.params.id}</p>
-            <p>Player Name: {prospect.FirstName} {prospect.LastName}</p>
-            <p>Height: {prospect.DisplayHeight}</p>
+          <div className='row'>
+            <div className='col-md-12'>
+              <BasicInfo prospect={prospect} />
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-md-3 col-sm-12'>
+              <PersonalityTraits prospect={prospect} />
+            </div>
+            <div className='col-md-3 col-sm-12'>
+              <ShootingAbility prospect={prospect} />
+            </div>
+          </div>
         </div>
     );
   }
