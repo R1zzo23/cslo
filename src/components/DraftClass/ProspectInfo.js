@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const ProspectInfo = ({id, FirstName, LastName, Position, College, DisplayHeight, Weight}) =>
   <p>
-    <Link to={`/prospect/${id}`}>{FirstName} {LastName}</Link> || {DisplayHeight}, {Weight} lbs. || Position: {Position} || School: {College}
+    <Link to={`/prospect/${FirstName}-${LastName}`}>{FirstName} {LastName}</Link> || {DisplayHeight}, {Weight} lbs. || Position: {Position} || School: {College}
   </p>
   /*<Link to={`/prospects/${FirstName}-${LastName}`}>
       <tr>
