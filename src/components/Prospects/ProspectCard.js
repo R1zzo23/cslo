@@ -5,9 +5,8 @@ import class24 from '../DraftClass/2024class.json'
 
 export class ProspectCard extends React.Component {
   render() {
-    console.log(this.props.match.params.id);
-    const i = this.props.match.params.id;
-    console.log(class24[i]);
+    const fullName = this.props.match.params.id;
+    const i = class24.findIndex((prospect) => (prospect.FirstName + '-' + prospect.LastName) === fullName);
     const prospect = class24[i];
 
     return (
