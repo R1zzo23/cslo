@@ -6,18 +6,16 @@ import class24 from '../DraftClass/2024class.json'
 export class ProspectCard extends React.Component {
   render() {
     console.log(this.props.match.params.id);
+    const i = this.props.match.params.id;
+    console.log(class24[i]);
+    const prospect = class24[i];
+
     return (
         <div>
             <p>{this.props.match.params.id}</p>
-            <p>Player Name: {this.props.FirstName}</p>
+            <p>Player Name: {prospect.FirstName} {prospect.LastName}</p>
+            <p>Height: {prospect.DisplayHeight}</p>
         </div>
     );
   }
 };
-
-/*const ProspectCard = () =>
-  <div>
-    <h1>Prospect Card</h1>
-  </div>
-
-  export default ProspectCard*/
