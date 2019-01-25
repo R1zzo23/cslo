@@ -5,16 +5,6 @@ const ProspectInfo = ({id, FirstName, LastName, Position, College, DisplayHeight
   <p>
     <Link to={`/prospect/${FirstName}-${LastName}`}>{FirstName} {LastName}</Link> || {DisplayHeight}, {Weight} lbs. || Position: {Position} || School: {College}
   </p>
-  /*<Link to={`/prospects/${FirstName}-${LastName}`}>
-      <tr>
-        <td>{FirstName}</td>
-        <td>{LastName}</td>
-        <td>{Position}</td>
-        <td>{College}</td>
-        <td>{DisplayHeight}</td>
-        <td>{Weight}</td>
-      </tr>
-    </Link>*/
 
 
   export default ProspectInfo

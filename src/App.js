@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom'
+import BootstrapTable from 'react-bootstrap-table-next';
 import logo from './logo.svg';
 
 // import CSS files
 //import './styles/header/header.css'
 import './App.css';
+import '../node_modules/react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
 // import components
 import Header from './shared/Header'
