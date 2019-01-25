@@ -3,6 +3,7 @@ import {BasicInfo} from './BasicInfo'
 import PersonalityTraits from './PersonalityTraits'
 import class24 from '../DraftClass/2024class.json'
 import ShootingAbility from './ShootingAbility'
+import BallActions from './BallActions'
 
 export class ProspectCard extends React.Component {
   render() {
@@ -17,12 +18,16 @@ export class ProspectCard extends React.Component {
               <BasicInfo prospect={prospect} />
             </div>
           </div>
+          <br />
           <div className='row'>
             <div className='col-md-3 col-sm-12'>
               <PersonalityTraits prospect={prospect} />
             </div>
             <div className='col-md-3 col-sm-12'>
               <ShootingAbility prospect={prospect} />
+            </div>
+            <div className='col-md-3 col-sm-12'>
+              <BallActions prospect={prospect} />
             </div>
           </div>
         </div>
