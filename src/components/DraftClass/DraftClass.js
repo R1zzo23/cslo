@@ -4,27 +4,19 @@ import ProspectInfo from './ProspectInfo'
 
 const DraftClass = () =>
   <div>
-    <h1>#### Draft Class</h1>
+    <div className='row'>
+      <h4>Developer Notes:</h4>
+      <ul>
+        <li>Will get info into formatted table</li>
+        <li>Will customize URL to match each class specifically</li>
+        <li>Each table row will be clickable to send direct to player card</li>
+      </ul>
+    </div>
+    <br />
+    <h1>2024 CSL Draft Class</h1>
     { class24.map((prospect, i) =>
       <ProspectInfo key={i} id={i} {...prospect} />
     )}
-    /*<table className="table table-striped table-bordered">
-      <thead className='thead-dark'>
-        <tr>
-          <th>First</th>
-          <th>Last</th>
-          <th>Position</th>
-          <th>College</th>
-          <th>Height</th>
-          <th>Weight</th>
-        </tr>
-      </thead>
-      <tbody>
-        { class24.map((prospect, i) =>
-          <ProspectInfo key={i} {...prospect} />
-        )}
-      </tbody>
-    </table>*/
   </div>
 
   export default DraftClass
