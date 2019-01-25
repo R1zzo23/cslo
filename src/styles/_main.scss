@@ -2,6 +2,8 @@
 @import 'header/header.scss';
 @import 'footer/footer.scss';
 @import 'home/home.scss';
+@import 'prospectCard/prospectCard.scss';
+@import 'sendScouts/sendScouts.scss';
 
 h1 {
   text-align: center !important;
@@ -24,4 +26,8 @@ p {
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   font-weight: bold;
   font-size: 1.2em;
+}
+
+.table th, tr, td {
+  text-align: center;
 }
