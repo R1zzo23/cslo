@@ -3,7 +3,7 @@ import React from 'react'
 const PersonalityTraits = ({prospect}) =>
   <table className="table table-bordered">
     <thead className='thead-dark'>
-      <tr>
+      <tr className='text-center'>
         <th>Personality Trait</th>
         <th>Rating</th>
       </tr>

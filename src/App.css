@@ -43,6 +43,21 @@
 .welcome {
   color: #ffa800; }
 
+#logo {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 150px; }
+
+#home-component-background {
+  text-align: center; }
+
+.selection {
+  margin-bottom: 10px; }
+
+.btn {
+  background-color: #ffa800; }
+
 h1 {
   text-align: center !important;
   font-family: Georgia, serif !important;
@@ -61,3 +76,6 @@ p {
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   font-weight: bold;
   font-size: 1.2em; }
+
+.table th, tr, td {
+  text-align: center; }

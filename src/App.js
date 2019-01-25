@@ -10,7 +10,7 @@ import './App.css';
 import Header from './shared/Header'
 import Home from './components/Home/Home'
 import DraftClass from './components/DraftClass/DraftClass'
-import SendScouts from './components/SendScouts/SendScouts'
+import {SendScouts} from './components/SendScouts/SendScouts'
 import {ProspectCard} from './components/Prospects/ProspectCard'
 
 class App extends Component {

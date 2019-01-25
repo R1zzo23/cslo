@@ -3,9 +3,9 @@ import class24 from '../DraftClass/2024class.json'
 
 const ScoutIndividualProspect = () =>
   <div>
-    <select>
+    <select className='selection'>
     { class24.map((prospect, i) =>
-      <option>{prospect.LastName}, {prospect.FirstName}</option>
+      <option key={i}>{prospect.LastName}, {prospect.FirstName}</option>
     )}
     </select>
   </div>
