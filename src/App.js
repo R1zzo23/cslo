@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom'
-import BootstrapTable from 'react-bootstrap-table-next';
+import ReactTable from 'react-table'
 import logo from './logo.svg';
 
 // import CSS files
@@ -11,7 +11,7 @@ import '../node_modules/react-bootstrap-table-next/dist/react-bootstrap-table2.m
 // import components
 import Header from './shared/Header'
 import Home from './components/Home/Home'
-import DraftClass from './components/DraftClass/DraftClass'
+import {DraftClass} from './components/DraftClass/DraftClass'
 import {SendScouts} from './components/SendScouts/SendScouts'
 import {ProspectCard} from './components/Prospects/ProspectCard'
 

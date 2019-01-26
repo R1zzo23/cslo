@@ -1,10 +1,67 @@
 import React from 'react'
 import class24 from './2024class.json'
 import ProspectInfo from './ProspectInfo'
+import ReactTable from 'react-table'
+import "react-table/react-table.css"
+import { Link } from 'react-router-dom'
 
-const DraftClass = () =>
+function MyCell({ value, columnProps: { rest: { someFunc } } }) {
+  return <Link to="/sendscouts" onClick={someFunc}>{value}</Link>
+}
+
+export class DraftClass extends React.Component{
+  render() {
+    const columns = [{
+      Header: 'First',
+      accessor: 'FirstName',
+      Cell: MyCell,
+        getProps: () => ({ someFunc: () => alert("clicked")}),
+      width: 200,
+    },{
+      Header: 'Last',
+      accessor: 'LastName',
+      width: 200
+    },{
+      Header: 'Age',
+      accessor: 'Age',
+      width: 100
+    },{
+      Header: 'Position',
+      accessor: 'Position',
+      width: 100
+    },{
+      Header: 'From',
+      accessor: 'College',
+      width: 200
+    },{
+      Header: 'Height',
+      accessor: 'DisplayHeight',
+      width: 100
+    },{
+      Header: 'Weight',
+      accessor: 'Weight',
+      width: 100
+    }]
+
+    return (
+      <div>
+        <ReactTable
+                  data={class24}
+                  columns={columns}
+                  defaultPageSize = {25}
+                  pageSizeOptions = {[25, class24.length]}
+                />
+      </div>
+    );
+  }
+};
+
+/*const DraftClass = () =>
   <div>
     <div className='row'>
+      <ReactTable
+        data={class24}
+      />
       <h4>Developer Notes:</h4>
       <ul>
         <li>Will get info into formatted table</li>
@@ -20,3 +77,4 @@ const DraftClass = () =>
   </div>
 
   export default DraftClass
+*/
