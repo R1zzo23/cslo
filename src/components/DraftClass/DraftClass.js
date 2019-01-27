@@ -6,6 +6,7 @@ import "react-table/react-table.css"
 import { Link } from 'react-router-dom'
 
 function MyCell({ value, columnProps: { rest: { someFunc } } }) {
+  console.log(cellInfo.row);
   return <Link to="/sendscouts" onClick={someFunc}>{value}</Link>
 }
 
