@@ -5,18 +5,21 @@ import ReactTable from 'react-table'
 import "react-table/react-table.css"
 import { Link } from 'react-router-dom'
 
-function MyCell({ value, columnProps: { rest: { someFunc } } }) {
-  console.log(cellInfo.row);
-  return <Link to="/sendscouts" onClick={someFunc}>{value}</Link>
+function LinkCell(value) {
+  console.log(value.original.FirstName + '-' + value.original.LastName)
+  var url = "/prospect/" + value.original.FirstName + '-' + value.original.LastName;
+  return <Link to={url}><i className="fas fa-link"></i></Link>
 }
 
 export class DraftClass extends React.Component{
   render() {
     const columns = [{
+      Header: 'Link',
+      Cell: LinkCell,
+      width: 50
+    },{
       Header: 'First',
       accessor: 'FirstName',
-      Cell: MyCell,
-        getProps: () => ({ someFunc: () => alert("clicked")}),
       width: 200,
     },{
       Header: 'Last',
@@ -56,26 +59,3 @@ export class DraftClass extends React.Component{
     );
   }
 };
-
-/*const DraftClass = () =>
-  <div>
-    <div className='row'>
-      <ReactTable
-        data={class24}
-      />
-      <h4>Developer Notes:</h4>
-      <ul>
-        <li>Will get info into formatted table</li>
-        <li>Will customize URL to match each class specifically</li>
-        <li>Each table row will be clickable to send direct to player card</li>
-      </ul>
-    </div>
-    <br />
-    <h1>2024 CSL Draft Class</h1>
-    { class24.map((prospect, i) =>
-      <ProspectInfo key={i} id={i} {...prospect} />
-    )}
-  </div>
-
-  export default DraftClass
-*/
