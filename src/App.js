@@ -14,6 +14,9 @@ import Home from './components/Home/Home'
 import {DraftClass} from './components/DraftClass/DraftClass'
 import {SendScouts} from './components/SendScouts/SendScouts'
 import {ProspectCard} from './components/Prospects/ProspectCard'
+import {LogIn} from './components/LogIn/LogIn'
+
+import * as ROUTES from './constants/routes';
 
 class App extends Component {
   render() {
@@ -22,10 +25,11 @@ class App extends Component {
         <div className="App">
           <Header />
           <div className="container">
-            <Route exact path="/" component={Home} />
-            <Route exact path="/draftclass" component={DraftClass} />
-            <Route exact path="/sendscouts" component={SendScouts} />
-            <Route exact path="/prospect/:id" component={ProspectCard} />
+            <Route exact path={ROUTES.HOME} component={Home} />
+            <Route path={ROUTES.DRAFT_CLASS} component={DraftClass} />
+            <Route path={ROUTES.SEND_SCOUTS} component={SendScouts} />
+            <Route path={ROUTES.PROSPECT} component={ProspectCard} />
+            <Route path={ROUTES.LOG_IN} component={LogIn} />
           </div>
         </div>
       </BrowserRouter>
