@@ -6,7 +6,6 @@ import "react-table/react-table.css"
 import { Link } from 'react-router-dom'
 
 function LinkCell(value) {
-  console.log(value.original.FirstName + '-' + value.original.LastName)
   var url = "/prospect/" + value.original.FirstName + '-' + value.original.LastName;
   return <Link to={url}><i className="fas fa-link"></i></Link>
 }
