@@ -1,9 +1,10 @@
-import React from 'react'
-import class24 from './2024class.json'
-import ProspectInfo from './ProspectInfo'
-import ReactTable from 'react-table'
-import "react-table/react-table.css"
-import { Link } from 'react-router-dom'
+import React from 'react';
+import class24 from './2024class.json';
+import ReactTable from 'react-table';
+import "react-table/react-table.css";
+import { Link } from 'react-router-dom';
+import Firebase from '../Firebase/firebase';
+import 'firebase/firestore';
 
 function LinkCell(value) {
   var url = "/prospect/" + value.original.FirstName + '-' + value.original.LastName;
@@ -11,6 +12,13 @@ function LinkCell(value) {
 }
 
 export class DraftClass extends React.Component{
+  constructor(props) {
+    super(props);
+    this.exportData = this.exportData.bind(this);
+  }
+  exportData() {
+    console.log('Data exported!');
+  }
   render() {
     const columns = [{
       Header: 'Link',
@@ -48,6 +56,7 @@ export class DraftClass extends React.Component{
 
     return (
       <div>
+        <button onClick={this.exportData}>Export Class to Firestore</button>
         <ReactTable
                   data={class24}
                   columns={columns}

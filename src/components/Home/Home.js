@@ -6,7 +6,7 @@ const Home = () =>
       <div id='home-component-background'>
         <h1 className="welcome">Welcome to CSL Online!</h1>
         <br />
-        <img className='logo' id='logo' src='/img/cslo-logo.png' />
+        <img className='logo' id='logo' alt='CSL Online logo' src='/img/cslo-logo.png' />
       </div>
     </div>
     <br />

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import ReactTable from 'react-table'
-import logo from './logo.svg';
-import { withFirebase } from './components/Firebase';
+import { withFirebase } from './components/Firebase'
+import Firebase from './components/Firebase/firebase'
 
 // import CSS files
 //import './styles/header/header.css'
@@ -49,6 +48,10 @@ class App extends Component {
           <div className="container">
             <Route exact path={ROUTES.HOME} component={Home} />
             <Route path={ROUTES.DRAFT_CLASS} component={DraftClass} />
+            <Route
+              path={ROUTES.DRAFT_CLASS}
+              render={() => <DraftClass {...this.props} user={this.state}/>}
+            />
             <Route path={ROUTES.SEND_SCOUTS} component={SendScouts} />
             <Route path={ROUTES.PROSPECT} component={ProspectCard} />
             <Route path={ROUTES.LOG_IN} component={SignInPage} />
