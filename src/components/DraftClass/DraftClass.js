@@ -18,7 +18,13 @@ function LinkCell(value) {
 export class DraftClass extends React.Component{
   constructor(props) {
     super(props);
+    this.state = {
+      data: []
+    };
     this.selectClassData = this.selectClassData.bind(this);
+  }
+  componentDidMount() {
+    
   }
   selectClassData() {
     const urlString = window.location.href;
