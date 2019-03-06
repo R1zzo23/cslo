@@ -9,7 +9,7 @@ import SkillRatings from './SkillRatings'
 export class ProspectCard extends React.Component {
   render() {
     const fullName = this.props.match.params.id;
-    const i = class24.findIndex((prospect) => (prospect.FirstName + '-' + prospect.LastName) === fullName);
+    const i = class24.findIndex((prospect) => ((prospect.LastName + prospect.FirstName).toLowerCase().replace(/[, ']+/g, "").trim()) === fullName);
     const prospect = class24[i];
 
     return (

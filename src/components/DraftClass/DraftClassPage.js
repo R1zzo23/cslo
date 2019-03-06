@@ -1,34 +1,44 @@
-import React from 'react';
-import class2024 from './2024_basic.json';
-import class2025 from './2025class.json';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import '@firebase/firestore'
+
+import class24 from './2024class.json';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
-import { Link } from 'react-router-dom';
+import { withFirebase } from '../Firebase';
+
+const DraftClassPage = ({firebase}) => (
+  <div>
+    <h1>Draft Class</h1>
+    <DraftClassTable firebase={firebase}/>
+  </div>
+);
 
 function LinkCell(value) {
-  const urlString = window.location.href;
-  var year = urlString.substr(urlString.length - 4);
-
-  var fullName = value.original.LastName + value.original.FirstName;
-  fullName = fullName.toLowerCase().replace(/[, ']+/g, "").trim();
-  var url = "/draftclass/" + year + "/" + fullName;
+  var url = "/prospect/" + value.original.FirstName + '-' + value.original.LastName;
   return <Link to={url}><i className="fas fa-link"></i></Link>
 }
 
-export class DraftClass extends React.Component{
+class DraftClass extends React.Component{
   constructor(props) {
     super(props);
-    this.selectClassData = this.selectClassData.bind(this);
   }
-  selectClassData() {
+  render() {
+    const prospectList = [];
+    const fire = this.props.firebase;
+    const db = fire.auth.app.firebase_.firestore();
+    db.settings({
+      timestampsInSnapshots: true
+    });
     const urlString = window.location.href;
     var year = urlString.substr(urlString.length - 4);
 
-    if (year === 2024) return {class2024};
-    else if (year === 2025) return {class2025};
-  }
-  render() {
-    const data = this.selectClassData();
+    db.collection("class" + year).get().then((snapshot) => {
+      snapshot.forEach(doc => {
+        prospectList.push(doc.data());
+      });
+    });
+    console.log(prospectList);
 
     const columns = [{
       Header: 'Link',
@@ -67,12 +77,18 @@ export class DraftClass extends React.Component{
     return (
       <div>
         <ReactTable
-                  data={class2024}
+                  data={prospectList}
                   columns={columns}
                   defaultPageSize = {25}
-                  pageSizeOptions = {[25, class2024.length]}
+                  pageSizeOptions = {[25, prospectList.length]}
                 />
       </div>
     );
   }
 };
+
+export default DraftClassPage;
+
+const DraftClassTable = withFirebase(DraftClass);
+
+export { DraftClassTable };
