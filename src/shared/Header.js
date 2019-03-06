@@ -17,14 +17,15 @@ const HeaderAuth = () => (
             Draft Classes
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <Link className="dropdown-item" to="/draftclass">2024</Link>
+            <Link className="dropdown-item" to="/draftclass/2024">2024</Link>
             <div className="dropdown-divider"></div>
-            <Link className="dropdown-item" to="/draftclass">2025</Link>
+            <Link className="dropdown-item" to="/draftclass/2025">2025</Link>
             <div className="dropdown-divider"></div>
-            <Link className="dropdown-item" to="/draftclass">2026</Link>
+            <Link className="dropdown-item" to="/draftclass/2026">2026</Link>
           </div>
         </li>
         <Link className='nav-item nav-link' to='/sendscouts'>Send Scouts</Link>
+        <Link className='nav-item nav-link' to='/team'>Team Page</Link>
       </form>
       <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation'>
         <span className='navbar-toggler-icon'></span>
