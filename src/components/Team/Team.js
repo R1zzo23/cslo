@@ -17,6 +17,7 @@ class Team extends React.Component{
     };
   }
   componentDidMount() {
+    // email to search collection for documents
     var userEmail = this.props.firebase.auth.currentUser.email;
 
     const fire = this.props.firebase;
@@ -28,9 +29,10 @@ class Team extends React.Component{
     .get()
     .then((docSnapshot) => {
       docSnapshot.forEach((doc) => {
-        console.log(doc.id);
+        // add each scout to array
         scouts.push(doc.data());
       });
+      // sort scouts array by LastName then FirstName
       scouts.sort((a, b) => (a.LastName > b.LastName) ? 1 : (a.LastName === b.LastName) ? ((a.FirstName > b.FirstName) ? 1 : -1) : -1 )
       this.setState({
         data: scouts
@@ -40,8 +42,8 @@ class Team extends React.Component{
   render(){
     const scoutTable = (
       <div>
-        <table class="table">
-          <thead class="thead-dark">
+        <table className="table">
+          <thead className="thead-dark">
             <tr>
               <th scope="col">FIRST</th>
               <th scope="col">LAST</th>

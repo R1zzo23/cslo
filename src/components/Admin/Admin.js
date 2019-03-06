@@ -26,9 +26,10 @@ class Admin extends React.Component{
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
+    // grab collection that holds all franchises
     db.collection("franchises").get().then(function(querySnapshot) {
       querySnapshot.docs.map(function(teamDoc) {
-        // grab scoutList array
+        // grab scoutList array for current team
         let scoutList = teamDoc.data().scoutList;
         // grab email for current franchise
         let email = teamDoc.data().email;
@@ -38,7 +39,7 @@ class Admin extends React.Component{
           docRef.get().then(function(doc) {
             // create new doc in scouts collection with randomized ratings based on referenced docs
             let scoutedConsistency = Math.floor(Math.random()*((doc.data().Consistency + 5)-(doc.data().Consistency-5)+1))+(doc.data().Consistency-5);
-
+            if (scoutedConsistency > 99) scoutedConsistency = 99;
             let scoutedGreed = Math.floor(Math.random()*((doc.data().Greed + 5)-(doc.data().Greed-5)+1))+(doc.data().Greed-5);
             if (scoutedGreed > 99) scoutedGreed = 99;
             let scoutedLoyalty = Math.floor(Math.random()*((doc.data().Loyalty + 5)-(doc.data().Loyalty-5)+1))+(doc.data().Loyalty-5);
@@ -216,6 +217,10 @@ class Admin extends React.Component{
             })
           });
         });
+        // empty scoutList array for this franchise
+        console.log("Emptying scoutList array...");
+        // availableScouts set to 0
+        console.log("availableScouts set to 0...");
       });
     });
   }
