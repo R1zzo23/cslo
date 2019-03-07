@@ -38,6 +38,7 @@ class Admin extends React.Component{
           let docRef = db.collection('class2024').doc(prospect.url);
           docRef.get().then(function(doc) {
             // create new doc in scouts collection with randomized ratings based on referenced docs
+            let fullNameLowerCase = (doc.data().LastName + doc.data().FirstName).toLowerCase();
             let scoutedConsistency = Math.floor(Math.random()*((doc.data().Consistency + 5)-(doc.data().Consistency-5)+1))+(doc.data().Consistency-5);
             if (scoutedConsistency > 99) scoutedConsistency = 99;
             let scoutedGreed = Math.floor(Math.random()*((doc.data().Greed + 5)-(doc.data().Greed-5)+1))+(doc.data().Greed-5);
@@ -150,6 +151,7 @@ class Admin extends React.Component{
             if (scoutedBballIQ_POT < scoutedBballIQ) scoutedBballIQ_POT = scoutedBballIQ;
             if (scoutedBballIQ_POT > 99) scoutedBballIQ_POT = 99;
             db.collection('scouts').add({
+              FullNameLowerCase: fullNameLowerCase,
               Email: email,
               FirstName: doc.data().FirstName,
               LastName: doc.data().LastName,
