@@ -31,6 +31,7 @@ class Team extends React.Component{
         { label: "DriveKick", key: "DriveKick"},
         { label: "DriveShot", key: "DriveShot"},
         { label: "PostUp", key: "PostUp"},
+        { label: "PullUp", key: "PullUp"},
         { label: "CS", key: "CS"},
         { label: "PASS", key: "Pass"},
         { label: "LocATB", key: "LocATB"},
@@ -122,7 +123,7 @@ class Team extends React.Component{
             <tr>
               <th className="player-info" colspan="3">PLAYER</th>
               <th className="dunk-rim-rates" colspan="2">RATES</th>
-              <th className="ball-actions" colspan="5">BALL ACTIONS</th>
+              <th className="ball-actions" colspan="6">BALL ACTIONS</th>
               <th className="floor-locations" colspan="4">FLOOR LOCATIONS</th>
               <th className="shot-ratings" colspan="6">SHOT RATINGS</th>
               <th className="other-ratings" colspan="11">OTHER RATINGS</th>
@@ -136,6 +137,7 @@ class Team extends React.Component{
               <th className="ball-actions" scope="col">DriveKick</th>
               <th className="ball-actions" scope="col">DriveShoot</th>
               <th className="ball-actions" scope="col">PostUp</th>
+              <th className="ball-actions" scope="col">PullUp</th>
               <th className="ball-actions" scope="col">CS</th>
               <th className="ball-actions" scope="col">Pass</th>
               <th className="floor-locations" scope="col">ATB</th>
@@ -172,6 +174,7 @@ class Team extends React.Component{
                 <td>{scout.DriveKick}</td>
                 <td>{scout.DriveShot}</td>
                 <td>{scout.PostUp}</td>
+                <td>{scout.PullUp}</td>
                 <td>{scout.CS}</td>
                 <td>{scout.Pass}</td>
                 <td>{scout.LocATB}</td>
