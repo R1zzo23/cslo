@@ -82,3 +82,25 @@ p {
 
 .table th, tr, td {
   text-align: center; }
+
+.table {
+  font-size: 12px; }
+
+.player-info {
+  background-color: black;
+  color: white; }
+
+.shot-ratings {
+  background-color: #9dbef1; }
+
+.dunk-rim-rates {
+  background-color: #f77a7a; }
+
+.other-ratings {
+  background-color: #77fab4; }
+
+.floor-locations {
+  background-color: #e898f5; }
+
+.ball-actions {
+  background-color: #f0bd72; }
