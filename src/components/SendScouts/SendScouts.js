@@ -108,14 +108,20 @@ class SendScouts extends React.Component{
       <div>
         <h3>{this.state.teamName}</h3>
         <h6>Scouts Available: {this.state.scoutPoints}</h6>
-        <h4>Currently Scouting:</h4>
-        {currentScoutList}
-
-        <p>Clicking the save button below will overwrite the saved scouts listed above.</p>
-
-        {selectProspects}
-        <br />
-        <button onClick={this.saveScouts} className='btn'>Save Scouts</button>
+        <hr></hr>
+        <p className='text-center'>Clicking the save button below will overwrite the saved scouts listed above.</p>
+        <button className='text-center' onClick={this.saveScouts} className='btn saveScoutsBtn'>Save Scouts</button>
+        <hr></hr>
+        <div className="row">
+          <div className="col-sm-6">
+            <h5>Currently Scouting:</h5>
+            {currentScoutList}
+          </div>
+          <div className="col-sm-6 text-center">
+            <h5>Choose Different Prospects to Scout</h5>
+            {selectProspects}
+          </div>
+        </div>
       </div>
     );
   }

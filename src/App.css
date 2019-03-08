@@ -53,10 +53,20 @@
   text-align: center; }
 
 .selection {
-  margin-bottom: 10px; }
+  margin-bottom: 5px; }
 
 .btn {
   background-color: #ffa800; }
+
+.saveScoutsBtn {
+  margin: 0 auto;
+  margin: -20px -50px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  border-radius: 3px;
+  border: 2px solid black !important;
+  font-weight: bolder; }
 
 h1 {
   text-align: center !important;
