@@ -3,7 +3,7 @@ import '@firebase/firestore'
 import { withFirebase } from '../Firebase'
 import {BasicInfo} from './BasicInfo'
 import PersonalityTraits from './PersonalityTraits'
-import class24 from '../DraftClass/2024class.json'
+import class24 from '../DraftClass/2024_basic.json'
 import ShootingAbility from './ShootingAbility'
 import BallActions from './BallActions'
 import SkillRatings from './SkillRatings'
@@ -54,16 +54,16 @@ class ProspectCard extends React.Component {
     const prospect = class24[i];
 
     return (
-      <div>{(this.state.data !== []) ? <ProspectData data={prospect}/> : <NoData />}</div>
+      <div>{(this.state.data !== []) ? <ProspectData data={this.state.data} prospect={prospect}/> : <NoData />}</div>
     );
   }
 };
 
-const ProspectData = ({data}) => (
+const ProspectData = ({data, prospect}) => (
   <div>
     <div className='row'>
       <div className='col-md-12'>
-        <BasicInfo prospect={data} />
+        <BasicInfo prospect={prospect} />
       </div>
     </div>
     <br />
