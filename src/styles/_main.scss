@@ -2,6 +2,7 @@
 @import 'header/header.scss';
 @import 'footer/footer.scss';
 @import 'home/home.scss';
+@import 'team/team.scss';
 @import 'prospectCard/prospectCard.scss';
 @import 'sendScouts/sendScouts.scss';
 
@@ -38,29 +39,4 @@ p {
 
 .table{
   font-size: 12px;
-}
-
-.player-info{
-  background-color: black;
-  color: white;
-}
-
-.shot-ratings {
-  background-color: rgb(157, 190, 241);
-}
-
-.dunk-rim-rates {
-  background-color: rgb(247, 122, 122);
-}
-
-.other-ratings {
-  background-color: rgb(119, 250, 180);
-}
-
-.floor-locations {
-  background-color: rgb(232, 152, 245);
-}
-
-.ball-actions {
-  background-color: rgb(240, 189, 114);
 }
