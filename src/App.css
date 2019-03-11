@@ -71,6 +71,9 @@
 .ball-actions {
   background-color: #f0bd72; }
 
+.floorAreasTable, .ballActionsTable {
+  margin-top: 50px; }
+
 .selection {
   margin-bottom: 5px; }
 
@@ -94,7 +97,7 @@ h1 {
   font-weight: bold !important;
   text-decoration: underline !important; }
 
-h3, h6 {
+h3, h5, h6 {
   text-align: center; }
 
 ul {
