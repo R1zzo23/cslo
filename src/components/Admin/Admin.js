@@ -33,6 +33,7 @@ class Admin extends React.Component{
         let scoutList = teamDoc.data().scoutList;
         // grab email for current franchise
         let email = teamDoc.data().email;
+        let abrev = teamDoc.data().abrev;
         // use url property of each element in array to find doc in class2024 collection
         scoutList.forEach(function(prospect) {
           let docRef = db.collection('class2024').doc(prospect.url);
@@ -223,6 +224,13 @@ class Admin extends React.Component{
         console.log("Emptying scoutList array...");
         // availableScouts set to 0
         console.log("availableScouts set to 0...");
+        db.collection("franchises").doc(abrev).update({
+          scoutList: [],
+          availableScouts: 0
+        })
+        .then(function() {
+        console.log("Document successfully updated!");
+        });
       });
     });
   }
