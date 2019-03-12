@@ -146,8 +146,6 @@ class ProspectCard extends React.Component {
               <tr>
                 <th className="player-info" colspan="3">PLAYER</th>
                 <th className="dunk-rim-rates" colspan="2">RATES</th>
-                <th className="ball-actions" colspan="6">BALL ACTIONS</th>
-                <th className="floor-locations" colspan="4">FLOOR LOCATIONS</th>
                 <th className="shot-ratings" colspan="6">SHOT RATINGS</th>
                 <th className="other-ratings" colspan="11">OTHER RATINGS</th>
               </tr>
@@ -157,16 +155,6 @@ class ProspectCard extends React.Component {
                 <th className="player-info" scope="col">POS</th>
                 <th className="dunk-rim-rates" scope="col">DUNK</th>
                 <th className="dunk-rim-rates" scope="col">RIM</th>
-                <th className="ball-actions" scope="col">DriveKick</th>
-                <th className="ball-actions" scope="col">DriveShoot</th>
-                <th className="ball-actions" scope="col">PostUp</th>
-                <th className="ball-actions" scope="col">PullUp</th>
-                <th className="ball-actions" scope="col">CS</th>
-                <th className="ball-actions" scope="col">Pass</th>
-                <th className="floor-locations" scope="col">ATB</th>
-                <th className="floor-locations" scope="col">COR</th>
-                <th className="floor-locations" scope="col">MID</th>
-                <th className="floor-locations" scope="col">PAINT</th>
                 <th className="shot-ratings" scope="col">RIM</th>
                 <th className="shot-ratings" scope="col">PAINT</th>
                 <th className="shot-ratings" scope="col">MID</th>
@@ -194,16 +182,6 @@ class ProspectCard extends React.Component {
                   <td>{scout.Position}</td>
                   <td>{scout.DunkRate}</td>
                   <td>{scout.RARate}</td>
-                  <td>{scout.DriveKick}</td>
-                  <td>{scout.DriveShot}</td>
-                  <td>{scout.PostUp}</td>
-                  <td>{scout.PullUp}</td>
-                  <td>{scout.CS}</td>
-                  <td>{scout.Pass}</td>
-                  <td>{scout.LocATB}</td>
-                  <td>{scout.LocCorner}</td>
-                  <td>{scout.LocMidrange}</td>
-                  <td>{scout.LocPaint}</td>
                   <td>{scout.FG_RA}/{scout.FG_RA_POT}</td>
                   <td>{scout.FG_ITP}/{scout.FG_ITP_POT}</td>
                   <td>{scout.FG_MID}/{scout.FG_MID_POT}</td>
