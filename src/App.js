@@ -14,6 +14,7 @@ import Home from './components/Home/Home'
 import {DraftClass} from './components/DraftClass/DraftClass'
 import DraftClassPage from './components/DraftClass/DraftClassPage'
 import SendScoutsPage from './components/SendScouts/SendScouts'
+import InterviewsPage from './components/Interviews/Interviews'
 //import ProspectPage from './components/Prospects/ProspectCard'
 import ProspectPage from './components/Prospects/ProspectCard0'
 import SignInPage from './components/Authentication/LogIn'
@@ -55,6 +56,7 @@ class App extends Component {
             <Route exact path={ROUTES.HOME} component={Home} />
             <Route exact path={ROUTES.DRAFT_CLASS} component={DraftClass} />
             <Route path={ROUTES.SEND_SCOUTS} component={SendScoutsPage} />
+            <Route path={ROUTES.INTERVIEWS} component={InterviewsPage} />
             <Route exact path={ROUTES.PROSPECT} component={ProspectPage} />
             <Route path={ROUTES.LOG_IN} component={SignInPage} />
             <Route path={ROUTES.SIGN_UP} component={SignUpPage} />

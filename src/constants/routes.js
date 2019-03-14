@@ -3,6 +3,7 @@ export const ACCOUNT = '/account';
 export const ADMIN = '/admin';
 export const DRAFT_CLASS = '/draftclass/:year';
 export const SEND_SCOUTS = '/sendscouts';
+export const INTERVIEWS = '/interviews';
 export const PROSPECT = '/draftclass/:year/:id';
 export const SIGN_UP = '/signup';
 export const LOG_IN = '/login';
