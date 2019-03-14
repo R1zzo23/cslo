@@ -25,6 +25,7 @@ const HeaderAuth = () => (
           </div>
         </li>
         <Link className='nav-item nav-link' to='/sendscouts'>Send Scouts</Link>
+        <Link className='nav-item nav-link' to='/interviews'>Schedule Interviews</Link>
         <Link className='nav-item nav-link' to='/team'>Team Page</Link>
       </form>
       <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation'>

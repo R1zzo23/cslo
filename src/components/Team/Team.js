@@ -14,11 +14,31 @@ class Team extends React.Component{
   constructor(props: IProps) {
     super(props);
     this.state = {
-      data: [],
+      scoutData: [],
+      interviewData: [],
       abrev: "",
       team: "",
-      fileName: "",
-      headers: [
+      scoutFileName: "",
+      interviewFileName: "",
+      interviewHeaders: [
+        { label: "First", key: "FirstName" },
+        { label: "Last", key: "LastName" },
+        { label: "POS", key: "Position"},
+        { label: "AGE", key: "Age"},
+        { label: "HT", key: "DisplayHeight"},
+        { label: "WT", key: "Weight"},
+        { label: "FROM", key: "College"},
+        { label: "IQ", key: "BballIQ"},
+        { label: "CON", key: "Consistency"},
+        { label: "GREED", key: "Greed"},
+        { label: "LOY", key: "Loyalty"},
+        { label: "PFW", key: "PlayForWinner"},
+        { label: "PT", key: "PlayingTime"},
+        { label: "PER", key: "Personality"},
+        { label: "DUR", key: "Durability"},
+        { label: "WE", key: "WorkEthic"}
+      ],
+      scoutHeaders: [
         { label: "First", key: "FirstName" },
         { label: "Last", key: "LastName" },
         { label: "POS", key: "Position"},
@@ -81,6 +101,7 @@ class Team extends React.Component{
     const db = fire.auth.app.firebase_.firestore();
 
     let scouts = [];
+    let interviews = [];
 
     db.collection("franchises").where("email", "==", userEmail)
     .get()
@@ -89,7 +110,8 @@ class Team extends React.Component{
         this.setState({
           abrev: doc.data().abrev,
           team: doc.data().team,
-          fileName: doc.data().abrev + '-scouts'
+          scoutFileName: doc.data().abrev + '-scouts',
+          interviewFileName: doc.data().abrev + '-interviews'
         });
       });
     });
@@ -104,18 +126,32 @@ class Team extends React.Component{
       // sort scouts array by LastName then FirstName
       scouts.sort((a, b) => (a.LastName > b.LastName) ? 1 : (a.LastName === b.LastName) ? ((a.FirstName > b.FirstName) ? 1 : -1) : -1 )
       this.setState({
-        data: scouts
+        scoutData: scouts
+      });
+    });
+
+    db.collection("interviews").where("Email", "==", userEmail)
+    .get()
+    .then((docSnapshot) => {
+      docSnapshot.forEach((doc) => {
+        // add each interview to array
+        interviews.push(doc.data());
+      });
+      // sort interviews array by LastName then FirstName
+      scouts.sort((a, b) => (a.LastName > b.LastName) ? 1 : (a.LastName === b.LastName) ? ((a.FirstName > b.FirstName) ? 1 : -1) : -1 )
+      this.setState({
+        interviewData: interviews
       });
     });
   }
   render(){
     const scoutTable = (
       <div>
-        <CSVLink data={this.state.data}
-                 filename={this.state.fileName}
+        <CSVLink data={this.state.scoutData}
+                 filename={this.state.scoutFileName}
                  className="btn btn-primary"
                  target="_blank"
-                 headers={this.state.headers}>
+                 headers={this.state.scoutHeaders}>
           Export Scouts to CSV
         </CSVLink>
         <table className="table table-sm table-striped">
@@ -164,7 +200,7 @@ class Team extends React.Component{
             </tr>
           </thead>
           <tbody>
-            {this.state.data.map((scout, index) => (
+            {this.state.scoutData.map((scout, index) => (
               <tr>
                 <td>{scout.FirstName}</td>
                 <td>{scout.LastName}</td>
@@ -204,9 +240,57 @@ class Team extends React.Component{
         </table>
       </div>
     );
+    const interviewTable = (
+      <div>
+        <CSVLink data={this.state.interviewData}
+                 filename={this.state.interviewFileName}
+                 className="btn btn-primary"
+                 target="_blank"
+                 headers={this.state.interviewHeaders}>
+          Export Interviews to CSV
+        </CSVLink>
+        <table className="table table-sm table-striped">
+          <thead>
+            <tr>
+              <th className="player-info" scope="col">FIRST</th>
+              <th className="player-info" scope="col">LAST</th>
+              <th className="player-info" scope="col">POS</th>
+              <th className="other-ratings" scope="col">IQ</th>
+              <th className="other-ratings" scope="col">CON</th>
+              <th className="other-ratings" scope="col">GREED</th>
+              <th className="other-ratings" scope="col">LOY</th>
+              <th className="other-ratings" scope="col">PFW</th>
+              <th className="other-ratings" scope="col">PT</th>
+              <th className="other-ratings" scope="col">PER</th>
+              <th className="other-ratings" scope="col">DUR</th>
+              <th className="other-ratings" scope="col">WE</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.interviewData.map((interview, index) => (
+              <tr>
+                <td>{interview.FirstName}</td>
+                <td>{interview.LastName}</td>
+                <td>{interview.Position}</td>
+                <td>{interview.BballIQ}</td>
+                <td>{interview.Consistency}</td>
+                <td>{interview.Greed}</td>
+                <td>{interview.Loyalty}</td>
+                <td>{interview.PlayForWinner}</td>
+                <td>{interview.PlayingTime}</td>
+                <td>{interview.Personality}</td>
+                <td>{interview.Durability}</td>
+                <td>{interview.WorkEthic}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
     return (
       <div>
         {scoutTable}
+        {interviewTable}
       </div>
     );
   }

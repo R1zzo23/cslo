@@ -16,9 +16,85 @@ class Admin extends React.Component{
 
     };
     this.runScouts = this.runScouts.bind(this);
+    this.runInterviews = this.runInterviews.bind(this);
   }
   componentDidMount() {
 
+  }
+  runInterviews() {
+    console.log("Running interviews...");
+
+    const fire = this.props.firebase;
+    const db = fire.auth.app.firebase_.firestore();
+
+    // grab collection that holds all franchises
+    db.collection("franchises").get().then(function(querySnapshot) {
+      querySnapshot.docs.map(function(teamDoc) {
+        // grab interviewList array for current team
+        let interviewList = teamDoc.data().interviewList;
+        // grab email for current franchise
+        let email = teamDoc.data().email;
+        let abrev = teamDoc.data().abrev;
+        // use url property of each element in array to find doc in class2024 collection
+        interviewList.forEach(function(prospect) {
+          let docRef = db.collection('class2024').doc(prospect.url);
+          docRef.get().then(function(doc) {
+            // create new doc in interviews collection with randomized ratings based on referenced docs
+            let fullNameLowerCase = (doc.data().LastName + doc.data().FirstName).toLowerCase();
+            let scoutedConsistency = Math.floor(Math.random()*((doc.data().Consistency + 5)-(doc.data().Consistency-5)+1))+(doc.data().Consistency-5);
+            if (scoutedConsistency > 99) scoutedConsistency = 99;
+            let scoutedGreed = Math.floor(Math.random()*((doc.data().Greed + 5)-(doc.data().Greed-5)+1))+(doc.data().Greed-5);
+            if (scoutedGreed > 99) scoutedGreed = 99;
+            let scoutedLoyalty = Math.floor(Math.random()*((doc.data().Loyalty + 5)-(doc.data().Loyalty-5)+1))+(doc.data().Loyalty-5);
+            if (scoutedLoyalty > 99) scoutedLoyalty = 99;
+            let scoutedPlayForWinner = Math.floor(Math.random()*((doc.data().PlayForWinner + 5)-(doc.data().PlayForWinner-5)+1))+(doc.data().PlayForWinner-5);
+            if (scoutedPlayForWinner > 99) scoutedPlayForWinner = 99;
+            let scoutedPlayingTime = Math.floor(Math.random()*((doc.data().PlayingTime + 5)-(doc.data().PlayingTime-5)+1))+(doc.data().PlayingTime-5);
+            if (scoutedPlayingTime > 99) scoutedPlayingTime = 99;
+            let scoutedPersonality = Math.floor(Math.random()*((doc.data().Personality + 5)-(doc.data().Personality-5)+1))+(doc.data().Personality-5);
+            if (scoutedPersonality > 99) scoutedPersonality = 99;
+            let scoutedDurability = Math.floor(Math.random()*((doc.data().Durability + 5)-(doc.data().Durability-5)+1))+(doc.data().Durability-5);
+            if (scoutedDurability > 99) scoutedDurability = 99;
+            let scoutedWorkEthic = Math.floor(Math.random()*((doc.data().WorkEthic + 5)-(doc.data().WorkEthic-5)+1))+(doc.data().WorkEthic-5);
+            if (scoutedWorkEthic > 99) scoutedWorkEthic = 99;
+            let scoutedBballIQ = Math.floor(Math.random()*((doc.data().BballIQ + 5)-(doc.data().BballIQ-5)+1))+(doc.data().BballIQ-5);
+            if (scoutedBballIQ > 99) scoutedBballIQ = 99;
+
+            db.collection('interviews').add({
+              FullNameLowerCase: fullNameLowerCase,
+              Email: email,
+              Team: abrev,
+              FirstName: doc.data().FirstName,
+              LastName: doc.data().LastName,
+              Position: doc.data().Position,
+              Age: doc.data().Age,
+              CollegeYear: doc.data().CollegeYear,
+              Height: doc.data().Height,
+              DisplayHeight: doc.data().DisplayHeight,
+              Weight: doc.data().Weight,
+              College: doc.data().College,
+              Consistency: scoutedConsistency,
+              Greed: scoutedGreed,
+              Loyalty: scoutedLoyalty,
+              PlayForWinner: scoutedPlayForWinner,
+              PlayingTime: scoutedPlayingTime,
+              Personality: scoutedPersonality,
+              Durability: scoutedDurability,
+              WorkEthic: scoutedWorkEthic,
+              BballIQ: scoutedBballIQ
+            })
+          });
+        });
+        // empty interviewList array for this franchise
+        console.log("Emptying interviewList array...");
+        db.collection("franchises").doc(abrev).update({
+          'interviewList': []
+        })
+        .then(function() {
+        console.log("Document successfully updated!");
+        });
+      });
+    });
   }
   runScouts() {
     console.log("Running scouts...");
@@ -40,22 +116,6 @@ class Admin extends React.Component{
           docRef.get().then(function(doc) {
             // create new doc in scouts collection with randomized ratings based on referenced docs
             let fullNameLowerCase = (doc.data().LastName + doc.data().FirstName).toLowerCase();
-            let scoutedConsistency = Math.floor(Math.random()*((doc.data().Consistency + 5)-(doc.data().Consistency-5)+1))+(doc.data().Consistency-5);
-            if (scoutedConsistency > 99) scoutedConsistency = 99;
-            let scoutedGreed = Math.floor(Math.random()*((doc.data().Greed + 5)-(doc.data().Greed-5)+1))+(doc.data().Greed-5);
-            if (scoutedGreed > 99) scoutedGreed = 99;
-            let scoutedLoyalty = Math.floor(Math.random()*((doc.data().Loyalty + 5)-(doc.data().Loyalty-5)+1))+(doc.data().Loyalty-5);
-            if (scoutedLoyalty > 99) scoutedLoyalty = 99;
-            let scoutedPlayForWinner = Math.floor(Math.random()*((doc.data().PlayForWinner + 5)-(doc.data().PlayForWinner-5)+1))+(doc.data().PlayForWinner-5);
-            if (scoutedPlayForWinner > 99) scoutedPlayForWinner = 99;
-            let scoutedPlayingTime = Math.floor(Math.random()*((doc.data().PlayingTime + 5)-(doc.data().PlayingTime-5)+1))+(doc.data().PlayingTime-5);
-            if (scoutedPlayingTime > 99) scoutedPlayingTime = 99;
-            let scoutedPersonality = Math.floor(Math.random()*((doc.data().Personality + 5)-(doc.data().Personality-5)+1))+(doc.data().Personality-5);
-            if (scoutedPersonality > 99) scoutedPersonality = 99;
-            let scoutedDurability = Math.floor(Math.random()*((doc.data().Durability + 5)-(doc.data().Durability-5)+1))+(doc.data().Durability-5);
-            if (scoutedDurability > 99) scoutedDurability = 99;
-            let scoutedWorkEthic = Math.floor(Math.random()*((doc.data().WorkEthic + 5)-(doc.data().WorkEthic-5)+1))+(doc.data().WorkEthic-5);
-            if (scoutedWorkEthic > 99) scoutedWorkEthic = 99;
             let scoutedDunkRate = Math.floor(Math.random()*((doc.data().DunkRate + 2)-(doc.data().DunkRate-2)+1))+(doc.data().DunkRate-2);
             if (scoutedDunkRate > 99) scoutedDunkRate = 99;
             let scoutedRARate = Math.floor(Math.random()*((doc.data().RARate + 2)-(doc.data().RARate-2)+1))+(doc.data().RARate-2);
@@ -154,6 +214,7 @@ class Admin extends React.Component{
             db.collection('scouts').add({
               FullNameLowerCase: fullNameLowerCase,
               Email: email,
+              Team: abrev,
               FirstName: doc.data().FirstName,
               LastName: doc.data().LastName,
               Position: doc.data().Position,
@@ -163,14 +224,6 @@ class Admin extends React.Component{
               DisplayHeight: doc.data().DisplayHeight,
               Weight: doc.data().Weight,
               College: doc.data().College,
-              Consistency: scoutedConsistency,
-              Greed: scoutedGreed,
-              Loyalty: scoutedLoyalty,
-              PlayForWinner: scoutedPlayForWinner,
-              PlayingTime: scoutedPlayingTime,
-              Personality: scoutedPersonality,
-              Durability: scoutedDurability,
-              WorkEthic: scoutedWorkEthic,
               DunkRate: scoutedDunkRate,
               RARate: scoutedRARate,
               DriveKick: doc.data().DriveKick,
@@ -225,8 +278,8 @@ class Admin extends React.Component{
         // availableScouts set to 0
         console.log("availableScouts set to 0...");
         db.collection("franchises").doc(abrev).update({
-          scoutList: [],
-          availableScouts: 0
+          'scoutList': [],
+          'availableScouts': 0,
         })
         .then(function() {
         console.log("Document successfully updated!");
@@ -237,7 +290,29 @@ class Admin extends React.Component{
   render(){
     return (
       <div>
-        <button onClick={this.runScouts} className='btn'>Run Scouts</button>
+        <div class='row'>
+          <div class='col-sm-6'>
+            <button onClick={this.runScouts} className='btn runScoutsBtn'>Run Scouts</button>
+            <br />
+            <br />
+            <p>Clicking 'Run Scouts' will:</p>
+            <ul>
+              <li>create a new scout for all players listed in scoutList array for all teams</li>
+              <li>set all teams' availableScouts to 0</li>
+              <li>empties scoutList array for all teams</li>
+            </ul>
+          </div>
+          <div class='col-sm-6'>
+            <button onClick={this.runInterviews} className='btn runInterviewsBtn'>Run Interviews</button>
+            <br />
+            <br />
+            <p>Clicking 'Run Interviews' will:</p>
+            <ul>
+              <li>create a new interview for all players listed in interviewList array for all teams</li>
+              <li>empties interviewList array for all teams</li>
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }
