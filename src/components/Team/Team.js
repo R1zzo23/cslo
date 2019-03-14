@@ -157,12 +157,12 @@ class Team extends React.Component{
         <table className="table table-sm table-striped">
           <thead>
             <tr>
-              <th className="player-info" colspan="3">PLAYER</th>
-              <th className="dunk-rim-rates" colspan="2">RATES</th>
-              <th className="ball-actions" colspan="6">BALL ACTIONS</th>
-              <th className="floor-locations" colspan="4">FLOOR LOCATIONS</th>
-              <th className="shot-ratings" colspan="6">SHOT RATINGS</th>
-              <th className="other-ratings" colspan="11">OTHER RATINGS</th>
+              <th className="player-info" colSpan="3">PLAYER</th>
+              <th className="dunk-rim-rates" colSpan="2">RATES</th>
+              <th className="ball-actions" colSpan="6">BALL ACTIONS</th>
+              <th className="floor-locations" colSpan="4">FLOOR LOCATIONS</th>
+              <th className="shot-ratings" colSpan="6">SHOT RATINGS</th>
+              <th className="other-ratings" colSpan="11">OTHER RATINGS</th>
             </tr>
             <tr>
               <th className="player-info" scope="col">FIRST</th>
@@ -244,7 +244,7 @@ class Team extends React.Component{
       <div>
         <CSVLink data={this.state.interviewData}
                  filename={this.state.interviewFileName}
-                 className="btn btn-primary"
+                 className="btn btn-danger"
                  target="_blank"
                  headers={this.state.interviewHeaders}>
           Export Interviews to CSV

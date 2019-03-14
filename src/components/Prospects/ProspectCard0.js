@@ -2,11 +2,8 @@ import React from 'react'
 import '@firebase/firestore'
 import { withFirebase } from '../Firebase'
 import {BasicInfo} from './BasicInfo'
-import PersonalityTraits from './PersonalityTraits'
 import class24 from '../DraftClass/2024_basic.json'
-import ShootingAbility from './ShootingAbility'
-import BallActions from './BallActions'
-import SkillRatings from './SkillRatings'
+import class25 from '../DraftClass/2025_basic.json'
 import PieChart from 'react-minimal-pie-chart';
 
 const ProspectPage = ({firebase}) => (
@@ -29,6 +26,7 @@ class ProspectCard extends React.Component {
     const urlString = window.location.href;
     var segments = urlString.split('/');
     var fullNameLowerCase = segments[segments.length - 1];
+    var year = parseInt(segments[segments.length -2]);
     // email to search collection for documents
     var userEmail = this.props.firebase.auth.currentUser.email;
 
@@ -52,9 +50,17 @@ class ProspectCard extends React.Component {
     const urlString = window.location.href;
     var segments = urlString.split('/');
     var fullNameLowerCase = segments[segments.length - 1];
+    var year = parseInt(segments[segments.length - 2]);
+    let prospect = [];
     //const fullName = this.props.match.params.id;
-    const i = class24.findIndex((prospect) => ((prospect.LastName + prospect.FirstName).toLowerCase().replace(/[, ']+/g, "").trim()) === fullNameLowerCase);
-    const prospect = class24[i];
+    if (year === 2024){
+      let i = class24.findIndex((prospect) => ((prospect.LastName + prospect.FirstName).toLowerCase().replace(/[, ']+/g, "").trim()) === fullNameLowerCase);
+      prospect = class24[i];
+    }
+    else if (year === 2025){
+      let i = class25.findIndex((prospect) => ((prospect.LastName + prospect.FirstName).toLowerCase().replace(/[, ']+/g, "").trim()) === fullNameLowerCase);
+      prospect = class25[i];
+    }
     let ballActionsData = [];
     let floorAreasData = [];
     let ballActionsTable = '';

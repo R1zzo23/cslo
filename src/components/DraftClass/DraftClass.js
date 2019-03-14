@@ -1,6 +1,6 @@
 import React from 'react';
 import class2024 from './2024_basic.json';
-import class2025 from './2025class.json';
+import class2025 from './2025_basic.json';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
 import { Link } from 'react-router-dom';
@@ -19,23 +19,20 @@ export class DraftClass extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      year: 0
     };
-    this.selectClassData = this.selectClassData.bind(this);
   }
   componentDidMount() {
-    
-  }
-  selectClassData() {
     const urlString = window.location.href;
-    var year = urlString.substr(urlString.length - 4);
-
-    if (year === 2024) return {class2024};
-    else if (year === 2025) return {class2025};
+    let year = 0;
+    year = urlString.substr(urlString.length - 4);
+    console.log(year);
+    this.setState({
+      year: parseInt(year)
+    });
+    console.log("year: " + this.state.year);
   }
   render() {
-    const data = this.selectClassData();
-
     const columns = [{
       Header: 'Link',
       Cell: LinkCell,
@@ -70,14 +67,32 @@ export class DraftClass extends React.Component{
       width: 100
     }]
 
+    let draftTable = '';
+
+    if (this.state.year === 2024) {
+      draftTable = (
+
+      <ReactTable
+                data={class2024}
+                columns={columns}
+                defaultPageSize = {class2024.length}
+              />
+      );
+    }
+    else if (this.state.year === 2025) {
+      draftTable = (
+
+      <ReactTable
+                data={class2025}
+                columns={columns}
+                defaultPageSize = {class2025.length}
+              />
+      );
+    }
+
     return (
       <div>
-        <ReactTable
-                  data={class2024}
-                  columns={columns}
-                  defaultPageSize = {25}
-                  pageSizeOptions = {[25, class2024.length]}
-                />
+        {draftTable}
       </div>
     );
   }
