@@ -27,9 +27,6 @@ class DraftClass extends React.Component{
     const prospectList = [];
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
-    db.settings({
-      timestampsInSnapshots: true
-    });
     const urlString = window.location.href;
     var year = urlString.substr(urlString.length - 4);
 
