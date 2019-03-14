@@ -57,8 +57,6 @@ class Admin extends React.Component{
             if (scoutedDurability > 99) scoutedDurability = 99;
             let scoutedWorkEthic = Math.floor(Math.random()*((doc.data().WorkEthic + 5)-(doc.data().WorkEthic-5)+1))+(doc.data().WorkEthic-5);
             if (scoutedWorkEthic > 99) scoutedWorkEthic = 99;
-            let scoutedBballIQ = Math.floor(Math.random()*((doc.data().BballIQ + 5)-(doc.data().BballIQ-5)+1))+(doc.data().BballIQ-5);
-            if (scoutedBballIQ > 99) scoutedBballIQ = 99;
 
             db.collection('interviews').add({
               FullNameLowerCase: fullNameLowerCase,
@@ -81,7 +79,7 @@ class Admin extends React.Component{
               Personality: scoutedPersonality,
               Durability: scoutedDurability,
               WorkEthic: scoutedWorkEthic,
-              BballIQ: scoutedBballIQ
+              BballIQ: doc.data().BballIQ_POT
             })
           });
         });
