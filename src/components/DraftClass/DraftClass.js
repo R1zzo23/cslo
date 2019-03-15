@@ -26,11 +26,9 @@ export class DraftClass extends React.Component{
     const urlString = window.location.href;
     let year = 0;
     year = urlString.substr(urlString.length - 4);
-    console.log(year);
     this.setState({
       year: parseInt(year)
     });
-    console.log("year: " + this.state.year);
   }
   render() {
     const columns = [{

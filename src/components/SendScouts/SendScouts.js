@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '@firebase/firestore'
 import { withFirebase } from '../Firebase';
 import ScoutIndividualProspect from './ScoutIndividualProspect'
@@ -23,14 +23,13 @@ class SendScouts extends React.Component{
     this.saveScouts = this.saveScouts.bind(this);
   }
   saveScouts() {
-    console.log("Scouts saved!");
     var prospectsSelected = document.getElementsByClassName('selection');
     let year = 2024;
     let list = [];
     let first = "";
     let last = "";
     for (var i = 0; i < prospectsSelected.length; i++){
-      if (prospectsSelected[i].selectedOptions[0].text.indexOf(',') != -1) {
+      if (prospectsSelected[i].selectedOptions[0].text.indexOf(',') !== -1) {
         var segments = prospectsSelected[i].selectedOptions[0].text.split(',');
         last = segments[0];
         first = segments[1];
@@ -45,12 +44,9 @@ class SendScouts extends React.Component{
       };
       list.push(prospect);
     }
-    console.log(list);
     this.setState({
       scoutList: list
     });
-
-    var userEmail = this.props.firebase.auth.currentUser.email;
 
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
@@ -60,11 +56,8 @@ class SendScouts extends React.Component{
     scoutList: list
     })
     .then(function() {
-        console.log("Document successfully updated!");
     })
     .catch(function(error) {
-        // The document probably doesn't exist.
-        console.error("Error updating document: ", error);
     });
   }
   componentDidMount() {
@@ -78,7 +71,6 @@ class SendScouts extends React.Component{
     .get()
     .then((docSnapshot) => {
       docSnapshot.forEach((doc) => {
-        console.log(doc.id);
         this.setState({
           email: doc.data().email,
           scoutPoints: doc.data().availableScouts,

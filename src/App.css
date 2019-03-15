@@ -144,9 +144,9 @@ p {
 .table {
   font-size: 12px; }
 
-.articleURL {
-  width: 500px;
-  margin-right: 50px; }
+.articleURL, .articleTitle {
+  width: 400px;
+  margin-right: 10px; }
 
 .radioBtn {
   margin-right: 7px; }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '@firebase/firestore'
 import { withFirebase } from '../Firebase';
 import ScoutIndividualProspect from '../SendScouts/ScoutIndividualProspect'
@@ -23,14 +23,13 @@ class ScheduleInterviews extends React.Component{
     this.ScheduleInterviews = this.ScheduleInterviews.bind(this);
   }
   ScheduleInterviews() {
-    console.log("Interviews scheduled!");
     var prospectsSelected = document.getElementsByClassName('selection');
     let list = [];
     let first = "";
     let last = "";
     let year = 2024;
     for (var i = 0; i < prospectsSelected.length; i++){
-      if (prospectsSelected[i].selectedOptions[0].text.indexOf(',') != -1) {
+      if (prospectsSelected[i].selectedOptions[0].text.indexOf(',') !== -1) {
         var segments = prospectsSelected[i].selectedOptions[0].text.split(',');
         last = segments[0];
         first = segments[1];
@@ -45,12 +44,9 @@ class ScheduleInterviews extends React.Component{
       };
       list.push(prospect);
     }
-    console.log(list);
     this.setState({
       interviewList: list
     });
-
-    var userEmail = this.props.firebase.auth.currentUser.email;
 
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
@@ -60,11 +56,8 @@ class ScheduleInterviews extends React.Component{
       interviewList: list
     })
     .then(function() {
-      console.log("Document successfully updated!");
     })
     .catch(function(error) {
-      // The document probably doesn't exist.
-      console.error("Error updating document: ", error);
     });
   }
   componentDidMount() {
@@ -78,7 +71,6 @@ class ScheduleInterviews extends React.Component{
     .get()
     .then((docSnapshot) => {
       docSnapshot.forEach((doc) => {
-        console.log(doc.id);
         this.setState({
           email: doc.data().email,
           teamName: doc.data().team,
@@ -111,7 +103,7 @@ class ScheduleInterviews extends React.Component{
         <h6>Interviews Available: {this.state.interviewPoints}</h6>
         <hr></hr>
         <p className='text-center'>Clicking the save button below will overwrite the saved interviews listed above.</p>
-        <button className='text-center' onClick={this.ScheduleInterviews} className='btn ScheduleInterviewsBtn'>Schedule Interviews</button>
+        <button onClick={this.ScheduleInterviews} className='text-center btn ScheduleInterviewsBtn'>Schedule Interviews</button>
         <hr></hr>
         <div className="row">
           <div className="col-sm-6">

@@ -13,7 +13,7 @@ const HeaderAuth = () => (
       <form className='form-inline my-2 my-lg-0'>
         <a className='nav-item nav-link' href='http://www.championsimleague.com/index.php' rel="noopener noreferrer" target='_blank'>Forums</a>
         <li className="nav-item nav-link dropdown">
-          <a className="nav-item nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a className="nav-item nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Draft Classes
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
