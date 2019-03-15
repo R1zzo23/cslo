@@ -46,8 +46,6 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.authUser!== null)
-        console.log("user id: " + this.state.authUser.email);
     return (
       <Router>
         <div className="App">

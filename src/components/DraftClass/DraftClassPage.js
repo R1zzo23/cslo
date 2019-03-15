@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import '@firebase/firestore'
 
@@ -35,7 +35,6 @@ class DraftClass extends React.Component{
         prospectList.push(doc.data());
       });
     });
-    console.log(prospectList);
 
     const columns = [{
       Header: 'Link',

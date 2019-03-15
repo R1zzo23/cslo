@@ -13,7 +13,6 @@ const SignUpPage = () => (
 );
 
 const INITIAL_STATE = {
-  username: '',
   email: '',
   passwordOne: '',
   passwordTwo: '',
@@ -28,7 +27,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
+    const { email, passwordOne } = this.state;
     this.props.firebase
       .auth.createUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
@@ -48,7 +47,6 @@ class SignUpFormBase extends Component {
 
   render() {
     const {
-      username,
       email,
       passwordOne,
       passwordTwo,
@@ -58,14 +56,11 @@ class SignUpFormBase extends Component {
     const isInvalid =
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
-      email === '' ||
-      username === '';
+      email === '';
 
     return (
       <form onSubmit={this.onSubmit}>
         <input
-          name="username"
-          value={username}
           onChange={this.onChange}
           type="text"
           placeholder="Full Name"

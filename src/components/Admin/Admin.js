@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '@firebase/firestore'
 import { withFirebase } from '../Firebase'
 
@@ -13,17 +13,63 @@ class Admin extends React.Component{
   constructor(props: IProps) {
     super(props);
     this.state = {
-
+      articleList: []
     };
     this.runScouts = this.runScouts.bind(this);
     this.runInterviews = this.runInterviews.bind(this);
+    this.approveArticle = this.approveArticle.bind(this);
+    this.denyArticle = this.denyArticle.bind(this);
+  }
+  approveArticle(abrev, articleType) {
+    const fire = this.props.firebase;
+    const db = fire.auth.app.firebase_.firestore();
+
+    let awardedPoints = 0;
+    if (articleType === 'wiretap') awardedPoints = 5;
+    else if (articleType === 'insider') awardedPoints = 10;
+
+    db.collection("franchises").doc(abrev).update({
+      'availableScouts': awardedPoints,
+      'articleStatus': 'approved'
+    })
+    .then(function() {
+      alert("Article approved!");
+    });
+  }
+  denyArticle(abrev, articleType) {
+    console.log("Denied " + articleType + "  article for " + abrev + "!");
   }
   componentDidMount() {
+    let list = [];
+    const fire = this.props.firebase;
+    const db = fire.auth.app.firebase_.firestore();
 
+    // grab collection that holds all franchises
+    db.collection("franchises")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.docs.map(function(teamDoc) {
+        // grab article url and articleType
+        let articleLink = teamDoc.data().articleURL;
+        let articleType = teamDoc.data().articleType;
+        let articleTitle = teamDoc.data().articleTitle;
+        let abrev = teamDoc.data().abrev;
+        let articleStatus = teamDoc.data().articleStatus;
+        let article = {
+          abrev: abrev,
+          link: articleLink,
+          type: articleType,
+          title: articleTitle,
+          status: articleStatus
+        };
+        if (articleLink && articleType) list.push(article);
+      });
+      this.setState({
+        articleList: list
+      });
+    });
   }
   runInterviews() {
-    console.log("Running interviews...");
-
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
@@ -85,19 +131,15 @@ class Admin extends React.Component{
           });
         });
         // empty interviewList array for this franchise
-        console.log("Emptying interviewList array...");
         db.collection("franchises").doc(abrev).update({
           'interviewList': []
         })
         .then(function() {
-        console.log("Document successfully updated!");
         });
       });
     });
   }
   runScouts() {
-    console.log("Running scouts...");
-
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
@@ -274,20 +316,48 @@ class Admin extends React.Component{
           });
         });
         // empty scoutList array for this franchise
-        console.log("Emptying scoutList array...");
         // availableScouts set to 0
-        console.log("availableScouts set to 0...");
         db.collection("franchises").doc(abrev).update({
           'scoutList': [],
           'availableScouts': 0,
         })
         .then(function() {
-        console.log("Document successfully updated!");
         });
       });
     });
   }
   render(){
+    let articleTable = '';
+    if (this.state.articleList) {
+      articleTable = (
+        <div>
+          <table className='table table-sm'>
+            <thead>
+              <tr>
+                <th>TEAM</th>
+                <th>LINK</th>
+                <th>TYPE</th>
+                <th>STATUS</th>
+                <th>APPROVE</th>
+                <th>DENY</th>
+              </tr>
+            </thead>
+            <tbody>
+            {this.state.articleList.map((article) =>
+              <tr>
+                <td>{article.abrev}</td>
+                <td><a href={article.link} target="_blank">{article.title}</a></td>
+                <td>{article.type}</td>
+                <td>{article.status}</td>
+                <td><button onClick={() => this.approveArticle(article.abrev, article.type)} className="btn btn-success">APPROVE</button></td>
+                <td><button onClick={() => this.denyArticle(article.abrev, article.type)} className="btn btn-danger">DENY</button></td>
+              </tr>
+            )}
+            </tbody>
+          </table>
+        </div>
+      );
+    }
     return (
       <div>
         <div class='row'>
@@ -317,6 +387,7 @@ class Admin extends React.Component{
         <div class='row'>
           <div class='col-sm-12'>
             <h3>Article Approval</h3>
+            {articleTable}
           </div>
         </div>
       </div>

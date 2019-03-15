@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '@firebase/firestore'
 import { withFirebase } from '../Firebase'
 import { CSVLink, CSVDownload } from "react-csv"
@@ -27,6 +27,9 @@ class Team extends React.Component{
       interviewData: [],
       abrev: "",
       team: "",
+      articleURL: "",
+      articleTitle: "",
+      articleType: "",
       scoutFileName: "",
       interviewFileName: "",
       interviewHeaders: [
@@ -158,6 +161,7 @@ class Team extends React.Component{
     let scouts = [];
     let interviews = [];
 
+    // set state with franchise info
     db.collection("franchises").where("email", "==", userEmail)
     .get()
     .then((docSnapshot) => {
@@ -166,11 +170,25 @@ class Team extends React.Component{
           abrev: doc.data().abrev,
           team: doc.data().team,
           scoutFileName: doc.data().abrev + '-scouts',
-          interviewFileName: doc.data().abrev + '-interviews'
+          interviewFileName: doc.data().abrev + '-interviews',
+          articleURL: doc.data().articleURL,
+          articleTitle: doc.data().articleTitle,
+          articleType: doc.data().articleType
         });
       });
+
+      // populate article submission form if a form was previously submitted
+      let urlTextBox = document.getElementById('articleURL');
+      urlTextBox.value = this.state.articleURL;
+      let titleTextBox = document.getElementById('articleTitle');
+      titleTextBox.value = this.state.articleTitle;
+      let wiretapRadio = document.getElementById('wiretapRadio');
+      let insiderRadio = document.getElementById('insiderRadio');
+      if (this.state.articleType === "wiretap") wiretapRadio.checked = true;
+      else if (this.state.articleType === "insider") insiderRadio.checked = true;
     });
 
+    // grab all scouts for this franchise
     db.collection("scouts").where("Email", "==", userEmail)
     .get()
     .then((docSnapshot) => {
@@ -185,6 +203,7 @@ class Team extends React.Component{
       });
     });
 
+    // grab all interviews for this franchise
     db.collection("interviews").where("Email", "==", userEmail)
     .get()
     .then((docSnapshot) => {
@@ -209,6 +228,7 @@ class Team extends React.Component{
     let abrev = this.state.abrev;
 
     let urlTextBox = document.getElementById('articleURL');
+    let titleTextBox = document.getElementById('articleTitle');
     let wiretapRadio = document.getElementById('wiretapRadio');
     let insiderRadio = document.getElementById('insiderRadio');
 
@@ -216,23 +236,28 @@ class Team extends React.Component{
     if (urlTextBox.value === ""){
       alert("Enter a valid link!");
     }
+    // check if title box is filled in
+    else if (titleTextBox.value === ''){
+      alert("Enter a valid title!");
+    }
+    // check if either radio button is selected
     else if (!wiretapRadio.checked && !insiderRadio.checked){
       alert("Select an article type!");
     }
+    // assign article type based on radio button selected
     else {
       if (wiretapRadio.checked) articleType = "wiretap"
       else if (insiderRadio.checked) articleType = "insider"
 
       // update franchise document with article object (url, articleType)
       db.collection("franchises").doc(abrev).update({
-        'submittedArticleURL': urlTextBox.value,
-        'articleType': articleType
+        'articleURL': urlTextBox.value,
+        'articleType': articleType,
+        'articleTitle': titleTextBox.value,
+        'articleStatus': 'pending'
       })
       .then(function() {
         alert("Article submitted for admin approval!");
-        urlTextBox.value = '';
-        wiretapRadio.checked = false;
-        insiderRadio.checked = false;
       });
     }
   }
@@ -391,6 +416,7 @@ class Team extends React.Component{
         <div class='row'>
           <form>
             <input id='articleURL' className='articleURL' type="text" placeholder="Article Link" name="articleURL" />
+            <input id='articleTitle' className='articleTitle' type="text" placeholder="Article Title" name="articleTitle" />
             <input id='wiretapRadio' className='radioBtn' type="radio" name="articleType" value="wiretap" /><span className='radioBtn'>Wiretap</span>
             <input id='insiderRadio' className='radioBtn' type="radio" name="articleType" value="insider" /><span className='radioBtn'>Insider</span>
           </form>
