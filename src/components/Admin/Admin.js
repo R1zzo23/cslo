@@ -37,7 +37,7 @@ class Admin extends React.Component{
         let abrev = teamDoc.data().abrev;
         // use url property of each element in array to find doc in class2024 collection
         interviewList.forEach(function(prospect) {
-          let docRef = db.collection('class2025').doc(prospect.url);
+          let docRef = db.collection('class2024').doc(prospect.url);
           docRef.get().then(function(doc) {
             // create new doc in interviews collection with randomized ratings based on referenced docs
             let fullNameLowerCase = (doc.data().LastName + doc.data().FirstName).toLowerCase();
@@ -60,6 +60,7 @@ class Admin extends React.Component{
 
             db.collection('interviews').add({
               FullNameLowerCase: fullNameLowerCase,
+              Year: prospect.year,
               Email: email,
               Team: abrev,
               FirstName: doc.data().FirstName,
@@ -110,7 +111,7 @@ class Admin extends React.Component{
         let abrev = teamDoc.data().abrev;
         // use url property of each element in array to find doc in class2024 collection
         scoutList.forEach(function(prospect) {
-          let docRef = db.collection('class2025').doc(prospect.url);
+          let docRef = db.collection('class2024').doc(prospect.url);
           docRef.get().then(function(doc) {
             // create new doc in scouts collection with randomized ratings based on referenced docs
             let fullNameLowerCase = (doc.data().LastName + doc.data().FirstName).toLowerCase();
@@ -211,6 +212,7 @@ class Admin extends React.Component{
             if (scoutedBballIQ_POT > 99) scoutedBballIQ_POT = 99;
             db.collection('scouts').add({
               FullNameLowerCase: fullNameLowerCase,
+              Year: prospect.year,
               Email: email,
               Team: abrev,
               FirstName: doc.data().FirstName,
@@ -309,6 +311,12 @@ class Admin extends React.Component{
               <li>create a new interview for all players listed in interviewList array for all teams</li>
               <li>empties interviewList array for all teams</li>
             </ul>
+          </div>
+        </div>
+        <br />
+        <div class='row'>
+          <div class='col-sm-12'>
+            <h3>Article Approval</h3>
           </div>
         </div>
       </div>

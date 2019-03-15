@@ -28,6 +28,7 @@ class ScheduleInterviews extends React.Component{
     let list = [];
     let first = "";
     let last = "";
+    let year = 2024;
     for (var i = 0; i < prospectsSelected.length; i++){
       if (prospectsSelected[i].selectedOptions[0].text.indexOf(',') != -1) {
         var segments = prospectsSelected[i].selectedOptions[0].text.split(',');
@@ -39,7 +40,8 @@ class ScheduleInterviews extends React.Component{
       let prospect = {
         first: first,
         last: last,
-        url: selectedText.toLowerCase().replace(/[, ']+/g, "").trim()
+        url: selectedText.toLowerCase().replace(/[, ']+/g, "").trim(),
+        year: year
       };
       list.push(prospect);
     }

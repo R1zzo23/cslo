@@ -11,3 +11,6 @@
   b) map new class that was just imported
   // the above takes care of interview lists as well
 5) Admin.js --> CMND+F for 'class202' and update old class number to new one (ex: class2025 becomes class2026)
+6) SendScouts.js --> update year in saveScouts() function
+7) Interviews.js --> update year in scheduleInterviews() function
+8) Team.js --> add new value to const options [] at top of page

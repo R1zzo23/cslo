@@ -25,6 +25,7 @@ class SendScouts extends React.Component{
   saveScouts() {
     console.log("Scouts saved!");
     var prospectsSelected = document.getElementsByClassName('selection');
+    let year = 2024;
     let list = [];
     let first = "";
     let last = "";
@@ -39,7 +40,8 @@ class SendScouts extends React.Component{
       let prospect = {
         first: first,
         last: last,
-        url: selectedText.toLowerCase().replace(/[, ']+/g, "").trim()
+        url: selectedText.toLowerCase().replace(/[, ']+/g, "").trim(),
+        year: year
       };
       list.push(prospect);
     }
