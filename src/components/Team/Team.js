@@ -2,18 +2,27 @@ import React, { Component } from 'react'
 import '@firebase/firestore'
 import { withFirebase } from '../Firebase'
 import { CSVLink, CSVDownload } from "react-csv"
+import Select from 'react-select'
 
 const TeamPage = ({firebase}) => (
   <div>
-    <h1>Team Page</h1>
     <TeamHQ firebase={firebase}/>
   </div>
 );
 
+const options = [
+  { value: 'all', label: 'All' },
+  { value: '2024', label: '2024' },
+  { value: '2025', label: '2025' }
+];
+
 class Team extends React.Component{
   constructor(props: IProps) {
     super(props);
+    this.submitArticle = this.submitArticle.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
+      selectedOption: null,
       scoutData: [],
       interviewData: [],
       abrev: "",
@@ -93,6 +102,52 @@ class Team extends React.Component{
       ]
     };
   }
+  handleChange(selectedOption){
+    this.setState({ selectedOption });
+
+    // Declare variables
+    var filter, table, interviewTable, tr, trInterviews, td, i, txtValue;
+    filter = selectedOption.value;
+    table = document.getElementById("scoutTable");
+    interviewTable = document.getElementById('interviewTable');
+    tr = table.getElementsByTagName("tr");
+    trInterviews = interviewTable.getElementsByTagName('tr');
+
+    // Loop through all scout table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      if (filter === 'all') {
+        tr[i].style.display = '';
+      }
+      else {
+        td = tr[i].getElementsByTagName("td")[3];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue === filter) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    // Loop through all interview table rows, and hide those who don't match the search query
+    for (i = 0; i < trInterviews.length; i++) {
+      if (filter === 'all') {
+        trInterviews[i].style.display = '';
+      }
+      else {
+        td = trInterviews[i].getElementsByTagName("td")[3];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue === filter) {
+            trInterviews[i].style.display = "";
+          } else {
+            trInterviews[i].style.display = "none";
+          }
+        }
+      }
+    }
+  }
   componentDidMount() {
     // email to search collection for documents
     var userEmail = this.props.firebase.auth.currentUser.email;
@@ -144,7 +199,45 @@ class Team extends React.Component{
       });
     });
   }
+  submitArticle() {
+    var userEmail = this.props.firebase.auth.currentUser.email;
+
+    const fire = this.props.firebase;
+    const db = fire.auth.app.firebase_.firestore();
+
+    let articleType = '';
+    let abrev = this.state.abrev;
+
+    let urlTextBox = document.getElementById('articleURL');
+    let wiretapRadio = document.getElementById('wiretapRadio');
+    let insiderRadio = document.getElementById('insiderRadio');
+
+    // check if URL box is filled in
+    if (urlTextBox.value === ""){
+      alert("Enter a valid link!");
+    }
+    else if (!wiretapRadio.checked && !insiderRadio.checked){
+      alert("Select an article type!");
+    }
+    else {
+      if (wiretapRadio.checked) articleType = "wiretap"
+      else if (insiderRadio.checked) articleType = "insider"
+
+      // update franchise document with article object (url, articleType)
+      db.collection("franchises").doc(abrev).update({
+        'submittedArticleURL': urlTextBox.value,
+        'articleType': articleType
+      })
+      .then(function() {
+        alert("Article submitted for admin approval!");
+        urlTextBox.value = '';
+        wiretapRadio.checked = false;
+        insiderRadio.checked = false;
+      });
+    }
+  }
   render(){
+    const { selectedOption } = this.state;
     const scoutTable = (
       <div>
         <CSVLink data={this.state.scoutData}
@@ -154,10 +247,10 @@ class Team extends React.Component{
                  headers={this.state.scoutHeaders}>
           Export Scouts to CSV
         </CSVLink>
-        <table className="table table-sm table-striped">
+        <table id='scoutTable' className="table table-sm">
           <thead>
             <tr>
-              <th className="player-info" colSpan="3">PLAYER</th>
+              <th className="player-info" colSpan="4">PLAYER</th>
               <th className="dunk-rim-rates" colSpan="2">RATES</th>
               <th className="ball-actions" colSpan="6">BALL ACTIONS</th>
               <th className="floor-locations" colSpan="4">FLOOR LOCATIONS</th>
@@ -168,6 +261,7 @@ class Team extends React.Component{
               <th className="player-info" scope="col">FIRST</th>
               <th className="player-info" scope="col">LAST</th>
               <th className="player-info" scope="col">POS</th>
+              <th className="player-info" scope="col">CLASS</th>
               <th className="dunk-rim-rates" scope="col">DUNK</th>
               <th className="dunk-rim-rates" scope="col">RIM</th>
               <th className="ball-actions" scope="col">DriveKick</th>
@@ -205,6 +299,7 @@ class Team extends React.Component{
                 <td>{scout.FirstName}</td>
                 <td>{scout.LastName}</td>
                 <td>{scout.Position}</td>
+                <td>{scout.Year}</td>
                 <td>{scout.DunkRate}</td>
                 <td>{scout.RARate}</td>
                 <td>{scout.DriveKick}</td>
@@ -249,12 +344,13 @@ class Team extends React.Component{
                  headers={this.state.interviewHeaders}>
           Export Interviews to CSV
         </CSVLink>
-        <table className="table table-sm table-striped">
+        <table id='interviewTable' className="table table-sm">
           <thead>
             <tr>
               <th className="player-info" scope="col">FIRST</th>
               <th className="player-info" scope="col">LAST</th>
               <th className="player-info" scope="col">POS</th>
+              <th className="player-info" scope="col">CLASS</th>
               <th className="other-ratings" scope="col">IQ</th>
               <th className="other-ratings" scope="col">CON</th>
               <th className="other-ratings" scope="col">GREED</th>
@@ -272,6 +368,7 @@ class Team extends React.Component{
                 <td>{interview.FirstName}</td>
                 <td>{interview.LastName}</td>
                 <td>{interview.Position}</td>
+                <td>{interview.Year}</td>
                 <td>{interview.BballIQ}</td>
                 <td>{interview.Consistency}</td>
                 <td>{interview.Greed}</td>
@@ -289,6 +386,24 @@ class Team extends React.Component{
     );
     return (
       <div>
+        <h1>{this.state.team}</h1>
+        <h3>Article Submission</h3>
+        <div class='row'>
+          <form>
+            <input id='articleURL' className='articleURL' type="text" placeholder="Article Link" name="articleURL" />
+            <input id='wiretapRadio' className='radioBtn' type="radio" name="articleType" value="wiretap" /><span className='radioBtn'>Wiretap</span>
+            <input id='insiderRadio' className='radioBtn' type="radio" name="articleType" value="insider" /><span className='radioBtn'>Insider</span>
+          </form>
+          <button className='text-center' onClick={this.submitArticle} className='btn submitArticleBtn'>Submit Article</button>
+          <br />
+        </div>
+        <br />
+        <p>Draft Class Filter:</p><Select
+          value={selectedOption}
+          onChange={this.handleChange}
+          options={options}
+        />
+        <br />
         {scoutTable}
         {interviewTable}
       </div>
