@@ -1,6 +1,7 @@
 import React from 'react'
 import '@firebase/firestore'
 import { withFirebase } from '../Firebase'
+import Toggle from 'react-toggle'
 
 const AdminPage = ({firebase}) => (
   <div>
@@ -13,28 +14,63 @@ class Admin extends React.Component{
   constructor(props: IProps) {
     super(props);
     this.state = {
-      articleList: []
+      articleList: [],
+      isDoubleScouting: false
     };
     this.runScouts = this.runScouts.bind(this);
     this.runInterviews = this.runInterviews.bind(this);
     this.approveArticle = this.approveArticle.bind(this);
     this.denyArticle = this.denyArticle.bind(this);
+    this.handleDoubleScoutingChange = this.handleDoubleScoutingChange.bind(this);
   }
-  approveArticle(abrev, articleType) {
+  handleDoubleScoutingChange(e) {
+    this.setState(state => ({
+      isDoubleScouting: !state.isDoubleScouting
+    }));
+  }
+  approveArticle(abrev, articleType, x) {
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
+    let doubleScouting = this.state.isDoubleScouting;
+    let currentScoutPoints = 0;
+    db.collection("franchises").where("abrev", "==", abrev)
+    .get()
+    .then((doc) => {
+      doc.docs.map(function(teamDoc) {
+        currentScoutPoints = parseInt(teamDoc.data().availableScouts);
+        let awardedPoints = 0;
+        if (articleType === 'wiretap') awardedPoints = 5;
+        else if (articleType === 'insider') awardedPoints = 10;
 
-    let awardedPoints = 0;
-    if (articleType === 'wiretap') awardedPoints = 5;
-    else if (articleType === 'insider') awardedPoints = 10;
+        currentScoutPoints += awardedPoints;
 
-    db.collection("franchises").doc(abrev).update({
-      'availableScouts': awardedPoints,
-      'articleStatus': 'approved'
+        if (doubleScouting) {
+          if (currentScoutPoints > 20) currentScoutPoints = 20;
+        }
+        else if (!doubleScouting){
+          if (currentScoutPoints > 10) currentScoutPoints = 10;
+        }
+
+        if (x === 1) {
+          db.collection("franchises").doc(abrev).update({
+            'availableScouts': currentScoutPoints,
+            'articleStatus1': 'approved'
+          })
+          .then(function() {
+            alert("Article approved!");
+          });
+        }
+        else if (x === 2) {
+          db.collection("franchises").doc(abrev).update({
+            'availableScouts': currentScoutPoints,
+            'articleStatus2': 'approved'
+          })
+          .then(function() {
+            alert("Article approved!");
+          });
+        }
+      });
     })
-    .then(function() {
-      alert("Article approved!");
-    });
   }
   denyArticle(abrev, articleType) {
     console.log("Denied " + articleType + "  article for " + abrev + "!");
@@ -50,19 +86,34 @@ class Admin extends React.Component{
     .then((querySnapshot) => {
       querySnapshot.docs.map(function(teamDoc) {
         // grab article url and articleType
-        let articleLink = teamDoc.data().articleURL;
-        let articleType = teamDoc.data().articleType;
-        let articleTitle = teamDoc.data().articleTitle;
+        let articleLink1 = teamDoc.data().articleURL1;
+        let articleType1 = teamDoc.data().articleType1;
+        let articleTitle1 = teamDoc.data().articleTitle1;
         let abrev = teamDoc.data().abrev;
-        let articleStatus = teamDoc.data().articleStatus;
+        let articleStatus1 = teamDoc.data().articleStatus1;
         let article = {
           abrev: abrev,
-          link: articleLink,
-          type: articleType,
-          title: articleTitle,
-          status: articleStatus
+          link: articleLink1,
+          type: articleType1,
+          title: articleTitle1,
+          status: articleStatus1
         };
-        if (articleLink && articleType) list.push(article);
+        if (articleLink1 && articleType1) list.push(article);
+
+        // check for 2nd article
+        let articleLink2 = teamDoc.data().articleURL2;
+        let articleType2 = teamDoc.data().articleType2;
+        let articleTitle2 = teamDoc.data().articleTitle2;
+        let abrev2 = teamDoc.data().abrev;
+        let articleStatus2 = teamDoc.data().articleStatus2;
+        let article2 = {
+          abrev: abrev2,
+          link: articleLink2,
+          type: articleType2,
+          title: articleTitle2,
+          status: articleStatus2
+        };
+        if (articleLink2 && articleType2) list.push(article2);
       });
       this.setState({
         articleList: list
@@ -343,14 +394,14 @@ class Admin extends React.Component{
               </tr>
             </thead>
             <tbody>
-            {this.state.articleList.map((article) =>
+            {this.state.articleList.map((article, index) =>
               <tr>
                 <td>{article.abrev}</td>
                 <td><a href={article.link} target="_blank">{article.title}</a></td>
                 <td>{article.type}</td>
                 <td>{article.status}</td>
-                <td><button onClick={() => this.approveArticle(article.abrev, article.type)} className="btn btn-success">APPROVE</button></td>
-                <td><button onClick={() => this.denyArticle(article.abrev, article.type)} className="btn btn-danger">DENY</button></td>
+                <td><button onClick={() => this.approveArticle(article.abrev, article.type, index+1)} className="btn btn-success">APPROVE</button></td>
+                <td><button onClick={() => this.denyArticle(article.abrev, article.type, index+1)} className="btn btn-danger">DENY</button></td>
               </tr>
             )}
             </tbody>
@@ -387,6 +438,12 @@ class Admin extends React.Component{
         <div class='row'>
           <div class='col-sm-12'>
             <h3>Article Approval</h3>
+            <label>
+              <Toggle
+                defaultChecked={this.state.isDoubleScouting}
+                onChange={this.handleDoubleScoutingChange} />
+              <span>Double Scouting?</span>
+            </label>
             {articleTable}
           </div>
         </div>

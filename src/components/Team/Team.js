@@ -27,9 +27,14 @@ class Team extends React.Component{
       interviewData: [],
       abrev: "",
       team: "",
-      articleURL: "",
-      articleTitle: "",
-      articleType: "",
+      articleURL1: "",
+      articleTitle1: "",
+      articleType1: "",
+      articleStatus1: "",
+      articleURL2: "",
+      articleTitle2: "",
+      articleType2: "",
+      articleStatus2: "",
       scoutFileName: "",
       interviewFileName: "",
       interviewHeaders: [
@@ -171,21 +176,41 @@ class Team extends React.Component{
           team: doc.data().team,
           scoutFileName: doc.data().abrev + '-scouts',
           interviewFileName: doc.data().abrev + '-interviews',
-          articleURL: doc.data().articleURL,
-          articleTitle: doc.data().articleTitle,
-          articleType: doc.data().articleType
+          articleURL1: doc.data().articleURL1,
+          articleTitle1: doc.data().articleTitle1,
+          articleType1: doc.data().articleType1,
+          articleStatus1: doc.data().articleStatus1,
+          articleURL2: doc.data().articleURL2,
+          articleTitle2: doc.data().articleTitle2,
+          articleType2: doc.data().articleType2,
+          articleStatus2: doc.data().articleStatus2,
         });
       });
 
       // populate article submission form if a form was previously submitted
-      let urlTextBox = document.getElementById('articleURL');
-      urlTextBox.value = this.state.articleURL;
-      let titleTextBox = document.getElementById('articleTitle');
-      titleTextBox.value = this.state.articleTitle;
-      let wiretapRadio = document.getElementById('wiretapRadio');
-      let insiderRadio = document.getElementById('insiderRadio');
-      if (this.state.articleType === "wiretap") wiretapRadio.checked = true;
-      else if (this.state.articleType === "insider") insiderRadio.checked = true;
+      let urlTextBox = document.getElementById('articleURL1');
+      urlTextBox.value = this.state.articleURL1;
+      let titleTextBox = document.getElementById('articleTitle1');
+      titleTextBox.value = this.state.articleTitle1;
+      let wiretapRadio = document.getElementById('wiretapRadio1');
+      let insiderRadio = document.getElementById('insiderRadio1');
+      if (this.state.articleType1 === "wiretap") wiretapRadio.checked = true;
+      else if (this.state.articleType1 === "insider") insiderRadio.checked = true;
+      let status1 = document.getElementById('articleStatus1');
+      if (this.state.articleStatus1)
+        status1.textContent = this.state.articleStatus1;
+
+      let urlTextBox2 = document.getElementById('articleURL2');
+      urlTextBox2.value = this.state.articleURL2;
+      let titleTextBox2 = document.getElementById('articleTitle2');
+      titleTextBox2.value = this.state.articleTitle2;
+      let wiretapRadio2 = document.getElementById('wiretapRadio2');
+      let insiderRadio2 = document.getElementById('insiderRadio2');
+      if (this.state.articleType2 === "wiretap") wiretapRadio2.checked = true;
+      else if (this.state.articleType2 === "insider") insiderRadio2.checked = true;
+      let status2 = document.getElementById('articleStatus2');
+      if (this.state.articleStatus2 )
+        status2.textContent = this.state.articleStatus2;
     });
 
     // grab all scouts for this franchise
@@ -218,7 +243,7 @@ class Team extends React.Component{
       });
     });
   }
-  submitArticle() {
+  submitArticle(x) {
     var userEmail = this.props.firebase.auth.currentUser.email;
 
     const fire = this.props.firebase;
@@ -227,10 +252,24 @@ class Team extends React.Component{
     let articleType = '';
     let abrev = this.state.abrev;
 
-    let urlTextBox = document.getElementById('articleURL');
-    let titleTextBox = document.getElementById('articleTitle');
-    let wiretapRadio = document.getElementById('wiretapRadio');
-    let insiderRadio = document.getElementById('insiderRadio');
+    let urlTextBox = '';
+    let titleTextBox = '';
+    let wiretapRadio = '';
+    let insiderRadio = '';
+
+    if (x === 1) {
+      urlTextBox = document.getElementById('articleURL1');
+      titleTextBox = document.getElementById('articleTitle1');
+      wiretapRadio = document.getElementById('wiretapRadio1');
+      insiderRadio = document.getElementById('insiderRadio1');
+    }
+
+    else if (x === 2) {
+      urlTextBox = document.getElementById('articleURL2');
+      titleTextBox = document.getElementById('articleTitle2');
+      wiretapRadio = document.getElementById('wiretapRadio2');
+      insiderRadio = document.getElementById('insiderRadio2');
+    }
 
     // check if URL box is filled in
     if (urlTextBox.value === ""){
@@ -250,15 +289,28 @@ class Team extends React.Component{
       else if (insiderRadio.checked) articleType = "insider"
 
       // update franchise document with article object (url, articleType)
-      db.collection("franchises").doc(abrev).update({
-        'articleURL': urlTextBox.value,
-        'articleType': articleType,
-        'articleTitle': titleTextBox.value,
-        'articleStatus': 'pending'
-      })
-      .then(function() {
-        alert("Article submitted for admin approval!");
-      });
+      if (x === 1) {
+        db.collection("franchises").doc(abrev).update({
+          'articleURL1': urlTextBox.value,
+          'articleType1': articleType,
+          'articleTitle1': titleTextBox.value,
+          'articleStatus1': 'pending'
+        })
+        .then(function() {
+          alert("Article submitted for admin approval!");
+        });
+      }
+      else if (x === 2) {
+        db.collection("franchises").doc(abrev).update({
+          'articleURL2': urlTextBox.value,
+          'articleType2': articleType,
+          'articleTitle2': titleTextBox.value,
+          'articleStatus2': 'pending'
+        })
+        .then(function() {
+          alert("Article submitted for admin approval!");
+        });
+      }
     }
   }
   render(){
@@ -415,12 +467,24 @@ class Team extends React.Component{
         <h3>Article Submission</h3>
         <div class='row'>
           <form>
-            <input id='articleURL' className='articleURL' type="text" placeholder="Article Link" name="articleURL" />
-            <input id='articleTitle' className='articleTitle' type="text" placeholder="Article Title" name="articleTitle" />
-            <input id='wiretapRadio' className='radioBtn' type="radio" name="articleType" value="wiretap" /><span className='radioBtn'>Wiretap</span>
-            <input id='insiderRadio' className='radioBtn' type="radio" name="articleType" value="insider" /><span className='radioBtn'>Insider</span>
+            <input id='articleURL1' className='articleURL' type="text" placeholder="Article Link" name="articleURL" />
+            <input id='articleTitle1' className='articleTitle' type="text" placeholder="Article Title" name="articleTitle" />
+            <input id='wiretapRadio1' className='radioBtn' type="radio" name="articleType" value="wiretap" /><span className='radioBtn'>Wiretap</span>
+            <input id='insiderRadio1' className='radioBtn' type="radio" name="articleType" value="insider" /><span className='radioBtn'>Insider</span>
           </form>
-          <button className='text-center' onClick={this.submitArticle} className='btn submitArticleBtn'>Submit Article</button>
+          <button className='text-center' onClick={() => this.submitArticle(1)} className='btn submitArticleBtn'>Submit Article</button>
+          <p>Status: <span id='articleStatus1'>{this.state.articleStatus1}</span></p>
+          <br />
+        </div>
+        <div class='row'>
+          <form>
+            <input id='articleURL2' className='articleURL' type="text" placeholder="Article Link" name="articleURL2" />
+            <input id='articleTitle2' className='articleTitle' type="text" placeholder="Article Title" name="articleTitle2" />
+            <input id='wiretapRadio2' className='radioBtn' type="radio" name="articleType" value="wiretap" /><span className='radioBtn'>Wiretap</span>
+            <input id='insiderRadio2' className='radioBtn' type="radio" name="articleType" value="insider" /><span className='radioBtn'>Insider</span>
+          </form>
+          <button className='text-center' onClick={() => this.submitArticle(2)} className='btn submitArticleBtn'>Submit Article</button>
+          <p>Status: <span id='articleStatus2'>{this.state.articleStatus2}</span></p>
           <br />
         </div>
         <br />
