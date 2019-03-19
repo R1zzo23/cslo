@@ -6,7 +6,7 @@
   cursor: pointer;
   background-color: transparent;
   border: 0;
-  padding: 0;
+  padding-right: 0;
 
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -17,6 +17,13 @@
 
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;
+}
+
+#toggleLabel {
+  padding-left: 10px;
+  font-weight: bolder;
+  color: $main-color;
+  font-size: 1.5em;
 }
 
 .react-toggle-screenreader-only {

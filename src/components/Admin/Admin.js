@@ -51,7 +51,7 @@ class Admin extends React.Component{
           if (currentScoutPoints > 10) currentScoutPoints = 10;
         }
 
-        if (x === 1) {
+        if ((x % 2) === 1) {
           db.collection("franchises").doc(abrev).update({
             'availableScouts': currentScoutPoints,
             'articleStatus1': 'approved'
@@ -60,7 +60,7 @@ class Admin extends React.Component{
             alert("Article approved!");
           });
         }
-        else if (x === 2) {
+        else if ((x % 2) === 0) {
           db.collection("franchises").doc(abrev).update({
             'availableScouts': currentScoutPoints,
             'articleStatus2': 'approved'
@@ -368,9 +368,18 @@ class Admin extends React.Component{
         });
         // empty scoutList array for this franchise
         // availableScouts set to 0
+        // reset article fields
         db.collection("franchises").doc(abrev).update({
           'scoutList': [],
           'availableScouts': 0,
+          'articleStatus1': '',
+          'articleStatus2': '',
+          'articleTitle1': '',
+          'articleTitle2': '',
+          'articleType1': '',
+          'articleType2': '',
+          'articleURL1': '',
+          'articleURL2': ''
         })
         .then(function() {
         });
@@ -421,6 +430,7 @@ class Admin extends React.Component{
               <li>create a new scout for all players listed in scoutList array for all teams</li>
               <li>set all teams' availableScouts to 0</li>
               <li>empties scoutList array for all teams</li>
+              <li>resets all article fields for each team</li>
             </ul>
           </div>
           <div class='col-sm-6'>
@@ -436,13 +446,13 @@ class Admin extends React.Component{
         </div>
         <br />
         <div class='row'>
-          <div class='col-sm-12'>
+          <div class='col-sm-12 text-center'>
             <h3>Article Approval</h3>
             <label>
               <Toggle
                 defaultChecked={this.state.isDoubleScouting}
                 onChange={this.handleDoubleScoutingChange} />
-              <span>Double Scouting?</span>
+              <span id='toggleLabel'>Double Scouting?</span>
             </label>
             {articleTable}
           </div>

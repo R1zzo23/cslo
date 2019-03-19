@@ -27,6 +27,8 @@ class Team extends React.Component{
       interviewData: [],
       abrev: "",
       team: "",
+      submitArticleBtn1: '',
+      submitArticleBtn2: '',
       articleURL1: "",
       articleTitle1: "",
       articleType1: "",
@@ -197,8 +199,13 @@ class Team extends React.Component{
       if (this.state.articleType1 === "wiretap") wiretapRadio.checked = true;
       else if (this.state.articleType1 === "insider") insiderRadio.checked = true;
       let status1 = document.getElementById('articleStatus1');
-      if (this.state.articleStatus1)
+      if (this.state.articleStatus1) {
         status1.textContent = this.state.articleStatus1;
+        let submitArticleBtn1 = document.getElementById('submitArtcleBtn1');
+        if (this.state.articleStatus1 === "approved")
+          submitArticleBtn1.disabled = true;
+      }
+
 
       let urlTextBox2 = document.getElementById('articleURL2');
       urlTextBox2.value = this.state.articleURL2;
@@ -209,8 +216,12 @@ class Team extends React.Component{
       if (this.state.articleType2 === "wiretap") wiretapRadio2.checked = true;
       else if (this.state.articleType2 === "insider") insiderRadio2.checked = true;
       let status2 = document.getElementById('articleStatus2');
-      if (this.state.articleStatus2 )
+      if (this.state.articleStatus2 ) {
         status2.textContent = this.state.articleStatus2;
+        let submitArticleBtn2 = document.getElementById('submitArtcleBtn2');
+        if (this.state.articleStatus2 === "approved")
+          submitArticleBtn2.disabled = true;
+      }
     });
 
     // grab all scouts for this franchise
@@ -472,7 +483,7 @@ class Team extends React.Component{
             <input id='wiretapRadio1' className='radioBtn' type="radio" name="articleType" value="wiretap" /><span className='radioBtn'>Wiretap</span>
             <input id='insiderRadio1' className='radioBtn' type="radio" name="articleType" value="insider" /><span className='radioBtn'>Insider</span>
           </form>
-          <button className='text-center' onClick={() => this.submitArticle(1)} className='btn submitArticleBtn'>Submit Article</button>
+          <button className='text-center' onClick={() => this.submitArticle(1)} id='submitArtcleBtn1' className='btn submitArticleBtn'>Submit Article</button>
           <p>Status: <span id='articleStatus1'>{this.state.articleStatus1}</span></p>
           <br />
         </div>
@@ -483,7 +494,7 @@ class Team extends React.Component{
             <input id='wiretapRadio2' className='radioBtn' type="radio" name="articleType" value="wiretap" /><span className='radioBtn'>Wiretap</span>
             <input id='insiderRadio2' className='radioBtn' type="radio" name="articleType" value="insider" /><span className='radioBtn'>Insider</span>
           </form>
-          <button className='text-center' onClick={() => this.submitArticle(2)} className='btn submitArticleBtn'>Submit Article</button>
+          <button className='text-center' onClick={() => this.submitArticle(2)} id='submitArtcleBtn2' className='btn submitArticleBtn'>Submit Article</button>
           <p>Status: <span id='articleStatus2'>{this.state.articleStatus2}</span></p>
           <br />
         </div>
