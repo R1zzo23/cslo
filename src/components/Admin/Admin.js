@@ -15,21 +15,16 @@ class Admin extends React.Component{
     super(props);
     this.state = {
       articleList: [],
-      isDoubleScouting: false,
       currentUID: ''
     };
     this.runScouts = this.runScouts.bind(this);
     this.runInterviews = this.runInterviews.bind(this);
     this.approveArticle = this.approveArticle.bind(this);
     this.denyArticle = this.denyArticle.bind(this);
-    this.handleDoubleScoutingChange = this.handleDoubleScoutingChange.bind(this);
-  }
-  handleDoubleScoutingChange(e) {
-    this.setState(state => ({
-      isDoubleScouting: !state.isDoubleScouting
-    }));
   }
   approveArticle(abrev, articleType, x) {
+    const toggleList = document.getElementsByClassName('react-toggle-screenreader-only');
+    const toggle = toggleList[0];
     const adminUID = '7rE2d3qAg6PYFstciBnjqkxLocz2';
 
     const fire = this.props.firebase;
@@ -41,7 +36,6 @@ class Admin extends React.Component{
       alert("Current user does not have admininstrative privileges!");
     }
     else {
-      let doubleScouting = this.state.isDoubleScouting;
       let currentScoutPoints = 0;
       db.collection("franchises").where("abrev", "==", abrev)
       .get()
@@ -49,19 +43,24 @@ class Admin extends React.Component{
         doc.docs.map(function(teamDoc) {
           currentScoutPoints = parseInt(teamDoc.data().availableScouts);
           let awardedPoints = 0;
-          if (articleType === 'wiretap') awardedPoints = 5;
-          else if (articleType === 'insider') awardedPoints = 10;
+          if (articleType === 'wiretap') {
+            if (toggle.checked) awardedPoints = 10;
+            else awardedPoints = 5;
+          }
+          else if (articleType === 'insider'){
+            if (toggle.checked) awardedPoints = 20;
+            else awardedPoints = 10;
+          }
 
           currentScoutPoints += awardedPoints;
 
-          if (doubleScouting) {
+          if (toggle.checked) {
             if (currentScoutPoints > 20) currentScoutPoints = 20;
           }
-          else if (!doubleScouting){
+          else if (!toggle.checked){
             if (currentScoutPoints > 10) currentScoutPoints = 10;
           }
-
-          if ((x % 2) === 1) {
+          if (x === 1) {
             db.collection("franchises").doc(abrev).update({
               'availableScouts': currentScoutPoints,
               'articleStatus1': 'approved'
@@ -70,7 +69,7 @@ class Admin extends React.Component{
               alert("Article approved!");
             });
           }
-          else if ((x % 2) === 0) {
+          else if (x === 2) {
             db.collection("franchises").doc(abrev).update({
               'availableScouts': currentScoutPoints,
               'articleStatus2': 'approved'
@@ -109,7 +108,8 @@ class Admin extends React.Component{
           link: articleLink1,
           type: articleType1,
           title: articleTitle1,
-          status: articleStatus1
+          status: articleStatus1,
+          articleIndex: 1
         };
         if (articleLink1 && articleType1) list.push(article);
 
@@ -124,7 +124,8 @@ class Admin extends React.Component{
           link: articleLink2,
           type: articleType2,
           title: articleTitle2,
-          status: articleStatus2
+          status: articleStatus2,
+          articleIndex: 2
         };
         if (articleLink2 && articleType2) list.push(article2);
       });
@@ -440,8 +441,8 @@ class Admin extends React.Component{
                 <td><a href={article.link} target="_blank">{article.title}</a></td>
                 <td>{article.type}</td>
                 <td>{article.status}</td>
-                <td><button onClick={() => this.approveArticle(article.abrev, article.type, index+1)} className="btn btn-success">APPROVE</button></td>
-                <td><button onClick={() => this.denyArticle(article.abrev, article.type, index+1)} className="btn btn-danger">DENY</button></td>
+                <td><button onClick={() => this.approveArticle(article.abrev, article.type, article.articleIndex)} className="btn btn-success">APPROVE</button></td>
+                <td><button onClick={() => this.denyArticle(article.abrev, article.type, article.articleIndex)} className="btn btn-danger">DENY</button></td>
               </tr>
             )}
             </tbody>
@@ -481,8 +482,7 @@ class Admin extends React.Component{
             <h3>Article Approval</h3>
             <label>
               <Toggle
-                defaultChecked={this.state.isDoubleScouting}
-                onChange={this.handleDoubleScoutingChange} />
+                defaultChecked={false} />
               <span id='toggleLabel'>Double Scouting?</span>
             </label>
             {articleTable}
