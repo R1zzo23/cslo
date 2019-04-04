@@ -19,8 +19,88 @@ class Admin extends React.Component{
     };
     this.runScouts = this.runScouts.bind(this);
     this.runInterviews = this.runInterviews.bind(this);
+    this.runCombine = this.runCombine.bind(this);
     this.approveArticle = this.approveArticle.bind(this);
     this.denyArticle = this.denyArticle.bind(this);
+  }
+  runCombine() {
+    const fire = this.props.firebase;
+    const db = fire.auth.app.firebase_.firestore();
+
+    db.collection("class2025").where("Tier", ">", -1)
+    .get()
+    .then((doc) => {
+      doc.docs.map(function(prospectDoc) {
+        let fullNameLowerCase = (prospectDoc.data().LastName + prospectDoc.data().FirstName).toLowerCase().replace(/[, '.]+/g, "").trim();
+        let scoutedFG_RA = Math.floor(Math.random()*((prospectDoc.data().FG_RA + 4)-(prospectDoc.data().FG_RA-4)+1))+(prospectDoc.data().FG_RA-4);
+        if (scoutedFG_RA > 99) scoutedFG_RA = 99;
+        let scoutedFG_ITP = Math.floor(Math.random()*((prospectDoc.data().FG_ITP + 4)-(prospectDoc.data().FG_ITP-4)+1))+(prospectDoc.data().FG_ITP-4);
+        if (scoutedFG_ITP > 99) scoutedFG_ITP = 99;
+        let scoutedFG_MID = Math.floor(Math.random()*((prospectDoc.data().FG_MID + 4)-(prospectDoc.data().FG_MID-4)+1))+(prospectDoc.data().FG_MID-4);
+        if (scoutedFG_MID > 99) scoutedFG_MID = 99;
+        let scoutedFG_COR = Math.floor(Math.random()*((prospectDoc.data().FG_COR + 4)-(prospectDoc.data().FG_COR-4)+1))+(prospectDoc.data().FG_COR-4);
+        if (scoutedFG_COR < 0) scoutedFG_COR = 0;
+        if (scoutedFG_COR > 99) scoutedFG_COR = 99;
+        let scoutedFG_ATB = Math.floor(Math.random()*((prospectDoc.data().FG_ATB + 4)-(prospectDoc.data().FG_ATB-4)+1))+(prospectDoc.data().FG_ATB-4);
+        if (scoutedFG_ATB < 0) scoutedFG_ATB = 0;
+        if (scoutedFG_ATB > 99) scoutedFG_ATB = 99;
+        let scoutedFT = Math.floor(Math.random()*((prospectDoc.data().FT + 4)-(prospectDoc.data().FT-4)+1))+(prospectDoc.data().FT-4);
+        if (scoutedFT > 99) scoutedFT = 99;
+        let scoutedDrawFoul = Math.floor(Math.random()*((prospectDoc.data().DrawFoul + 4)-(prospectDoc.data().DrawFoul-4)+1))+(prospectDoc.data().DrawFoul-4);
+        if (scoutedDrawFoul < 0) scoutedDrawFoul = 0;
+        if (scoutedDrawFoul > 99) scoutedDrawFoul = 99;
+        let scoutedScoring = Math.floor(Math.random()*((prospectDoc.data().Scoring + 10)-(prospectDoc.data().Scoring-10)+1))+(prospectDoc.data().Scoring-10);
+        if (scoutedScoring > 99) scoutedScoring = 99;
+        let scoutedPassing = Math.floor(Math.random()*((prospectDoc.data().Passing + 10)-(prospectDoc.data().Passing-10)+1))+(prospectDoc.data().Passing-10);
+        if (scoutedPassing > 99) scoutedPassing = 99;
+        let scoutedHandling = Math.floor(Math.random()*((prospectDoc.data().Handling + 10)-(prospectDoc.data().Handling-10)+1))+(prospectDoc.data().Handling-10);
+        if (scoutedHandling > 99) scoutedHandling = 99;
+        let scoutedOReb = Math.floor(Math.random()*((prospectDoc.data().OReb + 10)-(prospectDoc.data().OReb-10)+1))+(prospectDoc.data().OReb-10);
+        if (scoutedOReb > 99) scoutedOReb = 99;
+        let scoutedDReb = Math.floor(Math.random()*((prospectDoc.data().DReb + 10)-(prospectDoc.data().DReb-10)+1))+(prospectDoc.data().DReb-10);
+        if (scoutedDReb > 99) scoutedDReb = 99;
+        let scoutedBlock = Math.floor(Math.random()*((prospectDoc.data().Block + 10)-(prospectDoc.data().Block-10)+1))+(prospectDoc.data().Block-10);
+        if (scoutedBlock > 99) scoutedBlock = 99;
+        let scoutedSteal = Math.floor(Math.random()*((prospectDoc.data().Steal + 10)-(prospectDoc.data().Steal-10)+1))+(prospectDoc.data().Steal-10);
+        if (scoutedSteal > 99) scoutedSteal = 99;
+        let scoutedDefender = Math.floor(Math.random()*((prospectDoc.data().Defender + 10)-(prospectDoc.data().Defender-10)+1))+(prospectDoc.data().Defender-10);
+        if (scoutedDefender > 99) scoutedDefender = 99;
+        let scoutedDiscipline = Math.floor(Math.random()*((prospectDoc.data().Discipline + 10)-(prospectDoc.data().Discipline-10)+1))+(prospectDoc.data().Discipline-10);
+        if (scoutedDiscipline > 99) scoutedDiscipline = 99;
+        let scoutedBballIQ = Math.floor(Math.random()*((prospectDoc.data().BballIQ + 10)-(prospectDoc.data().BballIQ-10)+1))+(prospectDoc.data().BballIQ-10);
+        if (scoutedBballIQ > 99) scoutedBballIQ = 99;
+
+        db.collection('combine2025').doc(fullNameLowerCase).set({
+          FullNameLowerCase: fullNameLowerCase,
+          FirstName: prospectDoc.data().FirstName,
+          LastName: prospectDoc.data().LastName,
+          Position: prospectDoc.data().Position,
+          Age: prospectDoc.data().Age,
+          CollegeYear: prospectDoc.data().CollegeYear,
+          Height: prospectDoc.data().Height,
+          DisplayHeight: prospectDoc.data().DisplayHeight,
+          Weight:  prospectDoc.data().Weight,
+          College: prospectDoc.data().College,
+          FG_RA: scoutedFG_RA,
+          FG_ITP: scoutedFG_ITP,
+          FG_MID: scoutedFG_MID,
+          FG_COR: scoutedFG_COR,
+          FG_ATB: scoutedFG_ATB,
+          FT: scoutedFT,
+          Scoring: scoutedScoring,
+          Passing: scoutedPassing,
+          Handling: scoutedHandling,
+          OReb: scoutedOReb,
+          DReb: scoutedDReb,
+          Block: scoutedBlock,
+          Steal: scoutedSteal,
+          DrawFoul: scoutedDrawFoul,
+          Defender: scoutedDefender,
+          Discipline: scoutedDiscipline,
+          BballIQ: scoutedBballIQ
+        })
+      });
+    });
   }
   approveArticle(abrev, articleType, x) {
     const toggleList = document.getElementsByClassName('react-toggle-screenreader-only');
@@ -453,7 +533,7 @@ class Admin extends React.Component{
     return (
       <div>
         <div class='row'>
-          <div class='col-sm-6'>
+          <div class='col-sm-4'>
             <button onClick={this.runScouts} className='btn runScoutsBtn'>Run Scouts</button>
             <br />
             <br />
@@ -465,7 +545,7 @@ class Admin extends React.Component{
               <li>resets all article fields for each team</li>
             </ul>
           </div>
-          <div class='col-sm-6'>
+          <div class='col-sm-4'>
             <button onClick={this.runInterviews} className='btn runInterviewsBtn'>Run Interviews</button>
             <br />
             <br />
@@ -473,6 +553,16 @@ class Admin extends React.Component{
             <ul>
               <li>create a new interview for all players listed in interviewList array for all teams</li>
               <li>empties interviewList array for all teams</li>
+            </ul>
+          </div>
+          <div class='col-sm-4'>
+            <button onClick={this.runCombine} className='btn runCombineBtn'>Run Combine</button>
+            <br />
+            <br />
+            <p>Clicking 'Run Combine' will:</p>
+            <ul>
+              <li>create new data for combine</li>
+              <li>larger range for deviations than regular scouts</li>
             </ul>
           </div>
         </div>
