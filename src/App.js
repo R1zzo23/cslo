@@ -11,8 +11,8 @@ import '../node_modules/react-bootstrap-table-next/dist/react-bootstrap-table2.m
 // import components
 import Header from './shared/Header'
 import Home from './components/Home/Home'
-import {DraftClass} from './components/DraftClass/DraftClass'
-import DraftClassPage from './components/DraftClass/DraftClassPage'
+import DraftClassPage from './components/DraftClass/DraftClass'
+//import DraftClassPage from './components/DraftClass/DraftClassPage'
 import SendScoutsPage from './components/SendScouts/SendScouts'
 import InterviewsPage from './components/Interviews/Interviews'
 //import ProspectPage from './components/Prospects/ProspectCard'
@@ -52,7 +52,7 @@ class App extends Component {
           <Header authUser={this.state.authUser} />
           <div className="container">
             <Route exact path={ROUTES.HOME} component={Home} />
-            <Route exact path={ROUTES.DRAFT_CLASS} component={DraftClass} />
+            <Route exact path={ROUTES.DRAFT_CLASS} component={DraftClassPage} />
             <Route path={ROUTES.SEND_SCOUTS} component={SendScoutsPage} />
             <Route path={ROUTES.INTERVIEWS} component={InterviewsPage} />
             <Route exact path={ROUTES.PROSPECT} component={ProspectPage} />

@@ -1,8 +1,11 @@
 import React from 'react';
+import '@firebase/firestore'
+import { withFirebase } from '../Firebase'
 import class2024 from './2024_basic.json';
 import class2025 from './2025_basic.json';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
+import { CSVLink, CSVDownload } from "react-csv"
 import { Link } from 'react-router-dom';
 
 function LinkCell(value) {
@@ -15,19 +18,82 @@ function LinkCell(value) {
   return <Link to={url}><i className="fas fa-link"></i></Link>
 }
 
-export class DraftClass extends React.Component{
+const DraftClassPage = ({firebase}) => (
+  <div>
+    <DraftClassHQ firebase={firebase}/>
+  </div>
+);
+
+class DraftClass extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      year: 0
+      year: 0,
+      combineData: [],
+      combineFileName: '',
+      combineHeaders: [
+        { label: "First", key: "FirstName" },
+        { label: "Last", key: "LastName" },
+        { label: "POS", key: "Position"},
+        { label: "AGE", key: "Age"},
+        { label: "HT", key: "DisplayHeight"},
+        { label: "WT", key: "Weight"},
+        { label: "FROM", key: "College"},
+        { label: "FG_RA", key: "FG_RA"},
+        { label: "FG_ITP", key: "FG_ITP"},
+        { label: "FG_MID", key: "FG_MID"},
+        { label: "FG_COR", key: "FG_COR"},
+        { label: "FG_ATB", key: "FG_ATB"},
+        { label: "FT", key: "FT"},
+        { label: "SCR", key: "Scoring"},
+        { label: "PAS", key: "Passing"},
+        { label: "HDL", key: "Handling"},
+        { label: "ORB", key: "OReb"},
+        { label: "DRB", key: "DReb"},
+        { label: "BLK", key: "Block"},
+        { label: "STL", key: "Steal"},
+        { label: "DRFL", key: "DrawFoul"},
+        { label: "DEF", key: "Defender"},
+        { label: "DIS", key: "Discipline"},
+        { label: "IQ", key: "BballIQ"}
+      ]
     };
   }
   componentDidMount() {
+    const fire = this.props.firebase;
+    const db = fire.auth.app.firebase_.firestore();
+
     const urlString = window.location.href;
     let year = 0;
+    let prospects = [];
     year = urlString.substr(urlString.length - 4);
+    let fileName = year + '-Combine';
     this.setState({
-      year: parseInt(year)
+      year: parseInt(year),
+      combineFileName: fileName
+    });
+
+    let collectionRef = '';
+
+    if (year === '2024') collectionRef = 'combine2024';
+    else if (year === '2025') collectionRef = 'combine2025';
+    // grab all scouts for this franchise
+    db.collection(collectionRef)
+    .get()
+    .then((docSnapshot) => {
+      docSnapshot.forEach((doc) => {
+        // add each scout to array
+        prospects.push(doc.data());
+      });
+      // sort scouts array by LastName then FirstName
+      prospects.sort((a, b) => (a.LastName > b.LastName) ? 1 : (a.LastName === b.LastName) ? ((a.FirstName > b.FirstName) ? 1 : -1) : -1 )
+      this.setState({
+        combineData: prospects
+      });
+      console.log(prospects.length);
+      if (prospects.length === 0) {
+        document.getElementById('combineBtn').classList.add("disabled");
+      }
     });
   }
   render() {
@@ -66,6 +132,16 @@ export class DraftClass extends React.Component{
     }]
 
     let draftTable = '';
+    let combineCSV =  (
+      <CSVLink data={this.state.combineData}
+               id="combineBtn"
+               filename={this.state.combineFileName}
+               className="btn btn-danger"
+               target="_blank"
+               headers={this.state.combineHeaders}>
+        Download Combine Data
+      </CSVLink>
+    );
 
     if (this.state.year === 2024) {
       draftTable = (
@@ -90,8 +166,15 @@ export class DraftClass extends React.Component{
 
     return (
       <div>
+        {combineCSV}
         {draftTable}
       </div>
     );
   }
 };
+
+export default DraftClassPage;
+
+const DraftClassHQ = withFirebase(DraftClass);
+
+export {DraftClassHQ};
