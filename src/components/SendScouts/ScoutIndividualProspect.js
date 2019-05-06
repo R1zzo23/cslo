@@ -1,5 +1,5 @@
 import React from 'react'
-import class24 from '../DraftClass/2024_basic.json'
+import class24 from '../DraftClass/2024CSLDraftBasic.json'
 import class25 from '../DraftClass/2025_basic.json'
 
 const ScoutIndividualProspect = ({key}) =>

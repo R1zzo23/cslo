@@ -2,7 +2,7 @@ import React from 'react'
 import '@firebase/firestore'
 import { withFirebase } from '../Firebase'
 import {BasicInfo} from './BasicInfo'
-import class24 from '../DraftClass/2024_basic.json'
+import class24 from '../DraftClass/2024CSLDraftBasic.json'
 import class25 from '../DraftClass/2025_basic.json'
 import PieChart from 'react-minimal-pie-chart';
 
