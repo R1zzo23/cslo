@@ -22,12 +22,25 @@ class Admin extends React.Component{
     this.runCombine = this.runCombine.bind(this);
     this.approveArticle = this.approveArticle.bind(this);
     this.denyArticle = this.denyArticle.bind(this);
+    this.runBigBoard = this.runBigBoard.bind(this);
+  }
+  runBigBoard() {
+    const fire = this.props.firebase;
+    const db = fire.auth.app.firebase_.firestore();
+
+    db.collection("class2024")
+    .get()
+    .then((doc) => {
+      doc.docs.map(function(prospectDoc) {
+        //get number of times scouted for prospect
+      });
+    });
   }
   runCombine() {
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
-    db.collection("class2025").where("Tier", ">", -1)
+    db.collection("class2024").where("Tier", ">", -1)
     .get()
     .then((doc) => {
       doc.docs.map(function(prospectDoc) {
@@ -70,7 +83,7 @@ class Admin extends React.Component{
         let scoutedBballIQ = Math.floor(Math.random()*((prospectDoc.data().BballIQ + 10)-(prospectDoc.data().BballIQ-10)+1))+(prospectDoc.data().BballIQ-10);
         if (scoutedBballIQ > 99) scoutedBballIQ = 99;
 
-        db.collection('combine2025').doc(fullNameLowerCase).set({
+        db.collection('combine2024').doc(fullNameLowerCase).set({
           FullNameLowerCase: fullNameLowerCase,
           FirstName: prospectDoc.data().FirstName,
           LastName: prospectDoc.data().LastName,
@@ -299,6 +312,8 @@ class Admin extends React.Component{
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
+    const increment = this.props.firebase.firestore.FieldValue.increment(1);
+
     const currentUID = fire.auth.currentUser.uid;
 
     if (currentUID !== adminUID) {
@@ -317,6 +332,14 @@ class Admin extends React.Component{
           scoutList.forEach(function(prospect) {
             let docRef = db.collection('class2024').doc(prospect.url);
             docRef.get().then(function(doc) {
+              // update prospect doc to increase TimesScouted by 1
+              let prospectTimesScouted = doc.data().TimesScouted + 1;
+              db.collection("class2024").doc(prospect.url).update({
+                'TimesScouted': increment
+              })
+              .then(function() {
+                alert("Prospect Times Scouted updated!");
+              });
               // create new doc in scouts collection with randomized ratings based on referenced docs
               let fullNameLowerCase = (doc.data().LastName + doc.data().FirstName).toLowerCase();
               let scoutedDunkRate = Math.floor(Math.random()*((doc.data().DunkRate + 2)-(doc.data().DunkRate-2)+1))+(doc.data().DunkRate-2);
@@ -533,7 +556,7 @@ class Admin extends React.Component{
     return (
       <div>
         <div class='row'>
-          <div class='col-sm-4'>
+          <div class='col-sm-3'>
             <button onClick={this.runScouts} className='btn runScoutsBtn'>Run Scouts</button>
             <br />
             <br />
@@ -545,7 +568,7 @@ class Admin extends React.Component{
               <li>resets all article fields for each team</li>
             </ul>
           </div>
-          <div class='col-sm-4'>
+          <div class='col-sm-3'>
             <button onClick={this.runInterviews} className='btn runInterviewsBtn'>Run Interviews</button>
             <br />
             <br />
@@ -555,7 +578,7 @@ class Admin extends React.Component{
               <li>empties interviewList array for all teams</li>
             </ul>
           </div>
-          <div class='col-sm-4'>
+          <div class='col-sm-3'>
             <button onClick={this.runCombine} className='btn runCombineBtn'>Run Combine</button>
             <br />
             <br />
@@ -563,6 +586,17 @@ class Admin extends React.Component{
             <ul>
               <li>create new data for combine</li>
               <li>larger range for deviations than regular scouts</li>
+            </ul>
+          </div>
+          <div class='col-sm-3'>
+            <button onClick={this.runBigBoard} className='btn runBigBoardBtn'>Run Big Board</button>
+            <br />
+            <br />
+            <p>Clicking 'Run Big Board' will:</p>
+            <ul>
+              <li>blah</li>
+              <li>blah</li>
+              <li>blah</li>
             </ul>
           </div>
         </div>
