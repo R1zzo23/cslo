@@ -1,7 +1,7 @@
 import React from 'react';
 import '@firebase/firestore'
 import { withFirebase } from '../Firebase'
-import class2024 from './2024_basic.json';
+import class2024 from './2024CSLDraftBasic.json';
 import class2025 from './2025_basic.json';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
