@@ -312,8 +312,6 @@ class Admin extends React.Component{
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
-    const increment = this.props.firebase.firestore.FieldValue.increment(1);
-
     const currentUID = fire.auth.currentUser.uid;
 
     if (currentUID !== adminUID) {
@@ -333,9 +331,9 @@ class Admin extends React.Component{
             let docRef = db.collection('class2024').doc(prospect.url);
             docRef.get().then(function(doc) {
               // update prospect doc to increase TimesScouted by 1
-              let prospectTimesScouted = doc.data().TimesScouted + 1;
-              db.collection("class2024").doc(prospect.url).update({
-                'TimesScouted': increment
+              let prospectTimesScouted = doc.data().TimesScouted;
+              docRef.update({
+                'TimesScouted': prospectTimesScouted + 1
               })
               .then(function() {
                 alert("Prospect Times Scouted updated!");
