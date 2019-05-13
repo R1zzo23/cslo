@@ -42,7 +42,7 @@ class Admin extends React.Component{
         //get number of times scouted for prospect
         let timesScouted = prospectDoc.data().TimesScouted;
         //random variation of +-5;
-        let variation = Math.floor(Math.random() * (5 - -5) + -5)/100;
+        let variation = Math.floor(Math.random() * (3 - -3) + -3)/100;
         console.log("variation: " + variation);
         let calculatedBigBoardScore = Math.floor((bigBoardScore + (timesScouted * 10)) * (1 + variation));
         db.collection("class2024").doc(fullName).update({
@@ -380,8 +380,9 @@ class Admin extends React.Component{
             docRef.get().then(function(doc) {
               // update prospect doc to increase TimesScouted by 1
               let prospectTimesScouted = doc.data().TimesScouted;
+              let tierDifference = 7 - doc.data().Tier;
               docRef.update({
-                'TimesScouted': prospectTimesScouted + Math.floor(Math.random() * (15 - 1) + 1)
+                'TimesScouted': prospectTimesScouted + Math.floor(Math.random() * ((20 - tierDifference) + tierDifference))
               });
               // create new doc in scouts collection with randomized ratings based on referenced docs
               let fullNameLowerCase = (doc.data().LastName + doc.data().FirstName).toLowerCase();
