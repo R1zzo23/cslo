@@ -14,3 +14,9 @@
 6) SendScouts.js --> update year in saveScouts() function
 7) Interviews.js --> update year in scheduleInterviews() function
 8) Team.js --> add new value to const options [] at top of page
+9) BigBoard.js --> CMND+F for 'class202' and update old class number to new one (ex: class2024 becomes class2025)
+10) Header.js --> add another draft class section
+      <div className="dropdown-divider"></div>
+      <Link className="dropdown-item" to="/draftclass/2025">2025</Link>
+      <div className="dropdown-divider"></div>
+      <Link className="dropdown-item" to="/draftclass/2026">2026</Link>
