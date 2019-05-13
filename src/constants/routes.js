@@ -10,3 +10,4 @@ export const LOG_IN = '/login';
 export const PASSWORD_FORGET = '/pw-forget';
 export const DRAFT_CLASS_PAGE = '/draftclasspage/:year';
 export const TEAM_PAGE = '/team';
+export const BIG_BOARD = '/bigboard';

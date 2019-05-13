@@ -32,8 +32,56 @@ class Admin extends React.Component{
     .get()
     .then((doc) => {
       doc.docs.map(function(prospectDoc) {
+        //get prospect document name
+        let first = prospectDoc.data().FirstName;
+        let last = prospectDoc.data().LastName;
+        let fullName = last + first;
+        fullName = fullName.toLowerCase().replace(/[, ']+/g, "").trim();
+        //get BigBoardScore
+        let bigBoardScore = prospectDoc.data().BigBoardScore;
         //get number of times scouted for prospect
+        let timesScouted = prospectDoc.data().TimesScouted;
+        //random variation of +-5;
+        let variation = Math.floor(Math.random() * (5 - -5) + -5)/100;
+        console.log("variation: " + variation);
+        let calculatedBigBoardScore = Math.floor((bigBoardScore + (timesScouted * 10)) * (1 + variation));
+        db.collection("class2024").doc(fullName).update({
+          "CurrentBigBoardScore": calculatedBigBoardScore
+        })
       });
+    });
+
+    let bigBoardArray = [];
+    // grab all scouts for this franchise
+    db.collection("class2024")
+    .get()
+    .then((docSnapshot) => {
+      docSnapshot.forEach((doc) => {
+        // add each scout to array
+        bigBoardArray.push(doc.data());
+      });
+      // sort scouts array by LastName then FirstName
+      bigBoardArray.sort((a, b) => (a.CurrentBigBoardScore < b.CurrentBigBoardScore) ? 1 : (a.CurrentBigBoardScore === b.CurrentBigBoardScore) ? ((a.LastName > b.LastName) ? 1 : -1) : -1 )
+
+      for (let i = 0; i < bigBoardArray.length; i++) {
+        //hold info for BigBoardCurrent
+        let bigBoardCurrentSpot = bigBoardArray[i].BigBoardCurrent;
+        //get prospect document name
+        let first = bigBoardArray[i].FirstName;
+        let last = bigBoardArray[i].LastName;
+        let fullName = last + first;
+        fullName = fullName.toLowerCase().replace(/[, ']+/g, "").trim();
+
+        let newBigBoardSpot = i + 1;
+        let bigBoardChange =  bigBoardCurrentSpot - newBigBoardSpot;
+        if (bigBoardChange > 0) bigBoardChange = "+" + bigBoardChange;
+
+        db.collection("class2024").doc(fullName).update({
+          "BigBoardCurrent": newBigBoardSpot,
+          "BigBoardLastMonth": bigBoardCurrentSpot,
+          "BigBoardChange": bigBoardChange
+        });
+      }
     });
   }
   runCombine() {
@@ -333,10 +381,7 @@ class Admin extends React.Component{
               // update prospect doc to increase TimesScouted by 1
               let prospectTimesScouted = doc.data().TimesScouted;
               docRef.update({
-                'TimesScouted': prospectTimesScouted + 1
-              })
-              .then(function() {
-                alert("Prospect Times Scouted updated!");
+                'TimesScouted': prospectTimesScouted + Math.floor(Math.random() * (15 - 1) + 1)
               });
               // create new doc in scouts collection with randomized ratings based on referenced docs
               let fullNameLowerCase = (doc.data().LastName + doc.data().FirstName).toLowerCase();
@@ -592,9 +637,8 @@ class Admin extends React.Component{
             <br />
             <p>Clicking 'Run Big Board' will:</p>
             <ul>
-              <li>blah</li>
-              <li>blah</li>
-              <li>blah</li>
+              <li>Runs variation</li>
+              <li>Calculates change</li>
             </ul>
           </div>
         </div>

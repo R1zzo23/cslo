@@ -21,6 +21,7 @@ import SignInPage from './components/Authentication/LogIn'
 import SignUpPage from './components/Authentication/SignUp'
 import AdminPage from './components/Admin/Admin'
 import TeamPage from './components/Team/Team'
+import BigBoard from './components/BigBoard/BigBoard'
 
 import * as ROUTES from './constants/routes';
 
@@ -53,6 +54,7 @@ class App extends Component {
           <div className="container">
             <Route exact path={ROUTES.HOME} component={Home} />
             <Route exact path={ROUTES.DRAFT_CLASS} component={DraftClassPage} />
+            <Route exact path={ROUTES.BIG_BOARD} component={BigBoard} />
             <Route path={ROUTES.SEND_SCOUTS} component={SendScoutsPage} />
             <Route path={ROUTES.INTERVIEWS} component={InterviewsPage} />
             <Route exact path={ROUTES.PROSPECT} component={ProspectPage} />
