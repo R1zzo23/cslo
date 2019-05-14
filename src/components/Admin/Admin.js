@@ -42,7 +42,7 @@ class Admin extends React.Component{
         //get number of times scouted for prospect
         let timesScouted = prospectDoc.data().TimesScouted;
         //random variation of +-5;
-        let variation = Math.floor(Math.random() * (3 - -3) + -3)/100;
+        let variation = Math.floor(Math.random() * (5 - -5) + -5)/100;
         console.log("variation: " + variation);
         let calculatedBigBoardScore = Math.floor((bigBoardScore + (timesScouted * 10)) * (1 + variation));
         db.collection("class2024").doc(fullName).update({
@@ -378,12 +378,7 @@ class Admin extends React.Component{
           scoutList.forEach(function(prospect) {
             let docRef = db.collection('class2024').doc(prospect.url);
             docRef.get().then(function(doc) {
-              // update prospect doc to increase TimesScouted by 1
-              let prospectTimesScouted = doc.data().TimesScouted;
-              let tierDifference = 7 - doc.data().Tier;
-              docRef.update({
-                'TimesScouted': prospectTimesScouted + Math.floor(Math.random() * ((20 - tierDifference) + tierDifference))
-              });
+
               // create new doc in scouts collection with randomized ratings based on referenced docs
               let fullNameLowerCase = (doc.data().LastName + doc.data().FirstName).toLowerCase();
               let scoutedDunkRate = Math.floor(Math.random()*((doc.data().DunkRate + 2)-(doc.data().DunkRate-2)+1))+(doc.data().DunkRate-2);
@@ -561,6 +556,40 @@ class Admin extends React.Component{
           })
           .then(function() {
           });
+        });
+      });
+
+      let scouts = [];
+
+      // grab all scouts
+      db.collection("scouts")
+      .get()
+      .then((docSnapshot) => {
+        docSnapshot.forEach((doc) => {
+          // add each scout to array
+          scouts.push(doc.data());
+        });
+      });
+      console.log(scouts);
+      //compare names in class list to scout list to get TimesScouted
+      db.collection("class2024")
+      .get()
+      .then((docSnapShot) => {
+        docSnapShot.forEach((doc) => {
+          let timesScouted = 0
+          scouts.forEach((scout) => {
+            if (scout.FirstName === doc.data().FirstName && scout.LastName === doc.data().LastName) {
+              timesScouted++;
+            }
+          });
+          //get prospect document name
+          let first = doc.data().FirstName;
+          let last = doc.data().LastName;
+          let fullName = last + first;
+          fullName = fullName.toLowerCase().replace(/[, ']+/g, "").trim();
+          db.collection("class2024").doc(fullName).update({
+            "TimesScouted": timesScouted
+          })
         });
       });
     }
