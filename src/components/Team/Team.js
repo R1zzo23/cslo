@@ -162,6 +162,8 @@ class Team extends React.Component{
     // email to search collection for documents
     var userEmail = this.props.firebase.auth.currentUser.email;
 
+    var teamAbrev;
+
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
@@ -186,6 +188,36 @@ class Team extends React.Component{
           articleTitle2: doc.data().articleTitle2,
           articleType2: doc.data().articleType2,
           articleStatus2: doc.data().articleStatus2,
+        });
+        teamAbrev = doc.data().abrev;
+
+        // grab all scouts for this franchise
+        db.collection("scouts").where("Team", "==", teamAbrev)
+        .get()
+        .then((docSnapshot) => {
+          docSnapshot.forEach((doc) => {
+            // add each scout to array
+            scouts.push(doc.data());
+          });
+          // sort scouts array by LastName then FirstName
+          scouts.sort((a, b) => (a.LastName > b.LastName) ? 1 : (a.LastName === b.LastName) ? ((a.FirstName > b.FirstName) ? 1 : -1) : -1 )
+          this.setState({
+            scoutData: scouts
+          });
+        });
+        // grab all interviews for this franchise
+        db.collection("interviews").where("Email", "==", userEmail)
+        .get()
+        .then((docSnapshot) => {
+          docSnapshot.forEach((doc) => {
+            // add each interview to array
+            interviews.push(doc.data());
+          });
+          // sort interviews array by LastName then FirstName
+          scouts.sort((a, b) => (a.LastName > b.LastName) ? 1 : (a.LastName === b.LastName) ? ((a.FirstName > b.FirstName) ? 1 : -1) : -1 )
+          this.setState({
+            interviewData: interviews
+          });
         });
       });
 
@@ -222,36 +254,6 @@ class Team extends React.Component{
         if (this.state.articleStatus2 === "approved")
           submitArticleBtn2.disabled = true;
       }
-    });
-
-    // grab all scouts for this franchise
-    db.collection("scouts").where("Email", "==", userEmail)
-    .get()
-    .then((docSnapshot) => {
-      docSnapshot.forEach((doc) => {
-        // add each scout to array
-        scouts.push(doc.data());
-      });
-      // sort scouts array by LastName then FirstName
-      scouts.sort((a, b) => (a.LastName > b.LastName) ? 1 : (a.LastName === b.LastName) ? ((a.FirstName > b.FirstName) ? 1 : -1) : -1 )
-      this.setState({
-        scoutData: scouts
-      });
-    });
-
-    // grab all interviews for this franchise
-    db.collection("interviews").where("Email", "==", userEmail)
-    .get()
-    .then((docSnapshot) => {
-      docSnapshot.forEach((doc) => {
-        // add each interview to array
-        interviews.push(doc.data());
-      });
-      // sort interviews array by LastName then FirstName
-      scouts.sort((a, b) => (a.LastName > b.LastName) ? 1 : (a.LastName === b.LastName) ? ((a.FirstName > b.FirstName) ? 1 : -1) : -1 )
-      this.setState({
-        interviewData: interviews
-      });
     });
   }
   submitArticle(x) {
