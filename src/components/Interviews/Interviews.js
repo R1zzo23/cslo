@@ -15,7 +15,7 @@ class ScheduleInterviews extends React.Component{
     super(props);
     this.state = {
       email: "",
-      interviewPoints: 10,
+      interviewPoints: 15,
       teamName: "",
       interviewList: [],
       uniqueId: ""
