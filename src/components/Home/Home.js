@@ -11,7 +11,7 @@ const Home = () =>
     <br />
     <div className='row'>
       <div className='col-sm-12 text-center'>
-        <table id='scoutTable' className="table table-sm">
+        <table id='scoutTable' className="table table-sm table-striped">
           <thead>
             <tr>
               <th className="scout-system" scope="col">MONTH</th>
@@ -75,7 +75,7 @@ const Home = () =>
     </div>
     <div className='row'>
       <div className='col-sm-12 text-center'>
-        <img width="800" src='/img/luka-zion.jpg' />
+        <img width="640" src='/img/luka-zion.jpg' />
       </div>
     </div>
   </div>
