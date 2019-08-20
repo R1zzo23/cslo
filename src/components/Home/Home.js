@@ -75,7 +75,7 @@ const Home = () =>
     </div>
     <div className='row'>
       <div className='col-sm-12 text-center'>
-        <img width="640" src='/img/luka-zion.jpg' />
+        <img id='luka-zion' width="640" src='/img/luka-zion.jpg' />
       </div>
     </div>
   </div>
