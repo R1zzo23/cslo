@@ -23,7 +23,7 @@ const Home = () =>
           <tbody>
             <tr>
               <td>Preseason</td>
-              <td>TBD</td>
+              <td>Sep 9th</td>
               <td>Team Preview Article</td>
               <td>No</td>
             </tr>
