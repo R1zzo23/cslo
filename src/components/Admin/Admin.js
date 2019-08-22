@@ -684,6 +684,18 @@ class Admin extends React.Component{
             {articleTable}
           </div>
         </div>
+        <div class='row'>
+          <ul><h3>Edit Scouting Deadlines</h3>
+            <li>Scouting Period #1: <input type="text" /><button id='btnScoutingDeadline1'>OK</button></li>
+            <li>Scouting Period #2: <input type="text" /><button id='btnScoutingDeadline2'>OK</button></li>
+            <li>Scouting Period #3: <input type="text" /><button id='btnScoutingDeadline3'>OK</button></li>
+            <li>Scouting Period #4: <input type="text" /><button id='btnScoutingDeadline4'>OK</button></li>
+            <li>Scouting Period #5: <input type="text" /><button id='btnScoutingDeadline5'>OK</button></li>
+            <li>Scouting Period #6: <input type="text" /><button id='btnScoutingDeadline6'>OK</button></li>
+            <li>Scouting Period #7: <input type="text" /><button id='btnScoutingDeadline7'>OK</button></li>
+            <li>Scouting Period #8: <input type="text" /><button id='btnScoutingDeadline8'>OK</button></li>
+          </ul>
+        </div>
       </div>
     );
   }
