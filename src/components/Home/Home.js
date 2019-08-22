@@ -23,49 +23,49 @@ const Home = () =>
           <tbody>
             <tr>
               <td>Preseason</td>
-              <td>Sep 9th</td>
+              <td id="scoutingDeadline1">Sep 9th</td>
               <td>Team Preview Article</td>
               <td>No</td>
             </tr>
             <tr>
               <td>November</td>
-              <td>TBD</td>
+              <td id="scoutingDeadline2">TBD</td>
               <td>1 Insider or 2 Wiretaps</td>
               <td>No</td>
             </tr>
             <tr>
               <td>December</td>
-              <td>TBD</td>
+              <td id="scoutingDeadline3">TBD</td>
               <td>1 Insider or 2 Wiretaps</td>
               <td>No</td>
             </tr>
             <tr>
               <td>January</td>
-              <td>TBD</td>
+              <td id="scoutingDeadline4">TBD</td>
               <td>Prospect Draft Article</td>
               <td>Yes</td>
             </tr>
             <tr>
               <td>February</td>
-              <td>TBD</td>
+              <td id="scoutingDeadline5">TBD</td>
               <td>1 Insider or 2 Wiretaps</td>
               <td>No</td>
             </tr>
             <tr>
               <td>March</td>
-              <td>TBD</td>
+              <td id="scoutingDeadline6">TBD</td>
               <td>1 Insider or 2 Wiretaps</td>
               <td>No</td>
             </tr>
             <tr>
               <td>April</td>
-              <td>TBD</td>
+              <td id="scoutingDeadline7">TBD</td>
               <td>1 Insider or 2 Wiretaps</td>
               <td>No</td>
             </tr>
             <tr>
               <td>May</td>
-              <td>TBD</td>
+              <td id="scoutingDeadline8">TBD</td>
               <td>1 Insider or 2 Wiretaps</td>
               <td>Yes</td>
             </tr>
