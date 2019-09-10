@@ -15,6 +15,13 @@ class Board extends React.Component{
       prospectData: []
     };
   }
+  positionNumberToAbbreviation(x) {
+    if (x == 1) return "PG";
+    else if (x == 2) return "SG";
+    else if (x == 3) return "SF";
+    else if (x == 4) return "PF";
+    else return "C";
+  }
   componentDidMount() {
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
@@ -26,16 +33,25 @@ class Board extends React.Component{
     .get()
     .then((docSnapshot) => {
       docSnapshot.forEach((doc) => {
-        // add each scout to array
+        // add each prospect to array
         prospects.push(doc.data());
       });
-      // sort scouts array by LastName then FirstName
+      // sort scouts array by BigBoard placement
       prospects.sort((a, b) => (a.BigBoardCurrent > b.BigBoardCurrent) ? 1 : (a.BigBoardCurrent === b.BigBoardCurrent) ? ((a.LastName > b.LastName) ? 1 : -1) : -1 )
+      prospects.forEach((player) => {
+        //var PositionName;
+        if (player.Position == 1) player.PositionName = "PG";
+        else if (player.Position == 2) player.PositionName = "SG";
+        else if (player.Position == 3) player.PositionName = "SF";
+        else if (player.Position == 4) player.PositionName = "PF";
+        else player.PositionName = "C";
+      });
       this.setState({
         prospectData: prospects
       });
     });
   }
+
   render(){
     const bigBoardTable = (
       <div>
@@ -60,7 +76,7 @@ class Board extends React.Component{
                 <td>{prospect.FirstName}</td>
                 <td>{prospect.LastName}</td>
                 <td>{prospect.Age}</td>
-                <td>{prospect.Position}</td>
+                <td>{prospect.PositionName}</td>
                 <td>{prospect.DisplayHeight}</td>
                 <td>{prospect.Weight}</td>
               </tr>
