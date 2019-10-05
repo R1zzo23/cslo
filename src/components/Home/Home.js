@@ -35,7 +35,7 @@ const Home = () =>
             </tr>
             <tr>
               <td>December</td>
-              <td id="scoutingDeadline3">TBD</td>
+              <td id="scoutingDeadline3">Oct 21st</td>
               <td>1 Insider or 2 Wiretaps</td>
               <td>No</td>
             </tr>
