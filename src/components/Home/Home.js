@@ -41,8 +41,8 @@ const Home = () =>
             </tr>
             <tr>
               <td>January</td>
-              <td id="scoutingDeadline4">TBD</td>
-              <td>Prospect Draft Article</td>
+              <td id="scoutingDeadline4">Nov 12th</td>
+              <td>2024 CSL Draft Article</td>
               <td>Yes</td>
             </tr>
             <tr>

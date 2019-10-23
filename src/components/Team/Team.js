@@ -85,6 +85,8 @@ class Team extends React.Component{
         { label: "FG_MID_POT", key: "FG_MID_POT"},
         { label: "FG_COR", key: "FG_COR"},
         { label: "FG_COR_POT", key: "FG_COR_POT"},
+        { label: "FG_ATB", key: "FG_ATB"},
+        { label: "FG_ATB_POT", key: "FG_ATB_POT"},
         { label: "FT", key: "FT"},
         { label: "FT_POT", key: "FT_POT"},
         { label: "SCR", key: "Scoring"},
