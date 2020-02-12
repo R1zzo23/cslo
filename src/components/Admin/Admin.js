@@ -362,6 +362,12 @@ class Admin extends React.Component{
 
     const currentUID = fire.auth.currentUser.uid;
 
+    var scoutingPeriod = document.getElementById("scoutingPeriodText").value;
+    if (!scoutingPeriod.match(/\S/))
+    {
+        alert("Field is blank");
+    }
+
     if (currentUID !== adminUID) {
       alert("Current user does not have admininstrative privileges!");
     }
@@ -535,7 +541,8 @@ class Admin extends React.Component{
                 DrawFoul_POT: scoutedDrawFoul_POT,
                 Defender_POT: scoutedDefender_POT,
                 Discipline_POT: scoutedDiscipline_POT,
-                BballIQ_POT: scoutedBballIQ_POT
+                BballIQ_POT: scoutedBballIQ_POT,
+                ScoutingPeriod: scoutingPeriod
               })
             });
           });
@@ -633,8 +640,11 @@ class Admin extends React.Component{
             <button onClick={this.runScouts} className='btn runScoutsBtn'>Run Scouts</button>
             <br />
             <br />
+            <p>Scouting Period #: <input id="scoutingPeriodText" type="text" /></p>
+            <br />
             <p>Clicking 'Run Scouts' will:</p>
             <ul>
+              <li>type in box above: pre, nov, dec, jan, feb, mar, apr, playoffs or workouts</li>
               <li>create a new scout for all players listed in scoutList array for all teams</li>
               <li>set all teams' availableScouts to 0</li>
               <li>empties scoutList array for all teams</li>

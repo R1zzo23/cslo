@@ -16,11 +16,25 @@ const options = [
   { value: '2025', label: '2025' }
 ];
 
+const scoutPeriods = [
+  { value: 'all', label: 'All' },
+  { value: 'pre', label: 'Pre' },
+  { value: 'nov', label: 'Nov' },
+  { value: 'dec', label: 'Dec' },
+  { value: 'jan', label: 'Jan' },
+  { value: 'feb', label: 'Feb' },
+  { value: 'mar', label: 'Mar' },
+  { value: 'apr', label: 'Apr' },
+  { value: 'playoffs', label: 'Playoffs' },
+  { value: 'workouts', label: 'Workouts' }
+]
+
 class Team extends React.Component{
   constructor(props: IProps) {
     super(props);
     this.submitArticle = this.submitArticle.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleChangeScoutPeriod = this.handleChangeScoutPeriod.bind(this);
     this.state = {
       selectedOption: null,
       scoutData: [],
@@ -114,6 +128,53 @@ class Team extends React.Component{
       ]
     };
   }
+  handleChangeScoutPeriod(selecedScoutPeriod){
+    this.setState({ selecedScoutPeriod });
+
+    // Declare variables
+    var filter, table, interviewTable, tr, trInterviews, td, i, txtValue;
+    filter = selecedScoutPeriod.value;
+    table = document.getElementById("scoutTable");
+    interviewTable = document.getElementById('interviewTable');
+    tr = table.getElementsByTagName("tr");
+    trInterviews = interviewTable.getElementsByTagName('tr');
+
+    // Loop through all scout table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      if (filter === 'all') {
+        tr[i].style.display = '';
+      }
+      else {
+        td = tr[i].getElementsByTagName("td")[4];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue === filter) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    // Loop through all interview table rows, and hide those who don't match the search query
+    for (i = 0; i < trInterviews.length; i++) {
+      if (filter === 'all') {
+        trInterviews[i].style.display = '';
+      }
+      else {
+        td = trInterviews[i].getElementsByTagName("td")[3];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue === filter) {
+            trInterviews[i].style.display = "";
+          } else {
+            trInterviews[i].style.display = "none";
+          }
+        }
+      }
+    }
+  }
+
   handleChange(selectedOption){
     this.setState({ selectedOption });
 
@@ -330,6 +391,7 @@ class Team extends React.Component{
   }
   render(){
     const { selectedOption } = this.state;
+    const { selectedScoutPeriod } = this.state;
     const scoutTable = (
       <div>
         <CSVLink data={this.state.scoutData}
@@ -342,7 +404,7 @@ class Team extends React.Component{
         <table id='scoutTable' className="table table-sm">
           <thead>
             <tr>
-              <th className="player-info" colSpan="4">PLAYER</th>
+              <th className="player-info" colSpan="5">PLAYER</th>
               <th className="dunk-rim-rates" colSpan="2">RATES</th>
               <th className="ball-actions" colSpan="6">BALL ACTIONS</th>
               <th className="floor-locations" colSpan="4">FLOOR LOCATIONS</th>
@@ -354,6 +416,7 @@ class Team extends React.Component{
               <th className="player-info" scope="col">LAST</th>
               <th className="player-info" scope="col">POS</th>
               <th className="player-info" scope="col">CLASS</th>
+              <th className="player-info" scope="col">SCOUT PERIOD</th>
               <th className="dunk-rim-rates" scope="col">DUNK</th>
               <th className="dunk-rim-rates" scope="col">RIM</th>
               <th className="ball-actions" scope="col">DriveKick</th>
@@ -392,6 +455,7 @@ class Team extends React.Component{
                 <td>{scout.LastName}</td>
                 <td>{scout.Position}</td>
                 <td>{scout.Year}</td>
+                <td>{scout.ScoutingPeriod}</td>
                 <td>{scout.DunkRate}</td>
                 <td>{scout.RARate}</td>
                 <td>{scout.DriveKick}</td>
@@ -507,6 +571,12 @@ class Team extends React.Component{
           value={selectedOption}
           onChange={this.handleChange}
           options={options}
+        />
+        <br />
+        <p>Scout Period Filter:</p><Select
+          value={selectedScoutPeriod}
+          onChange={this.handleChangeScoutPeriod}
+          options={scoutPeriods}
         />
         <br />
         {scoutTable}
