@@ -386,7 +386,7 @@ class Admin extends React.Component{
             docRef.get().then(function(doc) {
 
               // create new doc in scouts collection with randomized ratings based on referenced docs
-              let fullNameLowerCase = (doc.data().LastName + doc.data().FirstName).toLowerCase();
+              let fullNameLowerCase = (doc.data().LastName + doc.data().FirstName).toLowerCase().replace(/[, ']+/g, "").trim();
               let scoutedDunkRate = Math.floor(Math.random()*((doc.data().DunkRate + 2)-(doc.data().DunkRate-2)+1))+(doc.data().DunkRate-2);
               if (scoutedDunkRate > 99) scoutedDunkRate = 99;
               let scoutedRARate = Math.floor(Math.random()*((doc.data().RARate + 2)-(doc.data().RARate-2)+1))+(doc.data().RARate-2);
