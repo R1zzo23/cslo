@@ -24,7 +24,7 @@ class SendScouts extends React.Component{
   }
   saveScouts() {
     var prospectsSelected = document.getElementsByClassName('selection');
-    let year = 2024;
+    let year = 2025;
     let list = [];
     let first = "";
     let last = "";
