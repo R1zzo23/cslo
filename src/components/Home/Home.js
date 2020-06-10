@@ -23,32 +23,32 @@ const Home = () =>
           <tbody>
             <tr>
               <td>Preseason</td>
-              <td id="scoutingDeadline1">Sep 9th</td>
-              <td>Team Preview Article</td>
-              <td>No</td>
+              <td id="scoutingDeadline1">Jun 13th</td>
+              <td>None</td>
+              <td>Yes</td>
             </tr>
             <tr>
               <td>November</td>
-              <td id="scoutingDeadline2">Sep 30th</td>
-              <td>1 Insider or 2 Wiretaps</td>
+              <td id="scoutingDeadline2">Jun 17th</td>
+              <td>None</td>
               <td>No</td>
             </tr>
             <tr>
               <td>December</td>
-              <td id="scoutingDeadline3">Oct 21st</td>
+              <td id="scoutingDeadline3">Jun 23rd</td>
               <td>1 Insider or 2 Wiretaps</td>
               <td>No</td>
             </tr>
             <tr>
               <td>January</td>
-              <td id="scoutingDeadline4">Nov 12th</td>
-              <td>2024 CSL Draft Article</td>
+              <td id="scoutingDeadline4">TBD</td>
+              <td>1 Insider or 2 Wiretaps</td>
               <td>Yes</td>
             </tr>
             <tr>
               <td>February</td>
-              <td id="scoutingDeadline5">Dec 4th</td>
-              <td>1 Insider or 2 Wiretaps</td>
+              <td id="scoutingDeadline5">TBD</td>
+              <td>2025 CSL Draft Article</td>
               <td>No</td>
             </tr>
             <tr>
@@ -75,7 +75,7 @@ const Home = () =>
     </div>
     <div className='row'>
       <div className='col-sm-12 text-center'>
-        <img id='luka-zion' width="640" src='/img/luka-zion.jpg' />
+        <img id='shai' width="640" src='/img/shai.jpg' />
       </div>
     </div>
   </div>
