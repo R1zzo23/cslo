@@ -277,7 +277,7 @@ class Team extends React.Component{
             interviews.push(doc.data());
           });
           // sort interviews array by LastName then FirstName
-          scouts.sort((a, b) => (a.LastName > b.LastName) ? 1 : (a.LastName === b.LastName) ? ((a.FirstName > b.FirstName) ? 1 : -1) : -1 )
+          interviews.sort((a, b) => (a.LastName > b.LastName) ? 1 : (a.LastName === b.LastName) ? ((a.FirstName > b.FirstName) ? 1 : -1) : -1 )
           this.setState({
             interviewData: interviews
           });
