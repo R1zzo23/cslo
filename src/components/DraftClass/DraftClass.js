@@ -3,6 +3,7 @@ import '@firebase/firestore'
 import { withFirebase } from '../Firebase'
 import class2024 from './2024CSLDraftBasic.json';
 import class2025 from './2025_basic.json';
+import class2026 from './2026_basic.json';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
 import { CSVLink, CSVDownload } from "react-csv"
@@ -160,6 +161,16 @@ class DraftClass extends React.Component{
                 data={class2025}
                 columns={columns}
                 defaultPageSize = {class2025.length}
+              />
+      );
+    }
+    else if (this.state.year === 2026) {
+      draftTable = (
+
+      <ReactTable
+                data={class2026}
+                columns={columns}
+                defaultPageSize = {class2026.length}
               />
       );
     }
