@@ -185,21 +185,21 @@ class Admin extends React.Component{
           currentScoutPoints = parseInt(teamDoc.data().availableScouts);
           let awardedPoints = 0;
           if (articleType === 'wiretap') {
-            if (toggle.checked) awardedPoints = 10;
-            else awardedPoints = 5;
+            if (toggle.checked) awardedPoints = 14;
+            else awardedPoints = 7;
           }
           else if (articleType === 'insider'){
-            if (toggle.checked) awardedPoints = 20;
-            else awardedPoints = 10;
+            if (toggle.checked) awardedPoints = 28;
+            else awardedPoints = 14;
           }
 
           currentScoutPoints += awardedPoints;
 
           if (toggle.checked) {
-            if (currentScoutPoints > 20) currentScoutPoints = 20;
+            if (currentScoutPoints > 28) currentScoutPoints = 28;
           }
           else if (!toggle.checked){
-            if (currentScoutPoints > 10) currentScoutPoints = 10;
+            if (currentScoutPoints > 14) currentScoutPoints = 14;
           }
           if (x === 1) {
             db.collection("franchises").doc(abrev).update({
