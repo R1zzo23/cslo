@@ -78,6 +78,7 @@ class DraftClass extends React.Component{
 
     if (year === '2024') collectionRef = 'combine2024';
     else if (year === '2025') collectionRef = 'combine2025';
+    else if (year === '2026') collectionRef = 'combine2026';
     // grab all scouts for this franchise
     db.collection(collectionRef)
     .get()
