@@ -168,12 +168,13 @@ class Admin extends React.Component{
     const toggle = toggleList[0];
     const adminUID = '7rE2d3qAg6PYFstciBnjqkxLocz2';
 
+
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
     const currentUID = fire.auth.currentUser.uid;
 
-    if (currentUID !== adminUID) {
+    if (currentUID !== adminUID || currentUID !== "YaGTOyJLu4S95G5fouENhazo4hq1" || currentUID !== "GxQK5VTbwZgFVomtXQ5A3mtnSLt2") {
       alert("Current user does not have admininstrative privileges!");
     }
     else {
