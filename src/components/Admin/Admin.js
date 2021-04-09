@@ -174,54 +174,55 @@ class Admin extends React.Component{
 
     const currentUID = fire.auth.currentUser.uid;
 
-    if (currentUID !== adminUID || currentUID !== "YaGTOyJLu4S95G5fouENhazo4hq1" || currentUID !== "GxQK5VTbwZgFVomtXQ5A3mtnSLt2") {
-      alert("Current user does not have admininstrative privileges!");
+    if (currentUID == adminUID || currentUID == "YaGTOyJLu4S95G5fouENhazo4hq1" || currentUID == "GxQK5VTbwZgFVomtXQ5A3mtnSLt2") {
+
+        let currentScoutPoints = 0;
+        db.collection("franchises").where("abrev", "==", abrev)
+        .get()
+        .then((doc) => {
+          doc.docs.map(function(teamDoc) {
+            currentScoutPoints = parseInt(teamDoc.data().availableScouts);
+            let awardedPoints = 0;
+            if (articleType === 'wiretap') {
+              if (toggle.checked) awardedPoints = 14;
+              else awardedPoints = 7;
+            }
+            else if (articleType === 'insider'){
+              if (toggle.checked) awardedPoints = 28;
+              else awardedPoints = 14;
+            }
+
+            currentScoutPoints += awardedPoints;
+
+            if (toggle.checked) {
+              if (currentScoutPoints > 28) currentScoutPoints = 28;
+            }
+            else if (!toggle.checked){
+              if (currentScoutPoints > 14) currentScoutPoints = 14;
+            }
+            if (x === 1) {
+              db.collection("franchises").doc(abrev).update({
+                'availableScouts': currentScoutPoints,
+                'articleStatus1': 'approved'
+              })
+              .then(function() {
+                alert("Article approved!");
+              });
+            }
+            else if (x === 2) {
+              db.collection("franchises").doc(abrev).update({
+                'availableScouts': currentScoutPoints,
+                'articleStatus2': 'approved'
+              })
+              .then(function() {
+                alert("Article approved!");
+              });
+            }
+          });
+        })
     }
     else {
-      let currentScoutPoints = 0;
-      db.collection("franchises").where("abrev", "==", abrev)
-      .get()
-      .then((doc) => {
-        doc.docs.map(function(teamDoc) {
-          currentScoutPoints = parseInt(teamDoc.data().availableScouts);
-          let awardedPoints = 0;
-          if (articleType === 'wiretap') {
-            if (toggle.checked) awardedPoints = 14;
-            else awardedPoints = 7;
-          }
-          else if (articleType === 'insider'){
-            if (toggle.checked) awardedPoints = 28;
-            else awardedPoints = 14;
-          }
-
-          currentScoutPoints += awardedPoints;
-
-          if (toggle.checked) {
-            if (currentScoutPoints > 28) currentScoutPoints = 28;
-          }
-          else if (!toggle.checked){
-            if (currentScoutPoints > 14) currentScoutPoints = 14;
-          }
-          if (x === 1) {
-            db.collection("franchises").doc(abrev).update({
-              'availableScouts': currentScoutPoints,
-              'articleStatus1': 'approved'
-            })
-            .then(function() {
-              alert("Article approved!");
-            });
-          }
-          else if (x === 2) {
-            db.collection("franchises").doc(abrev).update({
-              'availableScouts': currentScoutPoints,
-              'articleStatus2': 'approved'
-            })
-            .then(function() {
-              alert("Article approved!");
-            });
-          }
-        });
-      })
+      alert("Current user does not have admininstrative privileges!");
     }
   }
   denyArticle(abrev, articleType) {
