@@ -280,14 +280,16 @@ class Admin extends React.Component{
     });
   }
   runInterviews() {
+    const adminUID2 = '7rE2d3qAg6PYFstciBnjqkxLocz2'; // Rizzo
     const adminUID = 'YaGTOyJLu4S95G5fouENhazo4hq1'; // KW
+    const adminUID3 = 'GxQK5VTbwZgFVomtXQ5A3mtnSLt2'; // Dejan
 
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
     const currentUID = fire.auth.currentUser.uid;
 
-    if (currentUID !== adminUID) {
+    if (currentUID !== adminUID || currentUID !== adminUID2 || currentUID !== adminUID3) {
       alert("Current user does not have admininstrative privileges!");
     }
     else {
@@ -359,7 +361,9 @@ class Admin extends React.Component{
     }
   }
   runScouts() {
+    const adminUID2 = '7rE2d3qAg6PYFstciBnjqkxLocz2'; // Rizzo
     const adminUID = 'YaGTOyJLu4S95G5fouENhazo4hq1'; // KW
+    const adminUID3 = 'GxQK5VTbwZgFVomtXQ5A3mtnSLt2'; // Dejan
 
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
@@ -372,7 +376,7 @@ class Admin extends React.Component{
         alert("Field is blank");
     }
 
-    if (currentUID !== adminUID) {
+    if (currentUID !== adminUID || currentUID !== adminUID2 || currentUID !== adminUID3) {
       alert("Current user does not have admininstrative privileges!");
     }
     else {
