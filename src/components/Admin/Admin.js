@@ -167,6 +167,8 @@ class Admin extends React.Component{
     const toggleList = document.getElementsByClassName('react-toggle-screenreader-only');
     const toggle = toggleList[0];
     const adminUID = '7rE2d3qAg6PYFstciBnjqkxLocz2';
+    const adminUID2 = 'YaGTOyJLu4S95G5fouENhazo4hq1';
+    const adminUID3 = 'GxQK5VTbwZgFVomtXQ5A3mtnSLt2';
 
 
     const fire = this.props.firebase;
@@ -174,7 +176,7 @@ class Admin extends React.Component{
 
     const currentUID = fire.auth.currentUser.uid;
 
-    if (currentUID == adminUID || currentUID == "YaGTOyJLu4S95G5fouENhazo4hq1" || currentUID == "GxQK5VTbwZgFVomtXQ5A3mtnSLt2") {
+    if (currentUID == adminUID || currentUID == adminUID2 || currentUID == adminUID3) {
 
         let currentScoutPoints = 0;
         db.collection("franchises").where("abrev", "==", abrev)
