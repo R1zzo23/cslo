@@ -131,7 +131,7 @@ class Admin extends React.Component{
         let scoutedBballIQ = Math.floor(Math.random()*((prospectDoc.data().BballIQ + 10)-(prospectDoc.data().BballIQ-10)+1))+(prospectDoc.data().BballIQ-10);
         if (scoutedBballIQ > 99) scoutedBballIQ = 99;
 
-        db.collection('combine2025').doc(fullNameLowerCase).set({
+        db.collection('combine2026').doc(fullNameLowerCase).set({
           FullNameLowerCase: fullNameLowerCase,
           FirstName: prospectDoc.data().FirstName,
           LastName: prospectDoc.data().LastName,
