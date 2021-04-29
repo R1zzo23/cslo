@@ -376,7 +376,7 @@ class Admin extends React.Component{
         alert("Field is blank");
     }
 
-    if (currentUID !== adminUID || currentUID !== adminUID2 || currentUID !== adminUID3) {
+    if (currentUID !== adminUID) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
       alert("Current user does not have admininstrative privileges!");
     }
     else {
