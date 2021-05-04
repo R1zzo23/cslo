@@ -289,7 +289,7 @@ class Admin extends React.Component{
 
     const currentUID = fire.auth.currentUser.uid;
 
-    if (currentUID !== adminUID || currentUID !== adminUID2 || currentUID !== adminUID3) {
+    if (currentUID !== adminUID) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
       alert("Current user does not have admininstrative privileges!");
     }
     else {
