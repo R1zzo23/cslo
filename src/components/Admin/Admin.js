@@ -28,7 +28,7 @@ class Admin extends React.Component{
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
-    db.collection("class2026")
+    db.collection("class2027")
     .get()
     .then((doc) => {
       doc.docs.map(function(prospectDoc) {
@@ -45,7 +45,7 @@ class Admin extends React.Component{
         let variation = Math.floor(Math.random() * (5 - -5) + -5)/100;
         console.log("variation: " + variation);
         let calculatedBigBoardScore = Math.floor((bigBoardScore + (timesScouted * 10)) * (1 + variation));
-        db.collection("class2026").doc(fullName).update({
+        db.collection("class2027").doc(fullName).update({
           "CurrentBigBoardScore": calculatedBigBoardScore
         })
       });
@@ -53,7 +53,7 @@ class Admin extends React.Component{
 
     let bigBoardArray = [];
     // grab all scouts for this franchise
-    db.collection("class2026")
+    db.collection("class2027")
     .get()
     .then((docSnapshot) => {
       docSnapshot.forEach((doc) => {
@@ -76,7 +76,7 @@ class Admin extends React.Component{
         let bigBoardChange =  bigBoardCurrentSpot - newBigBoardSpot;
         if (bigBoardChange > 0) bigBoardChange = "+" + bigBoardChange;
 
-        db.collection("class2026").doc(fullName).update({
+        db.collection("class2027").doc(fullName).update({
           "BigBoardCurrent": newBigBoardSpot,
           "BigBoardLastMonth": bigBoardCurrentSpot,
           "BigBoardChange": bigBoardChange
@@ -88,7 +88,7 @@ class Admin extends React.Component{
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
-    db.collection("class2026").where("Tier", ">", -1)
+    db.collection("class2027").where("Tier", ">", -1)
     .get()
     .then((doc) => {
       doc.docs.map(function(prospectDoc) {
@@ -301,9 +301,9 @@ class Admin extends React.Component{
           // grab email for current franchise
           let email = teamDoc.data().email;
           let abrev = teamDoc.data().abrev;
-          // use url property of each element in array to find doc in class2026 collection
+          // use url property of each element in array to find doc in class2027 collection
           interviewList.forEach(function(prospect) {
-            let docRef = db.collection('class2026').doc(prospect.url);
+            let docRef = db.collection('class2027').doc(prospect.url);
             docRef.get().then(function(doc) {
               // create new doc in interviews collection with randomized ratings based on referenced docs
               let fullNameLowerCase = (doc.data().LastName + doc.data().FirstName).toLowerCase();
@@ -388,9 +388,9 @@ class Admin extends React.Component{
           // grab email for current franchise
           let email = teamDoc.data().email;
           let abrev = teamDoc.data().abrev;
-          // use url property of each element in array to find doc in class2026 collection
+          // use url property of each element in array to find doc in class2027 collection
           scoutList.forEach(function(prospect) {
-            let docRef = db.collection('class2026').doc(prospect.url);
+            let docRef = db.collection('class2027').doc(prospect.url);
             docRef.get().then(function(doc) {
 
               // create new doc in scouts collection with randomized ratings based on referenced docs
@@ -587,7 +587,7 @@ class Admin extends React.Component{
       });
       console.log(scouts);
       //compare names in class list to scout list to get TimesScouted
-      db.collection("class2026")
+      db.collection("class2027")
       .get()
       .then((docSnapShot) => {
         docSnapShot.forEach((doc) => {
@@ -602,7 +602,7 @@ class Admin extends React.Component{
           let last = doc.data().LastName;
           let fullName = last + first;
           fullName = fullName.toLowerCase().replace(/[, ']+/g, "").trim();
-          db.collection("class2026").doc(fullName).update({
+          db.collection("class2027").doc(fullName).update({
             "TimesScouted": timesScouted
           })
         });

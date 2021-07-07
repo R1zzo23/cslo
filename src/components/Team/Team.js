@@ -14,7 +14,8 @@ const options = [
   { value: 'all', label: 'All' },
   { value: '2024', label: '2024' },
   { value: '2025', label: '2025' },
-  { value: '2026', label: '2026' }
+  { value: '2026', label: '2026' },
+  { value: '2027', label: '2027' }
 ];
 
 const scoutPeriods = [
@@ -58,7 +59,7 @@ class Team extends React.Component{
         { label: "First", key: "FirstName" },
         { label: "Last", key: "LastName" },
         { label: "POS", key: "Position"},
-        { label: "YEAR", key: "Year"}, 
+        { label: "YEAR", key: "Year"},
         { label: "AGE", key: "Age"},
         { label: "HT", key: "DisplayHeight"},
         { label: "WT", key: "Weight"},
