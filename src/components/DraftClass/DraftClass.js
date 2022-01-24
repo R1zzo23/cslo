@@ -5,6 +5,7 @@ import class2024 from './2024CSLDraftBasic.json';
 import class2025 from './2025_basic.json';
 import class2026 from './2026_basic.json';
 import class2027 from './2027_basic.json';
+import class2028 from './2028_basic.json';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
 import { CSVLink, CSVDownload } from "react-csv"
@@ -81,6 +82,7 @@ class DraftClass extends React.Component{
     else if (year === '2025') collectionRef = 'combine2025';
     else if (year === '2026') collectionRef = 'combine2026';
     else if (year === '2027') collectionRef = 'combine2027';
+    else if (year === '2028') collectionRef = 'combine2028';
     // grab all scouts for this franchise
     db.collection(collectionRef)
     .get()
@@ -184,6 +186,16 @@ class DraftClass extends React.Component{
                   data={class2027}
                   columns={columns}
                   defaultPageSize = {class2027.length}
+                />
+        );
+    }
+      else if (this.state.year === 2028) {
+        draftTable = (
+
+        <ReactTable
+                  data={class2028}
+                  columns={columns}
+                  defaultPageSize = {class2028.length}
                 />
         );
     }
