@@ -186,12 +186,12 @@ class Admin extends React.Component{
             currentScoutPoints = parseInt(teamDoc.data().availableScouts);
             let awardedPoints = 0;
             if (articleType === 'wiretap') {
-              if (toggle.checked) awardedPoints = 14;
-              else awardedPoints = 7;
+              if (toggle.checked) awardedPoints = 25;
+              else awardedPoints = 12;
             }
             else if (articleType === 'insider'){
-              if (toggle.checked) awardedPoints = 28;
-              else awardedPoints = 14;
+              if (toggle.checked) awardedPoints = 50;
+              else awardedPoints = 25;
             }
 
             currentScoutPoints += awardedPoints;
