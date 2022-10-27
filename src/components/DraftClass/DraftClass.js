@@ -181,34 +181,34 @@ class DraftClass extends React.Component{
               />
       );
     }
-      else if (this.state.year === 2027) {
-        draftTable = (
+    else if (this.state.year === 2027) {
+      draftTable = (
 
-        <ReactTable
-                  data={class2027}
-                  columns={columns}
-                  defaultPageSize = {class2027.length}
-                />
-        );
+      <ReactTable
+                data={class2027}
+                columns={columns}
+                defaultPageSize = {class2027.length}
+              />
+      );
     }
-      else if (this.state.year === 2028) {
+    else if (this.state.year === 2028) {
+      draftTable = (
+
+      <ReactTable
+                data={class2028}
+                columns={columns}
+                defaultPageSize = {class2028.length}
+              />
+      );
+      /*else if (this.state.year === 2029) {
         draftTable = (
 
         <ReactTable
-                  data={class2028}
+                  data={class2029}
                   columns={columns}
-                  defaultPageSize = {class2028.length}
+                  defaultPageSize = {class2029.length}
                 />
-        );
-        else if (this.state.year === 2029) {
-          draftTable = (
-
-          <ReactTable
-                    data={class2029}
-                    columns={columns}
-                    defaultPageSize = {class2029.length}
-                  />
-          );
+        );*/
     }
 
     return (
