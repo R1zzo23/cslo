@@ -6,6 +6,7 @@ import class2025 from './2025_basic.json';
 import class2026 from './2026_basic.json';
 import class2027 from './2027_basic.json';
 import class2028 from './2028_basic.json';
+import class2029 from './2029_basic.json';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
 import { CSVLink, CSVDownload } from "react-csv"
@@ -198,6 +199,15 @@ class DraftClass extends React.Component{
                   defaultPageSize = {class2028.length}
                 />
         );
+        else if (this.state.year === 2029) {
+          draftTable = (
+
+          <ReactTable
+                    data={class2029}
+                    columns={columns}
+                    defaultPageSize = {class2029.length}
+                  />
+          );
     }
 
     return (
