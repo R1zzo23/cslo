@@ -200,15 +200,16 @@ class DraftClass extends React.Component{
                 defaultPageSize = {class2028.length}
               />
       );
-      /*else if (this.state.year === 2029) {
-        draftTable = (
+    }
+    else if (this.state.year === 2029) {
+      draftTable = (
 
-        <ReactTable
-                  data={class2029}
-                  columns={columns}
-                  defaultPageSize = {class2029.length}
-                />
-        );*/
+      <ReactTable
+                data={class2029}
+                columns={columns}
+                defaultPageSize = {class2029.length}
+              />
+      );
     }
 
     return (
