@@ -197,10 +197,10 @@ class Admin extends React.Component{
             currentScoutPoints += awardedPoints;
 
             if (toggle.checked) {
-              if (currentScoutPoints > 28) currentScoutPoints = 28;
+              if (currentScoutPoints > 100) currentScoutPoints = 100;
             }
             else if (!toggle.checked){
-              if (currentScoutPoints > 14) currentScoutPoints = 14;
+              if (currentScoutPoints > 50) currentScoutPoints = 50;
             }
             if (x === 1) {
               db.collection("franchises").doc(abrev).update({
