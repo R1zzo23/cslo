@@ -15,6 +15,7 @@ class Admin extends React.Component{
     super(props);
     this.state = {
       articleList: [],
+      teamList: [],
       currentUID: ''
     };
     this.runScouts = this.runScouts.bind(this);
@@ -23,6 +24,26 @@ class Admin extends React.Component{
     this.approveArticle = this.approveArticle.bind(this);
     this.denyArticle = this.denyArticle.bind(this);
     this.runBigBoard = this.runBigBoard.bind(this);
+  }
+  updateEmails() {
+    console.log("updating emails")
+    const fire = this.props.firebase;
+    const db = fire.auth.app.firebase_.firestore();
+    db.collection("franchises")
+    .get()
+    .then((doc) => {
+      doc.docs.map(function(teamDoc) {
+        for (var i = 0; i < this.state.teamList.length(); i++)
+        {
+          if (teamDoc.data().abrev == this.state.teamList[i].abrev)
+          {
+            db.collection("franchises").doc(teamDoc).update({
+              'email': this.state.teamlist[i].email
+            })
+          }
+        }
+      })
+    })
   }
   runBigBoard() {
     const fire = this.props.firebase;
@@ -232,6 +253,7 @@ class Admin extends React.Component{
   }
   componentDidMount() {
     let list = [];
+    let franchiseList = [];
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
@@ -243,6 +265,14 @@ class Admin extends React.Component{
     .then((querySnapshot) => {
       querySnapshot.docs.map(function(teamDoc) {
         // grab article url and articleType
+        let abreviation = teamDoc.data().abrev;
+        let emailAddress = teamDoc.data().email;
+        let thisTeam = {
+          abrev: abreviation,
+          email: emailAddress
+        };
+        franchiseList.push(thisTeam);
+
         let articleLink1 = teamDoc.data().articleURL1;
         let articleType1 = teamDoc.data().articleType1;
         let articleTitle1 = teamDoc.data().articleTitle1;
@@ -275,7 +305,8 @@ class Admin extends React.Component{
         if (articleLink2 && articleType2) list.push(article2);
       });
       this.setState({
-        articleList: list
+        articleList: list,
+        teamList: franchiseList
       });
     });
   }
@@ -611,6 +642,7 @@ class Admin extends React.Component{
   }
   render(){
     let articleTable = '';
+    let franchiseTable = '';
     if (this.state.articleList) {
       articleTable = (
         <div>
@@ -634,6 +666,28 @@ class Admin extends React.Component{
                 <td>{article.status}</td>
                 <td><button onClick={() => this.approveArticle(article.abrev, article.type, article.articleIndex)} className="btn btn-success">APPROVE</button></td>
                 <td><button onClick={() => this.denyArticle(article.abrev, article.type, article.articleIndex)} className="btn btn-danger">DENY</button></td>
+              </tr>
+            )}
+            </tbody>
+          </table>
+        </div>
+      );
+    }
+    if (this.state.teamList) {
+      franchiseTable = (
+        <div>
+          <table className='table table-sm'>
+            <thead>
+              <tr>
+                <th>TEAM</th>
+                <th>EMAIL</th>
+              </tr>
+            </thead>
+            <tbody>
+            {this.state.teamList.map((team, index) =>
+              <tr>
+                <td>{team.abrev}</td>
+                <td><input size="50" defaultValue={team.email} type="text" id="fname" name="fname"></input></td>
               </tr>
             )}
             </tbody>
@@ -703,16 +757,11 @@ class Admin extends React.Component{
           </div>
         </div>
         <div class='row'>
-          <ul><h3>Edit Scouting Deadlines</h3>
-            <li>Scouting Period #1: <input type="text" /><button id='btnScoutingDeadline1'>OK</button></li>
-            <li>Scouting Period #2: <input type="text" /><button id='btnScoutingDeadline2'>OK</button></li>
-            <li>Scouting Period #3: <input type="text" /><button id='btnScoutingDeadline3'>OK</button></li>
-            <li>Scouting Period #4: <input type="text" /><button id='btnScoutingDeadline4'>OK</button></li>
-            <li>Scouting Period #5: <input type="text" /><button id='btnScoutingDeadline5'>OK</button></li>
-            <li>Scouting Period #6: <input type="text" /><button id='btnScoutingDeadline6'>OK</button></li>
-            <li>Scouting Period #7: <input type="text" /><button id='btnScoutingDeadline7'>OK</button></li>
-            <li>Scouting Period #8: <input type="text" /><button id='btnScoutingDeadline8'>OK</button></li>
-          </ul>
+          <div class='col-sm-12 text-center'>
+            <h3>Edit Franchise's GM Email Address</h3>
+            {franchiseTable}
+            <button onClick={this.updateEmails} className='btn updateEmailsBtn'>Update Emails</button>
+          </div>
         </div>
       </div>
     );
