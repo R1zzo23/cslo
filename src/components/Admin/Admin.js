@@ -25,17 +25,23 @@ class Admin extends React.Component{
     this.denyArticle = this.denyArticle.bind(this);
     this.runBigBoard = this.runBigBoard.bind(this);
   }
-  updateEmails() {
+  updateEmails(teamSelection, newEmail) {
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
     console.log("updating emails");
+    console.log(teamSelection + " => " + newEmail);
 
     db.collection("franchises")
     .get()
     .then((doc) => {
       doc.forEach((team) => {
-        let abrev = team.data().abrev;
+        if (team.data().abrev == teamSelection) {
+          db.collection("franchises").doc(teamSelection).update({
+            "email": newEmail
+          })
+        }
+        /*let abrev = team.data().abrev;
         for (var i = 0; i < this.state.teamList.length; i++)
         {
           if (team.data().abrev == this.state.teamList[i].abrev)
@@ -46,7 +52,7 @@ class Admin extends React.Component{
               "email": email
             })
           }
-        }
+        }*/
       });
     })
   }
@@ -692,7 +698,7 @@ class Admin extends React.Component{
             {this.state.teamList.map((team, index) =>
               <tr>
                 <td>{team.abrev}</td>
-                <td><input size="50" defaultValue={team.email} type="text" id="fname" name="fname"></input></td>
+                <td>{team.email}</td>
               </tr>
             )}
             </tbody>
@@ -764,8 +770,16 @@ class Admin extends React.Component{
         <div class='row'>
           <div class='col-sm-12 text-center'>
             <h3>Edit Franchise's GM Email Address</h3>
+            <select id='teamSelection'>
+            { this.state.teamList.map((team, i) =>
+              <option abrev={team.abrev}>
+                {team.abrev}
+              </option>
+            )}
+            </select>
+            <input size="50" type="text" id="newEmail" name="newEmail"></input>
+            <button onClick={() => this.updateEmails(document.getElementById("teamSelection").value, document.getElementById("newEmail").value)} className='btn updateEmailsBtn'>Update Email</button>
             {franchiseTable}
-            <button onClick={() => this.updateEmails()} className='btn updateEmailsBtn'>Update Emails</button>
           </div>
         </div>
       </div>
