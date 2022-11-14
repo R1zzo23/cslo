@@ -26,23 +26,28 @@ class Admin extends React.Component{
     this.runBigBoard = this.runBigBoard.bind(this);
   }
   updateEmails() {
-    console.log("updating emails")
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
+
+    console.log("updating emails");
+
     db.collection("franchises")
     .get()
     .then((doc) => {
-      doc.docs.map(function(teamDoc) {
-        for (var i = 0; i < this.state.teamList.length(); i++)
+      doc.forEach((team) => {
+        let abrev = team.data().abrev;
+        for (var i = 0; i < this.state.teamList.length; i++)
         {
-          if (teamDoc.data().abrev == this.state.teamList[i].abrev)
+          if (team.data().abrev == this.state.teamList[i].abrev)
           {
-            db.collection("franchises").doc(teamDoc).update({
-              'email': this.state.teamlist[i].email
+            let email = this.state.teamList[i].email;
+            console.log(team.data().email + " => " + email);
+            db.collection("franchises").doc(this.state.teamList[i].abrev).update({
+              "email": email
             })
           }
         }
-      })
+      });
     })
   }
   runBigBoard() {
@@ -760,7 +765,7 @@ class Admin extends React.Component{
           <div class='col-sm-12 text-center'>
             <h3>Edit Franchise's GM Email Address</h3>
             {franchiseTable}
-            <button onClick={this.updateEmails} className='btn updateEmailsBtn'>Update Emails</button>
+            <button onClick={() => this.updateEmails()} className='btn updateEmailsBtn'>Update Emails</button>
           </div>
         </div>
       </div>
