@@ -1,6 +1,7 @@
 {
   "name": "ajr-designs",
   "version": "0.1.0",
+  "homepage": "https://r1zzo23.github.io/cslo/",
   "private": false,
   "engines": {
     "npm": "6.4.1",
@@ -28,7 +29,6 @@
     "react-toggle": "^4.0.2",
     "recompose": "^0.30.0"
   },
-  "homepage": "https://r1zzo23.github.io/cslo/",
   "scripts": {
     "build-css": "node-sass-chokidar ./src -o ./src",
     "watch-css": "npm run build-css && node-sass-chokidar ./src -o ./src --watch --recursive",
