@@ -1,7 +1,7 @@
 {
   "name": "ajr-designs",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "engines": {
     "npm": "6.4.1",
     "node": "10.15.0"
@@ -33,6 +33,7 @@
     "watch-css": "npm run build-css && node-sass-chokidar ./src -o ./src --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
+    "homepage": "https://r1zzo23.github.io/cslo/",
     "predeploy" : "npm run build",
     "deploy" : "gh-pages -d build",
     "build-js": "react-scripts build",
