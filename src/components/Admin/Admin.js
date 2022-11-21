@@ -26,174 +26,204 @@ class Admin extends React.Component{
     this.runBigBoard = this.runBigBoard.bind(this);
   }
   updateEmails(teamSelection, newEmail) {
+    const adminUID2 = '7rE2d3qAg6PYFstciBnjqkxLocz2'; // Rizzo
+    const adminUID = 'LvdYBDTbvZUxXlgJjkGzJlwvy0H3'; // Andrei
+    const adminUID3 = 'GxQK5VTbwZgFVomtXQ5A3mtnSLt2'; // Dejan
+
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
-    console.log("updating emails");
-    console.log(teamSelection + " => " + newEmail);
+    const currentUID = fire.auth.currentUser.uid;
 
-    db.collection("franchises")
-    .get()
-    .then((doc) => {
-      doc.forEach((team) => {
-        if (team.data().abrev == teamSelection) {
-          db.collection("franchises").doc(teamSelection).update({
-            "email": newEmail
-          })
-        }
-        /*let abrev = team.data().abrev;
-        for (var i = 0; i < this.state.teamList.length; i++)
-        {
-          if (team.data().abrev == this.state.teamList[i].abrev)
-          {
-            let email = this.state.teamList[i].email;
-            console.log(team.data().email + " => " + email);
-            db.collection("franchises").doc(this.state.teamList[i].abrev).update({
-              "email": email
+    if (currentUID !== adminUID) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
+      alert("Current user does not have admininstrative privileges!");
+    }
+    else {
+      db.collection("franchises")
+      .get()
+      .then((doc) => {
+        doc.forEach((team) => {
+          if (team.data().abrev == teamSelection) {
+            db.collection("franchises").doc(teamSelection).update({
+              "email": newEmail
             })
           }
-        }*/
-      });
-    })
+          /*let abrev = team.data().abrev;
+          for (var i = 0; i < this.state.teamList.length; i++)
+          {
+            if (team.data().abrev == this.state.teamList[i].abrev)
+            {
+              let email = this.state.teamList[i].email;
+              console.log(team.data().email + " => " + email);
+              db.collection("franchises").doc(this.state.teamList[i].abrev).update({
+                "email": email
+              })
+            }
+          }*/
+        });
+      })
+    }
   }
   runBigBoard() {
+    const adminUID2 = '7rE2d3qAg6PYFstciBnjqkxLocz2'; // Rizzo
+    const adminUID = 'LvdYBDTbvZUxXlgJjkGzJlwvy0H3'; // Andrei
+    const adminUID3 = 'GxQK5VTbwZgFVomtXQ5A3mtnSLt2'; // Dejan
+
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
-    db.collection("class2029")
-    .get()
-    .then((doc) => {
-      doc.docs.map(function(prospectDoc) {
-        //get prospect document name
-        let first = prospectDoc.data().FirstName;
-        let last = prospectDoc.data().LastName;
-        let fullName = last + first;
-        fullName = fullName.toLowerCase().replace(/[, ']+/g, "").trim();
-        //get BigBoardScore
-        let bigBoardScore = prospectDoc.data().BigBoardScore;
-        //get number of times scouted for prospect
-        let timesScouted = prospectDoc.data().TimesScouted;
-        //random variation of +-5;
-        let variation = Math.floor(Math.random() * (5 - -5) + -5)/100;
-        console.log("variation: " + variation);
-        let calculatedBigBoardScore = Math.floor((bigBoardScore + (timesScouted * 10)) * (1 + variation));
-        db.collection("class2029").doc(fullName).update({
-          "CurrentBigBoardScore": calculatedBigBoardScore
-        })
-      });
-    });
+    const currentUID = fire.auth.currentUser.uid;
 
-    let bigBoardArray = [];
-    // grab all scouts for this franchise
-    db.collection("class2029")
-    .get()
-    .then((docSnapshot) => {
-      docSnapshot.forEach((doc) => {
-        // add each scout to array
-        bigBoardArray.push(doc.data());
-      });
-      // sort scouts array by LastName then FirstName
-      bigBoardArray.sort((a, b) => (a.CurrentBigBoardScore < b.CurrentBigBoardScore) ? 1 : (a.CurrentBigBoardScore === b.CurrentBigBoardScore) ? ((a.LastName > b.LastName) ? 1 : -1) : -1 )
-
-      for (let i = 0; i < bigBoardArray.length; i++) {
-        //hold info for BigBoardCurrent
-        let bigBoardCurrentSpot = bigBoardArray[i].BigBoardCurrent;
-        //get prospect document name
-        let first = bigBoardArray[i].FirstName;
-        let last = bigBoardArray[i].LastName;
-        let fullName = last + first;
-        fullName = fullName.toLowerCase().replace(/[, ']+/g, "").trim();
-
-        let newBigBoardSpot = i + 1;
-        let bigBoardChange =  bigBoardCurrentSpot - newBigBoardSpot;
-        if (bigBoardChange > 0) bigBoardChange = "+" + bigBoardChange;
-
-        db.collection("class2029").doc(fullName).update({
-          "BigBoardCurrent": newBigBoardSpot,
-          "BigBoardLastMonth": bigBoardCurrentSpot,
-          "BigBoardChange": bigBoardChange
+    if (currentUID !== adminUID) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
+      alert("Current user does not have admininstrative privileges!");
+    }
+    else {
+      db.collection("class2029")
+      .get()
+      .then((doc) => {
+        doc.docs.map(function(prospectDoc) {
+          //get prospect document name
+          let first = prospectDoc.data().FirstName;
+          let last = prospectDoc.data().LastName;
+          let fullName = last + first;
+          fullName = fullName.toLowerCase().replace(/[, ']+/g, "").trim();
+          //get BigBoardScore
+          let bigBoardScore = prospectDoc.data().BigBoardScore;
+          //get number of times scouted for prospect
+          let timesScouted = prospectDoc.data().TimesScouted;
+          //random variation of +-5;
+          let variation = Math.floor(Math.random() * (5 - -5) + -5)/100;
+          console.log("variation: " + variation);
+          let calculatedBigBoardScore = Math.floor((bigBoardScore + (timesScouted * 10)) * (1 + variation));
+          db.collection("class2029").doc(fullName).update({
+            "CurrentBigBoardScore": calculatedBigBoardScore
+          })
         });
-      }
-    });
+      });
+
+      let bigBoardArray = [];
+      // grab all scouts for this franchise
+      db.collection("class2029")
+      .get()
+      .then((docSnapshot) => {
+        docSnapshot.forEach((doc) => {
+          // add each scout to array
+          bigBoardArray.push(doc.data());
+        });
+        // sort scouts array by LastName then FirstName
+        bigBoardArray.sort((a, b) => (a.CurrentBigBoardScore < b.CurrentBigBoardScore) ? 1 : (a.CurrentBigBoardScore === b.CurrentBigBoardScore) ? ((a.LastName > b.LastName) ? 1 : -1) : -1 )
+
+        for (let i = 0; i < bigBoardArray.length; i++) {
+          //hold info for BigBoardCurrent
+          let bigBoardCurrentSpot = bigBoardArray[i].BigBoardCurrent;
+          //get prospect document name
+          let first = bigBoardArray[i].FirstName;
+          let last = bigBoardArray[i].LastName;
+          let fullName = last + first;
+          fullName = fullName.toLowerCase().replace(/[, ']+/g, "").trim();
+
+          let newBigBoardSpot = i + 1;
+          let bigBoardChange =  bigBoardCurrentSpot - newBigBoardSpot;
+          if (bigBoardChange > 0) bigBoardChange = "+" + bigBoardChange;
+
+          db.collection("class2029").doc(fullName).update({
+            "BigBoardCurrent": newBigBoardSpot,
+            "BigBoardLastMonth": bigBoardCurrentSpot,
+            "BigBoardChange": bigBoardChange
+          });
+        }
+      });
+    }
   }
   runCombine() {
+    const adminUID2 = '7rE2d3qAg6PYFstciBnjqkxLocz2'; // Rizzo
+    const adminUID = 'LvdYBDTbvZUxXlgJjkGzJlwvy0H3'; // Andrei
+    const adminUID3 = 'GxQK5VTbwZgFVomtXQ5A3mtnSLt2'; // Dejan
+
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
 
-    db.collection("class2029").where("Tier", ">", -1)
-    .get()
-    .then((doc) => {
-      doc.docs.map(function(prospectDoc) {
-        let fullNameLowerCase = (prospectDoc.data().LastName + prospectDoc.data().FirstName).toLowerCase().replace(/[, '.]+/g, "").trim();
-        let scoutedFG_RA = Math.floor(Math.random()*((prospectDoc.data().FG_RA + 4)-(prospectDoc.data().FG_RA-4)+1))+(prospectDoc.data().FG_RA-4);
-        if (scoutedFG_RA > 99) scoutedFG_RA = 99;
-        let scoutedFG_ITP = Math.floor(Math.random()*((prospectDoc.data().FG_ITP + 4)-(prospectDoc.data().FG_ITP-4)+1))+(prospectDoc.data().FG_ITP-4);
-        if (scoutedFG_ITP > 99) scoutedFG_ITP = 99;
-        let scoutedFG_MID = Math.floor(Math.random()*((prospectDoc.data().FG_MID + 4)-(prospectDoc.data().FG_MID-4)+1))+(prospectDoc.data().FG_MID-4);
-        if (scoutedFG_MID > 99) scoutedFG_MID = 99;
-        let scoutedFG_COR = Math.floor(Math.random()*((prospectDoc.data().FG_COR + 4)-(prospectDoc.data().FG_COR-4)+1))+(prospectDoc.data().FG_COR-4);
-        if (scoutedFG_COR < 0) scoutedFG_COR = 0;
-        if (scoutedFG_COR > 99) scoutedFG_COR = 99;
-        let scoutedFG_ATB = Math.floor(Math.random()*((prospectDoc.data().FG_ATB + 4)-(prospectDoc.data().FG_ATB-4)+1))+(prospectDoc.data().FG_ATB-4);
-        if (scoutedFG_ATB < 0) scoutedFG_ATB = 0;
-        if (scoutedFG_ATB > 99) scoutedFG_ATB = 99;
-        let scoutedFT = Math.floor(Math.random()*((prospectDoc.data().FT + 4)-(prospectDoc.data().FT-4)+1))+(prospectDoc.data().FT-4);
-        if (scoutedFT > 99) scoutedFT = 99;
-        let scoutedDrawFoul = Math.floor(Math.random()*((prospectDoc.data().DrawFoul + 4)-(prospectDoc.data().DrawFoul-4)+1))+(prospectDoc.data().DrawFoul-4);
-        if (scoutedDrawFoul < 0) scoutedDrawFoul = 0;
-        if (scoutedDrawFoul > 99) scoutedDrawFoul = 99;
-        let scoutedScoring = Math.floor(Math.random()*((prospectDoc.data().Scoring + 10)-(prospectDoc.data().Scoring-10)+1))+(prospectDoc.data().Scoring-10);
-        if (scoutedScoring > 99) scoutedScoring = 99;
-        let scoutedPassing = Math.floor(Math.random()*((prospectDoc.data().Passing + 10)-(prospectDoc.data().Passing-10)+1))+(prospectDoc.data().Passing-10);
-        if (scoutedPassing > 99) scoutedPassing = 99;
-        let scoutedHandling = Math.floor(Math.random()*((prospectDoc.data().Handling + 10)-(prospectDoc.data().Handling-10)+1))+(prospectDoc.data().Handling-10);
-        if (scoutedHandling > 99) scoutedHandling = 99;
-        let scoutedOReb = Math.floor(Math.random()*((prospectDoc.data().OReb + 10)-(prospectDoc.data().OReb-10)+1))+(prospectDoc.data().OReb-10);
-        if (scoutedOReb > 99) scoutedOReb = 99;
-        let scoutedDReb = Math.floor(Math.random()*((prospectDoc.data().DReb + 10)-(prospectDoc.data().DReb-10)+1))+(prospectDoc.data().DReb-10);
-        if (scoutedDReb > 99) scoutedDReb = 99;
-        let scoutedBlock = Math.floor(Math.random()*((prospectDoc.data().Block + 10)-(prospectDoc.data().Block-10)+1))+(prospectDoc.data().Block-10);
-        if (scoutedBlock > 99) scoutedBlock = 99;
-        let scoutedSteal = Math.floor(Math.random()*((prospectDoc.data().Steal + 10)-(prospectDoc.data().Steal-10)+1))+(prospectDoc.data().Steal-10);
-        if (scoutedSteal > 99) scoutedSteal = 99;
-        let scoutedDefender = Math.floor(Math.random()*((prospectDoc.data().Defender + 10)-(prospectDoc.data().Defender-10)+1))+(prospectDoc.data().Defender-10);
-        if (scoutedDefender > 99) scoutedDefender = 99;
-        let scoutedDiscipline = Math.floor(Math.random()*((prospectDoc.data().Discipline + 10)-(prospectDoc.data().Discipline-10)+1))+(prospectDoc.data().Discipline-10);
-        if (scoutedDiscipline > 99) scoutedDiscipline = 99;
-        let scoutedBballIQ = Math.floor(Math.random()*((prospectDoc.data().BballIQ + 10)-(prospectDoc.data().BballIQ-10)+1))+(prospectDoc.data().BballIQ-10);
-        if (scoutedBballIQ > 99) scoutedBballIQ = 99;
+    const currentUID = fire.auth.currentUser.uid;
 
-        db.collection('combine2029').doc(fullNameLowerCase).set({
-          FullNameLowerCase: fullNameLowerCase,
-          FirstName: prospectDoc.data().FirstName,
-          LastName: prospectDoc.data().LastName,
-          Position: prospectDoc.data().Position,
-          Age: prospectDoc.data().Age,
-          CollegeYear: prospectDoc.data().CollegeYear,
-          Height: prospectDoc.data().Height,
-          DisplayHeight: prospectDoc.data().DisplayHeight,
-          Weight:  prospectDoc.data().Weight,
-          College: prospectDoc.data().College,
-          FG_RA: scoutedFG_RA,
-          FG_ITP: scoutedFG_ITP,
-          FG_MID: scoutedFG_MID,
-          FG_COR: scoutedFG_COR,
-          FG_ATB: scoutedFG_ATB,
-          FT: scoutedFT,
-          Scoring: scoutedScoring,
-          Passing: scoutedPassing,
-          Handling: scoutedHandling,
-          OReb: scoutedOReb,
-          DReb: scoutedDReb,
-          Block: scoutedBlock,
-          Steal: scoutedSteal,
-          DrawFoul: scoutedDrawFoul,
-          Defender: scoutedDefender,
-          Discipline: scoutedDiscipline,
-          BballIQ: scoutedBballIQ
-        })
+    if (currentUID !== adminUID) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
+      alert("Current user does not have admininstrative privileges!");
+    }
+    else {
+      db.collection("class2029").where("Tier", ">", -1)
+      .get()
+      .then((doc) => {
+        doc.docs.map(function(prospectDoc) {
+          let fullNameLowerCase = (prospectDoc.data().LastName + prospectDoc.data().FirstName).toLowerCase().replace(/[, '.]+/g, "").trim();
+          let scoutedFG_RA = Math.floor(Math.random()*((prospectDoc.data().FG_RA + 4)-(prospectDoc.data().FG_RA-4)+1))+(prospectDoc.data().FG_RA-4);
+          if (scoutedFG_RA > 99) scoutedFG_RA = 99;
+          let scoutedFG_ITP = Math.floor(Math.random()*((prospectDoc.data().FG_ITP + 4)-(prospectDoc.data().FG_ITP-4)+1))+(prospectDoc.data().FG_ITP-4);
+          if (scoutedFG_ITP > 99) scoutedFG_ITP = 99;
+          let scoutedFG_MID = Math.floor(Math.random()*((prospectDoc.data().FG_MID + 4)-(prospectDoc.data().FG_MID-4)+1))+(prospectDoc.data().FG_MID-4);
+          if (scoutedFG_MID > 99) scoutedFG_MID = 99;
+          let scoutedFG_COR = Math.floor(Math.random()*((prospectDoc.data().FG_COR + 4)-(prospectDoc.data().FG_COR-4)+1))+(prospectDoc.data().FG_COR-4);
+          if (scoutedFG_COR < 0) scoutedFG_COR = 0;
+          if (scoutedFG_COR > 99) scoutedFG_COR = 99;
+          let scoutedFG_ATB = Math.floor(Math.random()*((prospectDoc.data().FG_ATB + 4)-(prospectDoc.data().FG_ATB-4)+1))+(prospectDoc.data().FG_ATB-4);
+          if (scoutedFG_ATB < 0) scoutedFG_ATB = 0;
+          if (scoutedFG_ATB > 99) scoutedFG_ATB = 99;
+          let scoutedFT = Math.floor(Math.random()*((prospectDoc.data().FT + 4)-(prospectDoc.data().FT-4)+1))+(prospectDoc.data().FT-4);
+          if (scoutedFT > 99) scoutedFT = 99;
+          let scoutedDrawFoul = Math.floor(Math.random()*((prospectDoc.data().DrawFoul + 4)-(prospectDoc.data().DrawFoul-4)+1))+(prospectDoc.data().DrawFoul-4);
+          if (scoutedDrawFoul < 0) scoutedDrawFoul = 0;
+          if (scoutedDrawFoul > 99) scoutedDrawFoul = 99;
+          let scoutedScoring = Math.floor(Math.random()*((prospectDoc.data().Scoring + 10)-(prospectDoc.data().Scoring-10)+1))+(prospectDoc.data().Scoring-10);
+          if (scoutedScoring > 99) scoutedScoring = 99;
+          let scoutedPassing = Math.floor(Math.random()*((prospectDoc.data().Passing + 10)-(prospectDoc.data().Passing-10)+1))+(prospectDoc.data().Passing-10);
+          if (scoutedPassing > 99) scoutedPassing = 99;
+          let scoutedHandling = Math.floor(Math.random()*((prospectDoc.data().Handling + 10)-(prospectDoc.data().Handling-10)+1))+(prospectDoc.data().Handling-10);
+          if (scoutedHandling > 99) scoutedHandling = 99;
+          let scoutedOReb = Math.floor(Math.random()*((prospectDoc.data().OReb + 10)-(prospectDoc.data().OReb-10)+1))+(prospectDoc.data().OReb-10);
+          if (scoutedOReb > 99) scoutedOReb = 99;
+          let scoutedDReb = Math.floor(Math.random()*((prospectDoc.data().DReb + 10)-(prospectDoc.data().DReb-10)+1))+(prospectDoc.data().DReb-10);
+          if (scoutedDReb > 99) scoutedDReb = 99;
+          let scoutedBlock = Math.floor(Math.random()*((prospectDoc.data().Block + 10)-(prospectDoc.data().Block-10)+1))+(prospectDoc.data().Block-10);
+          if (scoutedBlock > 99) scoutedBlock = 99;
+          let scoutedSteal = Math.floor(Math.random()*((prospectDoc.data().Steal + 10)-(prospectDoc.data().Steal-10)+1))+(prospectDoc.data().Steal-10);
+          if (scoutedSteal > 99) scoutedSteal = 99;
+          let scoutedDefender = Math.floor(Math.random()*((prospectDoc.data().Defender + 10)-(prospectDoc.data().Defender-10)+1))+(prospectDoc.data().Defender-10);
+          if (scoutedDefender > 99) scoutedDefender = 99;
+          let scoutedDiscipline = Math.floor(Math.random()*((prospectDoc.data().Discipline + 10)-(prospectDoc.data().Discipline-10)+1))+(prospectDoc.data().Discipline-10);
+          if (scoutedDiscipline > 99) scoutedDiscipline = 99;
+          let scoutedBballIQ = Math.floor(Math.random()*((prospectDoc.data().BballIQ + 10)-(prospectDoc.data().BballIQ-10)+1))+(prospectDoc.data().BballIQ-10);
+          if (scoutedBballIQ > 99) scoutedBballIQ = 99;
+
+          db.collection('combine2029').doc(fullNameLowerCase).set({
+            FullNameLowerCase: fullNameLowerCase,
+            FirstName: prospectDoc.data().FirstName,
+            LastName: prospectDoc.data().LastName,
+            Position: prospectDoc.data().Position,
+            Age: prospectDoc.data().Age,
+            CollegeYear: prospectDoc.data().CollegeYear,
+            Height: prospectDoc.data().Height,
+            DisplayHeight: prospectDoc.data().DisplayHeight,
+            Weight:  prospectDoc.data().Weight,
+            College: prospectDoc.data().College,
+            FG_RA: scoutedFG_RA,
+            FG_ITP: scoutedFG_ITP,
+            FG_MID: scoutedFG_MID,
+            FG_COR: scoutedFG_COR,
+            FG_ATB: scoutedFG_ATB,
+            FT: scoutedFT,
+            Scoring: scoutedScoring,
+            Passing: scoutedPassing,
+            Handling: scoutedHandling,
+            OReb: scoutedOReb,
+            DReb: scoutedDReb,
+            Block: scoutedBlock,
+            Steal: scoutedSteal,
+            DrawFoul: scoutedDrawFoul,
+            Defender: scoutedDefender,
+            Discipline: scoutedDiscipline,
+            BballIQ: scoutedBballIQ
+          })
+        });
       });
-    });
+    }
   }
   approveArticle(abrev, articleType, x) {
     const toggleList = document.getElementsByClassName('react-toggle-screenreader-only');
