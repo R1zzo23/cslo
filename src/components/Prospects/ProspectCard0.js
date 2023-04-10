@@ -18,8 +18,8 @@ const ProspectPage = ({firebase}) => (
 );
 
 class ProspectCard extends React.Component {
-  constructor(props: IProps) {
-    super(props);
+  constructor(/*props: IProps*/) {
+    super(/*props*/);
     this.state = {
       data: [],
       prospect: []
@@ -84,7 +84,7 @@ class ProspectCard extends React.Component {
     }
     else if (year === 2030){
       let i = class30.findIndex((prospect) => ((prospect.LastName + prospect.FirstName).toLowerCase().replace(/[, ']+/g, "").trim()) === fullNameLowerCase);
-      prospect = class29[i];
+      prospect = class30[i];
     }
     let ballActionsData = [];
     let floorAreasData = [];

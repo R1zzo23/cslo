@@ -9,8 +9,8 @@ const BigBoard = ({firebase}) => (
 );
 
 class Board extends React.Component{
-  constructor(props: IProps) {
-    super(props);
+  constructor(/*props: IProps*/) {
+    super(/*props*/);
     this.state = {
       prospectData: []
     };
