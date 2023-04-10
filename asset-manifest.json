@@ -1,15 +1,15 @@
 {
   "main.css": "/cslo/static/css/main.cda00aaa.chunk.css",
-  "main.js": "/cslo/static/js/main.8876c63b.chunk.js",
-  "main.js.map": "/cslo/static/js/main.8876c63b.chunk.js.map",
+  "main.js": "/cslo/static/js/main.b240c36c.chunk.js",
+  "main.js.map": "/cslo/static/js/main.b240c36c.chunk.js.map",
   "static/css/1.04f505b5.chunk.css": "/cslo/static/css/1.04f505b5.chunk.css",
   "static/js/1.b516f247.chunk.js": "/cslo/static/js/1.b516f247.chunk.js",
   "static/js/1.b516f247.chunk.js.map": "/cslo/static/js/1.b516f247.chunk.js.map",
   "runtime~main.js": "/cslo/static/js/runtime~main.21a65fb9.js",
   "runtime~main.js.map": "/cslo/static/js/runtime~main.21a65fb9.js.map",
-  "static/css/1.04f505b5.chunk.css.map": "/cslo/static/css/1.04f505b5.chunk.css.map",
   "static/css/main.cda00aaa.chunk.css.map": "/cslo/static/css/main.cda00aaa.chunk.css.map",
+  "static/css/1.04f505b5.chunk.css.map": "/cslo/static/css/1.04f505b5.chunk.css.map",
   "index.html": "/cslo/index.html",
-  "precache-manifest.27523f9624e153bac5475db36ac970c6.js": "/cslo/precache-manifest.27523f9624e153bac5475db36ac970c6.js",
+  "precache-manifest.7cac41767247bc80bed3e762e7bf2d3d.js": "/cslo/precache-manifest.7cac41767247bc80bed3e762e7bf2d3d.js",
   "service-worker.js": "/cslo/service-worker.js"
 }
