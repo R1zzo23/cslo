@@ -11,8 +11,8 @@ const AdminPage = ({firebase}) => (
 );
 
 class Admin extends React.Component{
-  constructor(props: IProps) {
-    super(props);
+  constructor(/*props: IProps*/) {
+    super(/*props*/);
     this.state = {
       articleList: [],
       teamList: [],
