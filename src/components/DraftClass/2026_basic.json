@@ -1,0 +1,812 @@
+[
+ {
+   "FirstName": "Muhammad-Ali",
+   "LastName": "Abdur-Rahkman",
+   "Position": 1,
+   "Age": 19,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-4",
+   "Weight": 190,
+   "College": "Michigan"
+ },
+ {
+   "FirstName": "Kyle",
+   "LastName": "Alexander",
+   "Position": 4,
+   "Age": 23,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-11",
+   "Weight": 222,
+   "College": "Tennessee"
+ },
+ {
+   "FirstName": "Rosco",
+   "LastName": "Allen",
+   "Position": 4,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-10",
+   "Weight": 220,
+   "College": "Stanford"
+ },
+ {
+   "FirstName": "Yudai",
+   "LastName": "Baba",
+   "Position": 2,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-5",
+   "Weight": 198,
+   "College": "Japan"
+ },
+ {
+   "FirstName": "Travis",
+   "LastName": "Bader",
+   "Position": 2,
+   "Age": 21,
+   "CollegeYear": 3,
+   "DisplayHeight": "6-5",
+   "Weight": 190,
+   "College": "Oakland"
+ },
+ {
+   "FirstName": "Dairis",
+   "LastName": "Bertans",
+   "Position": 2,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-4",
+   "Weight": 200,
+   "College": "Latvia"
+ },
+ {
+   "FirstName": "Metecan",
+   "LastName": "Birsen",
+   "Position": 3,
+   "Age": 20,
+   "CollegeYear": 2,
+   "DisplayHeight": "6-10",
+   "Weight": 223,
+   "College": "Turkey"
+ },
+ {
+   "FirstName": "Marques",
+   "LastName": "Bolden",
+   "Position": 5,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-10",
+   "Weight": 249,
+   "College": "Duke"
+ },
+ {
+   "FirstName": "Phil",
+   "LastName": "Booth",
+   "Position": 2,
+   "Age": 24,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-3",
+   "Weight": 194,
+   "College": "Villanova"
+ },
+ {
+   "FirstName": "Jarrell",
+   "LastName": "Brantley",
+   "Position": 4,
+   "Age": 20,
+   "CollegeYear": 2,
+   "DisplayHeight": "6-5",
+   "Weight": 250,
+   "College": "College of Charleston"
+ },
+ {
+   "FirstName": "Armoni",
+   "LastName": "Brooks",
+   "Position": 2,
+   "Age": 21,
+   "CollegeYear": 3,
+   "DisplayHeight": "6-3",
+   "Weight": 195,
+   "College": "Houston"
+ },
+ {
+   "FirstName": "Barry",
+   "LastName": "Brown Jr.",
+   "Position": 1,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-3",
+   "Weight": 195,
+   "College": "Kansas State"
+ },
+ {
+   "FirstName": "Shaq",
+   "LastName": "Buchanan",
+   "Position": 2,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-3",
+   "Weight": 190,
+   "College": "Murray State"
+ },
+ {
+   "FirstName": "Khadeen",
+   "LastName": "Carrington",
+   "Position": 1,
+   "Age": 18,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-4",
+   "Weight": 195,
+   "College": "Seton Hall"
+ },
+ {
+   "FirstName": "Jeffrey",
+   "LastName": "Carroll",
+   "Position": 3,
+   "Age": 20,
+   "CollegeYear": 2,
+   "DisplayHeight": "6-7",
+   "Weight": 181,
+   "College": "Oklahoma State"
+ },
+ {
+   "FirstName": "Dontay",
+   "LastName": "Caruthers",
+   "Position": 1,
+   "Age": 24,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-1",
+   "Weight": 191,
+   "College": "Buffalo"
+ },
+ {
+   "FirstName": "Chris",
+   "LastName": "Chiozza",
+   "Position": 1,
+   "Age": 23,
+   "CollegeYear": 4,
+   "DisplayHeight": "5-11",
+   "Weight": 175,
+   "College": "Florida"
+ },
+ {
+   "FirstName": "Chris",
+   "LastName": "Clemons",
+   "Position": 1,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "5-9",
+   "Weight": 180,
+   "College": "Campbell"
+ },
+ {
+   "FirstName": "Xavier",
+   "LastName": "Cooks",
+   "Position": 2,
+   "Age": 21,
+   "CollegeYear": 3,
+   "DisplayHeight": "6-8",
+   "Weight": 185,
+   "College": "Winthrop"
+ },
+ {
+   "FirstName": "Markel",
+   "LastName": "Crawford",
+   "Position": 2,
+   "Age": 23,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-4",
+   "Weight": 197,
+   "College": "Ole Miss"
+ },
+ {
+   "FirstName": "Jarrett",
+   "LastName": "Culver",
+   "Position": 2,
+   "Age": 20,
+   "CollegeYear": 2,
+   "DisplayHeight": "6-6",
+   "Weight": 195,
+   "College": "Texas Tech"
+ },
+ {
+   "FirstName": "A.J.",
+   "LastName": "Davis",
+   "Position": 2,
+   "Age": 20,
+   "CollegeYear": 2,
+   "DisplayHeight": "6-9",
+   "Weight": 215,
+   "College": "UCF"
+ },
+ {
+   "FirstName": "Jon",
+   "LastName": "Davis",
+   "Position": 1,
+   "Age": 23,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-2",
+   "Weight": 193,
+   "College": "Charlotte"
+ },
+ {
+   "FirstName": "Aubrey",
+   "LastName": "Dawkins",
+   "Position": 2,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-6",
+   "Weight": 205,
+   "College": "UCF"
+ },
+ {
+   "FirstName": "Finn",
+   "LastName": "Delany",
+   "Position": 4,
+   "Age": 20,
+   "CollegeYear": 2,
+   "DisplayHeight": "6-7",
+   "Weight": 225,
+   "College": "New Zealand"
+ },
+ {
+   "FirstName": "Michael",
+   "LastName": "Dowdy Jr.",
+   "Position": 1,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-0",
+   "Weight": 190,
+   "College": "Seton Hall"
+ },
+ {
+   "FirstName": "Malik",
+   "LastName": "Dunbar",
+   "Position": 3,
+   "Age": 23,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-6",
+   "Weight": 230,
+   "College": "Auburn"
+ },
+ {
+   "FirstName": "Obi",
+   "LastName": "Enechionyia",
+   "Position": 4,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-10",
+   "Weight": 220,
+   "College": "Temple"
+ },
+ {
+   "FirstName": "Ibrahima",
+   "LastName": "Fall Faye",
+   "Position": 5,
+   "Age": 20,
+   "CollegeYear": 2,
+   "DisplayHeight": "6-9",
+   "Weight": 229,
+   "College": "Senegal"
+ },
+ {
+   "FirstName": "Frankie",
+   "LastName": "Ferrari",
+   "Position": 1,
+   "Age": 24,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-1",
+   "Weight": 188,
+   "College": "San Francisco"
+ },
+ {
+   "FirstName": "Tre’Shaun",
+   "LastName": "Fletcher",
+   "Position": 3,
+   "Age": 24,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-7",
+   "Weight": 205,
+   "College": "Toledo"
+ },
+ {
+   "FirstName": "Marcus",
+   "LastName": "Foster",
+   "Position": 2,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-3",
+   "Weight": 210,
+   "College": "Creighton"
+ },
+ {
+   "FirstName": "Lennard",
+   "LastName": "Freeman",
+   "Position": 4,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-8",
+   "Weight": 267,
+   "College": "NC State"
+ },
+ {
+   "FirstName": "Darius",
+   "LastName": "Garland",
+   "Position": 1,
+   "Age": 19,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-1",
+   "Weight": 175,
+   "College": "Vanderbilt"
+ },
+ {
+   "FirstName": "Javonte",
+   "LastName": "Green",
+   "Position": 3,
+   "Age": 24,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-4",
+   "Weight": 220,
+   "College": "Radford"
+ },
+ {
+   "FirstName": "Rokas",
+   "LastName": "Gustys",
+   "Position": 4,
+   "Age": 23,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-9",
+   "Weight": 243,
+   "College": "Hofstra"
+ },
+ {
+   "FirstName": "Donta",
+   "LastName": "Hall",
+   "Position": 4,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-9",
+   "Weight": 230,
+   "College": "Alabama"
+ },
+ {
+   "FirstName": "Aric",
+   "LastName": "Holman",
+   "Position": 5,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-10",
+   "Weight": 225,
+   "College": "Mississippi State"
+ },
+ {
+   "FirstName": "De'Andre",
+   "LastName": "Hunter",
+   "Position": 3,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-7",
+   "Weight": 225,
+   "College": "Virginia"
+ },
+ {
+   "FirstName": "Hugo",
+   "LastName": "Invernizzi",
+   "Position": 3,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-5",
+   "Weight": 198,
+   "College": "France"
+ },
+ {
+   "FirstName": "Ebuka",
+   "LastName": "Izundu",
+   "Position": 5,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-10",
+   "Weight": 232,
+   "College": "Miami"
+ },
+ {
+   "FirstName": "Justin",
+   "LastName": "James",
+   "Position": 2,
+   "Age": 19,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-7",
+   "Weight": 181,
+   "College": "Wyoming"
+ },
+ {
+   "FirstName": "Peter",
+   "LastName": "Jok",
+   "Position": 2,
+   "Age": 23,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-6",
+   "Weight": 205,
+   "College": "Iowa"
+ },
+ {
+   "FirstName": "VJ",
+   "LastName": "King",
+   "Position": 3,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-6",
+   "Weight": 190,
+   "College": "Louisville"
+ },
+ {
+   "FirstName": "Christ",
+   "LastName": "Koumadje",
+   "Position": 5,
+   "Age": 18,
+   "CollegeYear": 1,
+   "DisplayHeight": "7-4",
+   "Weight": 265,
+   "College": "Florida State"
+ },
+ {
+   "FirstName": "Jock",
+   "LastName": "Landale",
+   "Position": 5,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-11",
+   "Weight": 256,
+   "College": "St. Mary's"
+ },
+ {
+   "FirstName": "Paris",
+   "LastName": "Lee",
+   "Position": 1,
+   "Age": 23,
+   "CollegeYear": 5,
+   "DisplayHeight": "5-11",
+   "Weight": 183,
+   "College": "Illinois State"
+ },
+ {
+   "FirstName": "Marcos",
+   "LastName": "Louzada Silva",
+   "Position": 2,
+   "Age": 20,
+   "CollegeYear": 2,
+   "DisplayHeight": "6-5",
+   "Weight": 188,
+   "College": "Brazil"
+ },
+ {
+   "FirstName": "Daryl",
+   "LastName": "Macon",
+   "Position": 2,
+   "Age": 21,
+   "CollegeYear": 3,
+   "DisplayHeight": "6-3",
+   "Weight": 185,
+   "College": "Arkansas"
+ },
+ {
+   "FirstName": "Fletcher",
+   "LastName": "Magee",
+   "Position": 2,
+   "Age": 23,
+   "CollegeYear": 5,
+   "DisplayHeight": "6-4",
+   "Weight": 200,
+   "College": "Wofford"
+ },
+ {
+   "FirstName": "Luke",
+   "LastName": "Maye",
+   "Position": 4,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-8",
+   "Weight": 240,
+   "College": "North Carolina"
+ },
+ {
+   "FirstName": "MiKyle",
+   "LastName": "McIntosh",
+   "Position": 3,
+   "Age": 25,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-7",
+   "Weight": 240,
+   "College": "Oregon"
+ },
+ {
+   "FirstName": "Jordan",
+   "LastName": "McLaughlin",
+   "Position": 1,
+   "Age": 23,
+   "CollegeYear": 4,
+   "DisplayHeight": "5-11",
+   "Weight": 170,
+   "College": "USC"
+ },
+ {
+   "FirstName": "Freddie",
+   "LastName": "McSwain Jr.",
+   "Position": 3,
+   "Age": 23,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-6",
+   "Weight": 224,
+   "College": "Indiana"
+ },
+ {
+   "FirstName": "Nicolo",
+   "LastName": "Melli",
+   "Position": 5,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-9",
+   "Weight": 235,
+   "College": "Italy"
+ },
+ {
+   "FirstName": "Yannis",
+   "LastName": "Morin",
+   "Position": 5,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-10",
+   "Weight": 210,
+   "College": "France"
+ },
+ {
+   "FirstName": "Malik",
+   "LastName": "Newman",
+   "Position": 2,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-3",
+   "Weight": 190,
+   "College": "Kansas"
+ },
+ {
+   "FirstName": "Tariq",
+   "LastName": "Owens",
+   "Position": 4,
+   "Age": 20,
+   "CollegeYear": 2,
+   "DisplayHeight": "6-10",
+   "Weight": 205,
+   "College": "Texas Tech"
+ },
+ {
+   "FirstName": "Dererk",
+   "LastName": "Pardon",
+   "Position": 5,
+   "Age": 23,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-8",
+   "Weight": 235,
+   "College": "Northwestern"
+ },
+ {
+   "FirstName": "Norvel",
+   "LastName": "Pelle",
+   "Position": 5,
+   "Age": 20,
+   "CollegeYear": 2,
+   "DisplayHeight": "6-10",
+   "Weight": 231,
+   "College": "None"
+ },
+ {
+   "FirstName": "Josh",
+   "LastName": "Perkins",
+   "Position": 2,
+   "Age": 23,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-3",
+   "Weight": 190,
+   "College": "Gonzaga"
+ },
+ {
+   "FirstName": "Tarik",
+   "LastName": "Phillip",
+   "Position": 2,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-3",
+   "Weight": 185,
+   "College": "West Virginia"
+ },
+ {
+   "FirstName": "Vincent",
+   "LastName": "Poirier",
+   "Position": 5,
+   "Age": 23,
+   "CollegeYear": 4,
+   "DisplayHeight": "7-0",
+   "Weight": 235,
+   "College": "None"
+ },
+ {
+   "FirstName": "Stelios",
+   "LastName": "Poulianitis",
+   "Position": 1,
+   "Age": 23,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-3",
+   "Weight": 180,
+   "College": "Greece"
+ },
+ {
+   "FirstName": "Jacob",
+   "LastName": "Pullen",
+   "Position": 1,
+   "Age": 25,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-0",
+   "Weight": 200,
+   "College": "Kansas State"
+ },
+ {
+   "FirstName": "Marcquise",
+   "LastName": "Reed",
+   "Position": 2,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-3",
+   "Weight": 193,
+   "College": "Clemson"
+ },
+ {
+   "FirstName": "Isaiah",
+   "LastName": "Roby",
+   "Position": 3,
+   "Age": 21,
+   "CollegeYear": 3,
+   "DisplayHeight": "6-8",
+   "Weight": 230,
+   "College": "Nebraska"
+ },
+ {
+   "FirstName": "Kameron",
+   "LastName": "Rooks",
+   "Position": 5,
+   "Age": 23,
+   "CollegeYear": 4,
+   "DisplayHeight": "7-1",
+   "Weight": 266,
+   "College": "San Diego State"
+ },
+ {
+   "FirstName": "Jack",
+   "LastName": "Salt",
+   "Position": 5,
+   "Age": 23,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-10",
+   "Weight": 250,
+   "College": "Virginia"
+ },
+ {
+   "FirstName": "Alen",
+   "LastName": "Smailagic",
+   "Position": 4,
+   "Age": 17,
+   "CollegeYear": 0,
+   "DisplayHeight": "6-10",
+   "Weight": 215,
+   "College": "Serbia"
+ },
+ {
+   "FirstName": "Max",
+   "LastName": "Strus",
+   "Position": 2,
+   "Age": 21,
+   "CollegeYear": 3,
+   "DisplayHeight": "6-5",
+   "Weight": 215,
+   "College": "DePaul"
+ },
+ {
+   "FirstName": "Emanuel",
+   "LastName": "Terry",
+   "Position": 4,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-9",
+   "Weight": 220,
+   "College": "Lincoln Memorial"
+ },
+ {
+   "FirstName": "Travin",
+   "LastName": "Thibodeaux",
+   "Position": 4,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-8",
+   "Weight": 242,
+   "College": "New Orleans"
+ },
+ {
+   "FirstName": "Reid",
+   "LastName": "Travis",
+   "Position": 4,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-8",
+   "Weight": 238,
+   "College": "Kentucky"
+ },
+ {
+   "FirstName": "Dakarai",
+   "LastName": "Tucker",
+   "Position": 3,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-5",
+   "Weight": 189,
+   "College": "Utah"
+ },
+ {
+   "FirstName": "Jordon",
+   "LastName": "Varnado",
+   "Position": 3,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-6",
+   "Weight": 235,
+   "College": "Troy"
+ },
+ {
+   "FirstName": "Tony",
+   "LastName": "Washington",
+   "Position": 5,
+   "Age": 24,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-10",
+   "Weight": 230,
+   "College": "La Salle"
+ },
+ {
+   "FirstName": "Quinndary",
+   "LastName": "Weatherspoon",
+   "Position": 2,
+   "Age": 20,
+   "CollegeYear": 2,
+   "DisplayHeight": "6-3",
+   "Weight": 207,
+   "College": "Mississippi State"
+ },
+ {
+   "FirstName": "JaCorey",
+   "LastName": "Williams",
+   "Position": 4,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-8",
+   "Weight": 220,
+   "College": "Middle Tennessee"
+ },
+ {
+   "FirstName": "Dylan",
+   "LastName": "Windler",
+   "Position": 2,
+   "Age": 22,
+   "CollegeYear": 4,
+   "DisplayHeight": "6-6",
+   "Weight": 196,
+   "College": "Belmont"
+ },
+ {
+   "FirstName": "Yovel",
+   "LastName": "Zoosman",
+   "Position": 3,
+   "Age": 19,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-7",
+   "Weight": 198,
+   "College": "Israel"
+ }
+]
