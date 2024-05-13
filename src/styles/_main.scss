@@ -1,0 +1,62 @@
+@import 'variables.scss';
+@import 'header/header.scss';
+@import 'footer/footer.scss';
+@import 'home/home.scss';
+@import 'team/team.scss';
+@import 'prospectCard/prospectCard.scss';
+@import 'sendScouts/sendScouts.scss';
+@import 'interviews/interviews.scss';
+@import 'admin/admin.scss';
+@import 'admin/toggle.scss';
+
+h1 {
+  text-align: center !important;
+  font-family: Georgia, serif !important;
+  color: $main-color !important;
+  font-weight: bold !important;
+  text-decoration: underline !important;
+}
+
+h3, h5, h6 {
+  text-align: center;
+}
+
+ul {
+  list-style-type: circle;
+  font-weight: bold;
+}
+
+body {
+  padding-bottom: 50px;
+}
+
+p {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.table th, tr, td {
+  text-align: center;
+}
+
+.table{
+  font-size: 12px;
+}
+
+.articleURL, .articleTitle {
+  width: 400px;
+  margin-right: 10px;
+}
+
+.radioBtn {
+  margin-right: 7px;
+}
+
+input {
+  padding-right: 50px;
+}
+
+#adminTab {
+  color: $main-black-color;
+}

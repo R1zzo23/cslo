@@ -1,0 +1,24 @@
+1) upload new class using 'React_Firebase_Cloud_Firestore' project
+2) components/DraftClass
+  a) add 'basic.json' file for new draft class
+  b) import new class in DraftClass.js
+  c) DraftClass.js render function --> add new 'else if' statement for new class
+3) components/Prospects/ProspectCard0
+  a) add 'basic.json' file for new draft class
+  b) ProspectCard0.js render function --> add new 'else if' statement for new class
+4) ScoutIndividualProspect.js:
+  a) import 'basic.json' file for new draft class
+  b) map new class that was just imported
+  // the above takes care of interview lists as well
+5) Admin.js --> CMND+F for 'class202' and update old class number to new one (ex: class2025 becomes class2026)
+  - also change combine year
+6) SendScouts.js --> update year in saveScouts() function
+7) Interviews.js --> update year in scheduleInterviews() function
+8) Team.js --> add new value to const options [] at top of page
+9) BigBoard.js --> CMND+F for 'class202' and update old class number to new one (ex: class2024 becomes class2025)
+10) Header.js --> add another draft class section
+      <div className="dropdown-divider"></div>
+      <Link className="dropdown-item" to="/draftclass/2025">2025</Link>
+      <div className="dropdown-divider"></div>
+      <Link className="dropdown-item" to="/draftclass/2026">2026</Link>
+new commit
