@@ -9,6 +9,7 @@ import class2028 from './2028_basic.json';
 import class2029 from './2029_basic.json';
 import class2030 from './2030_basic.json';
 import class2031 from './2031_basic.json';
+import class2032 from './2032_basic.json';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
 import { CSVLink, CSVDownload } from "react-csv"
@@ -89,6 +90,7 @@ class DraftClass extends React.Component{
     else if (year === '2029') collectionRef = 'combine2029';
     else if (year === '2030') collectionRef = 'combine2030';
     else if (year === '2031') collectionRef = 'combine2031';
+    else if (year === '2032') collectionRef = 'combine2032';
     // grab all scouts for this franchise
     db.collection(collectionRef)
     .get()
@@ -230,6 +232,16 @@ class DraftClass extends React.Component{
 
       <ReactTable
                 data={class2031}
+                columns={columns}
+                defaultPageSize = {class2031.length}
+              />
+      );
+    }
+    else if (this.state.year === 2032) {
+      draftTable = (
+
+      <ReactTable
+                data={class2032}
                 columns={columns}
                 defaultPageSize = {class2031.length}
               />
