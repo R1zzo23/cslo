@@ -28,7 +28,7 @@ class Admin extends React.Component{
   updateEmails(teamSelection, newEmail) {
     const adminUID2 = '7rE2d3qAg6PYFstciBnjqkxLocz2'; // Rizzo
     const adminUID = 'LvdYBDTbvZUxXlgJjkGzJlwvy0H3'; // Andrei
-    const adminUID3 = 'GxQK5VTbwZgFVomtXQ5A3mtnSLt2'; // Dejan
+    const adminUID3 = 'YaGTOyJLu4S95G5fouENhazo4hq1'; // KW
 
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
