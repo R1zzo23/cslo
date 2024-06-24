@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/cslo/static/js/runtime~main.21a65fb9.js"
   },
   {
-    "revision": "f7ebe27987a179f95a9c",
-    "url": "/cslo/static/js/main.f7ebe279.chunk.js"
+    "revision": "ed817ce503473a73a801",
+    "url": "/cslo/static/js/main.ed817ce5.chunk.js"
   },
   {
     "revision": "307eea7278f6438a23b8",
     "url": "/cslo/static/js/1.307eea72.chunk.js"
   },
   {
-    "revision": "f7ebe27987a179f95a9c",
+    "revision": "ed817ce503473a73a801",
     "url": "/cslo/static/css/main.819442ea.chunk.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/cslo/static/css/1.e319cfbe.chunk.css"
   },
   {
-    "revision": "54689efbfc74ecf1802e32f174ea5608",
+    "revision": "81a5a214b42b771edc29e8c87efc1791",
     "url": "/cslo/index.html"
   }
 ];
