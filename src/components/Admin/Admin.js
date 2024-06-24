@@ -35,10 +35,11 @@ class Admin extends React.Component{
 
     const currentUID = fire.auth.currentUser.uid;
 
-    if (currentUID !== adminUID3) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
+    /*if (currentUID !== adminUID3) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
       alert("Current user does not have admininstrative privileges!");
     }
-    else {
+    else {*/
+    if (currentUID == adminUID || currentUID == adminUID2 || currentUID == adminUID3) {
       db.collection("franchises")
       .get()
       .then((doc) => {
@@ -74,10 +75,11 @@ class Admin extends React.Component{
 
     const currentUID = fire.auth.currentUser.uid;
 
-    if (currentUID !== adminUID3) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
+    /*if (currentUID !== adminUID3) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
       alert("Current user does not have admininstrative privileges!");
     }
-    else {
+    else {*/
+    if (currentUID == adminUID || currentUID == adminUID2 || currentUID == adminUID3) {
       db.collection("class2032")
       .get()
       .then((doc) => {
@@ -145,10 +147,11 @@ class Admin extends React.Component{
 
     const currentUID = fire.auth.currentUser.uid;
 
-    if (currentUID !== adminUID3) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
+    /*if (currentUID !== adminUID3) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
       alert("Current user does not have admininstrative privileges!");
     }
-    else {
+    else {*/
+    if (currentUID == adminUID || currentUID == adminUID2 || currentUID == adminUID3) {
       db.collection("class2032").where("Tier", ">", -1)
       .get()
       .then((doc) => {
@@ -435,7 +438,7 @@ class Admin extends React.Component{
   runScouts() {
     const adminUID2 = '7rE2d3qAg6PYFstciBnjqkxLocz2'; // Rizzo
     const adminUID = 'LvdYBDTbvZUxXlgJjkGzJlwvy0H3'; // Andrei
-    const adminUID3 = 'YaGTOyJLu4S95G5fouENhazo4hq1'; // KW
+    const adminUID3 = 'YaGTOyJLu4S95G5fouENhazo4hq1'; // KW YaGTOyJLu4S95G5fouENhazo4hq1
 
     const fire = this.props.firebase;
     const db = fire.auth.app.firebase_.firestore();
