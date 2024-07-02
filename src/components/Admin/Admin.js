@@ -39,7 +39,7 @@ class Admin extends React.Component{
       alert("Current user does not have admininstrative privileges!");
     }
     else {*/
-    if (currentUID == adminUID || currentUID == adminUID2 || currentUID == adminUID3) {
+    if (currentUID == adminUID3 || currentUID == adminUID || currentUID == adminUID2) { 
       db.collection("franchises")
       .get()
       .then((doc) => {
@@ -79,7 +79,7 @@ class Admin extends React.Component{
       alert("Current user does not have admininstrative privileges!");
     }
     else {*/
-    if (currentUID == adminUID || currentUID == adminUID2 || currentUID == adminUID3) {
+    if (currentUID == adminUID3 || currentUID == adminUID || currentUID == adminUID2) { 
       db.collection("class2032")
       .get()
       .then((doc) => {
@@ -151,7 +151,7 @@ class Admin extends React.Component{
       alert("Current user does not have admininstrative privileges!");
     }
     else {*/
-    if (currentUID == adminUID || currentUID == adminUID2 || currentUID == adminUID3) {
+    if (currentUID == adminUID3 || currentUID == adminUID || currentUID == adminUID2) { 
       db.collection("class2032").where("Tier", ">", -1)
       .get()
       .then((doc) => {
@@ -364,10 +364,11 @@ class Admin extends React.Component{
 
     const currentUID = fire.auth.currentUser.uid;
 
-    if (currentUID !== adminUID3) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
+    /*if (currentUID !== adminUID3) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
       alert("Current user does not have admininstrative privileges!");
     }
-    else {
+    else {*/
+    if (currentUID == adminUID3 || currentUID == adminUID || currentUID == adminUID2) { 
       // grab collection that holds all franchises
       db.collection("franchises").get().then(function(querySnapshot) {
         querySnapshot.docs.map(function(teamDoc) {
@@ -451,10 +452,11 @@ class Admin extends React.Component{
         alert("Field is blank");
     }
 
-    if (currentUID !== adminUID3) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
+    /*if (currentUID !== adminUID3) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
       alert("Current user does not have admininstrative privileges!");
     }
-    else {
+    else {*/
+    if (currentUID == adminUID3 || currentUID == adminUID || currentUID == adminUID2) { 
       // grab collection that holds all franchises
       db.collection("franchises").get().then(function(querySnapshot) {
         querySnapshot.docs.map(function(teamDoc) {
