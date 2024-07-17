@@ -469,7 +469,7 @@ class Admin extends React.Component{
           scoutList.forEach(function(prospect) {
             let docRef = db.collection('class2032').doc(prospect.url);
             docRef.get().then(function(doc) {
-
+              console.log(abrev + " scout added");
               // create new doc in scouts collection with randomized ratings based on referenced docs
               let fullNameLowerCase = (doc.data().LastName + doc.data().FirstName).toLowerCase().replace(/[, ']+/g, "").trim();
               let scoutedDunkRate = Math.floor(Math.random()*((doc.data().DunkRate + 2)-(doc.data().DunkRate-2)+1))+(doc.data().DunkRate-2);
