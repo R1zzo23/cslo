@@ -80,7 +80,7 @@ class Admin extends React.Component{
     }
     else {*/
     if (currentUID == adminUID3 || currentUID == adminUID || currentUID == adminUID2) { 
-      db.collection("class2032")
+      db.collection("class2033")
       .get()
       .then((doc) => {
         doc.docs.map(function(prospectDoc) {
@@ -97,7 +97,7 @@ class Admin extends React.Component{
           let variation = Math.floor(Math.random() * (5 - -5) + -5)/100;
           console.log("variation: " + variation);
           let calculatedBigBoardScore = Math.floor((bigBoardScore + (timesScouted * 10)) * (1 + variation));
-          db.collection("class2032").doc(fullName).update({
+          db.collection("class2033").doc(fullName).update({
             "CurrentBigBoardScore": calculatedBigBoardScore
           })
         });
@@ -105,7 +105,7 @@ class Admin extends React.Component{
 
       let bigBoardArray = [];
       // grab all scouts for this franchise
-      db.collection("class2032")
+      db.collection("class2033")
       .get()
       .then((docSnapshot) => {
         docSnapshot.forEach((doc) => {
@@ -128,7 +128,7 @@ class Admin extends React.Component{
           let bigBoardChange =  bigBoardCurrentSpot - newBigBoardSpot;
           if (bigBoardChange > 0) bigBoardChange = "+" + bigBoardChange;
 
-          db.collection("class2032").doc(fullName).update({
+          db.collection("class2033").doc(fullName).update({
             "BigBoardCurrent": newBigBoardSpot,
             "BigBoardLastMonth": bigBoardCurrentSpot,
             "BigBoardChange": bigBoardChange
@@ -152,7 +152,7 @@ class Admin extends React.Component{
     }
     else {*/
     if (currentUID == adminUID3 || currentUID == adminUID || currentUID == adminUID2) { 
-      db.collection("class2032").where("Tier", ">", -1)
+      db.collection("class2033").where("Tier", ">", -1)
       .get()
       .then((doc) => {
         doc.docs.map(function(prospectDoc) {
@@ -195,7 +195,7 @@ class Admin extends React.Component{
           let scoutedBballIQ = Math.floor(Math.random()*((prospectDoc.data().BballIQ + 10)-(prospectDoc.data().BballIQ-10)+1))+(prospectDoc.data().BballIQ-10);
           if (scoutedBballIQ > 99) scoutedBballIQ = 99;
 
-          db.collection('combine2032').doc(fullNameLowerCase).set({
+          db.collection('combine2033').doc(fullNameLowerCase).set({
             FullNameLowerCase: fullNameLowerCase,
             FirstName: prospectDoc.data().FirstName,
             LastName: prospectDoc.data().LastName,
@@ -377,9 +377,9 @@ class Admin extends React.Component{
           // grab email for current franchise
           let email = teamDoc.data().email;
           let abrev = teamDoc.data().abrev;
-          // use url property of each element in array to find doc in class2032 collection
+          // use url property of each element in array to find doc in class2033 collection
           interviewList.forEach(function(prospect) {
-            let docRef = db.collection('class2032').doc(prospect.url);
+            let docRef = db.collection('class2033').doc(prospect.url);
             docRef.get().then(function(doc) {
               // create new doc in interviews collection with randomized ratings based on referenced docs
               let fullNameLowerCase = (doc.data().LastName + doc.data().FirstName).toLowerCase();
@@ -465,9 +465,9 @@ class Admin extends React.Component{
           // grab email for current franchise
           let email = teamDoc.data().email;
           let abrev = teamDoc.data().abrev;
-          // use url property of each element in array to find doc in class2032 collection
+          // use url property of each element in array to find doc in class2033 collection
           scoutList.forEach(function(prospect) {
-            let docRef = db.collection('class2032').doc(prospect.url);
+            let docRef = db.collection('class2033').doc(prospect.url);
             docRef.get().then(function(doc) {
               console.log(abrev + " scout added");
               // create new doc in scouts collection with randomized ratings based on referenced docs
@@ -664,7 +664,7 @@ class Admin extends React.Component{
       });
       console.log(scouts);
       //compare names in class list to scout list to get TimesScouted
-      db.collection("class2032")
+      db.collection("class2033")
       .get()
       .then((docSnapShot) => {
         docSnapShot.forEach((doc) => {
@@ -679,7 +679,7 @@ class Admin extends React.Component{
           let last = doc.data().LastName;
           let fullName = last + first;
           fullName = fullName.toLowerCase().replace(/[, ']+/g, "").trim();
-          db.collection("class2032").doc(fullName).update({
+          db.collection("class2033").doc(fullName).update({
             "TimesScouted": timesScouted
           })
         });

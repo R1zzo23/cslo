@@ -11,6 +11,7 @@ import class29 from '../DraftClass/2029_basic.json'
 import class30 from '../DraftClass/2030_basic.json'
 import class31 from '../DraftClass/2031_basic.json'
 import class32 from '../DraftClass/2032_basic.json'
+import class33 from '../DraftClass/2033_basic.json'
 import PieChart from 'react-minimal-pie-chart';
 
 const ProspectPage = ({firebase}) => (
@@ -95,6 +96,10 @@ class ProspectCard extends React.Component {
     else if (year === 2032){
       let i = class32.findIndex((prospect) => ((prospect.LastName + prospect.FirstName).toLowerCase().replace(/[, ']+/g, "").trim()) === fullNameLowerCase);
       prospect = class32[i];
+    }
+    else if (year === 2033){
+      let i = class33.findIndex((prospect) => ((prospect.LastName + prospect.FirstName).toLowerCase().replace(/[, ']+/g, "").trim()) === fullNameLowerCase);
+      prospect = class33[i];
     }
     let ballActionsData = [];
     let floorAreasData = [];
