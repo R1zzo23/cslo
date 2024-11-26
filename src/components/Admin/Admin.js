@@ -27,7 +27,7 @@ class Admin extends React.Component{
   }
   updateEmails(teamSelection, newEmail) {
     const adminUID2 = '7rE2d3qAg6PYFstciBnjqkxLocz2'; // Rizzo
-    const adminUID = 'LvdYBDTbvZUxXlgJjkGzJlwvy0H3'; // Andrei
+    const adminUID = 'PGPPyw2tRsaMRabkIbdFdH6vhDO2'; // Andre
     const adminUID3 = 'YaGTOyJLu4S95G5fouENhazo4hq1'; // KW
 
     const fire = this.props.firebase;
@@ -67,7 +67,7 @@ class Admin extends React.Component{
   }
   runBigBoard() {
     const adminUID2 = '7rE2d3qAg6PYFstciBnjqkxLocz2'; // Rizzo
-    const adminUID = 'LvdYBDTbvZUxXlgJjkGzJlwvy0H3'; // Andrei
+    const adminUID = 'PGPPyw2tRsaMRabkIbdFdH6vhDO2'; // Andre
     const adminUID3 = 'YaGTOyJLu4S95G5fouENhazo4hq1'; // KW
 
     const fire = this.props.firebase;
@@ -139,7 +139,7 @@ class Admin extends React.Component{
   }
   runCombine() {
     const adminUID2 = '7rE2d3qAg6PYFstciBnjqkxLocz2'; // Rizzo
-    const adminUID = 'LvdYBDTbvZUxXlgJjkGzJlwvy0H3'; // Andrei
+    const adminUID = 'PGPPyw2tRsaMRabkIbdFdH6vhDO2'; // Andre
     const adminUID3 = 'YaGTOyJLu4S95G5fouENhazo4hq1'; // KW
 
     const fire = this.props.firebase;
@@ -232,7 +232,7 @@ class Admin extends React.Component{
     const toggleList = document.getElementsByClassName('react-toggle-screenreader-only');
     const toggle = toggleList[0];
     const adminUID2 = '7rE2d3qAg6PYFstciBnjqkxLocz2'; // Rizzo
-    const adminUID = 'LvdYBDTbvZUxXlgJjkGzJlwvy0H3'; // Andrei
+    const adminUID = 'PGPPyw2tRsaMRabkIbdFdH6vhDO2'; // Andre
     const adminUID3 = 'YaGTOyJLu4S95G5fouENhazo4hq1'; // KW
 
 
@@ -356,7 +356,7 @@ class Admin extends React.Component{
   }
   runInterviews() {
     const adminUID2 = '7rE2d3qAg6PYFstciBnjqkxLocz2'; // Rizzo
-    const adminUID = 'LvdYBDTbvZUxXlgJjkGzJlwvy0H3'; // Andrei
+    const adminUID = 'PGPPyw2tRsaMRabkIbdFdH6vhDO2'; // Andre
     const adminUID3 = 'YaGTOyJLu4S95G5fouENhazo4hq1'; // KW
 
     const fire = this.props.firebase;
@@ -438,7 +438,7 @@ class Admin extends React.Component{
   }
   runScouts() {
     const adminUID2 = '7rE2d3qAg6PYFstciBnjqkxLocz2'; // Rizzo
-    const adminUID = 'LvdYBDTbvZUxXlgJjkGzJlwvy0H3'; // Andrei
+    const adminUID = 'PGPPyw2tRsaMRabkIbdFdH6vhDO2'; // Andre
     const adminUID3 = 'YaGTOyJLu4S95G5fouENhazo4hq1'; // KW YaGTOyJLu4S95G5fouENhazo4hq1
 
     const fire = this.props.firebase;
