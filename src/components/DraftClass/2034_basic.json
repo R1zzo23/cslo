@@ -20,16 +20,6 @@
    "College": "Texas Tech"
  },
  {
-   "FirstName": "Mike",
-   "LastName": "Daum",
-   "Position": 4,
-   "Age": 23,
-   "CollegeYear": 1,
-   "DisplayHeight": "6-9",
-   "Weight": 236,
-   "College": "South Dakota State"
- },
- {
    "FirstName": "Ron",
    "LastName": "Artest III",
    "Position": 4,
@@ -40,16 +30,6 @@
    "College": "Cal State Northridge"
  },
  {
-   "FirstName": "Dexter",
-   "LastName": "Dennis",
-   "Position": 2,
-   "Age": 24,
-   "CollegeYear": 1,
-   "DisplayHeight": "6-5",
-   "Weight": 210,
-   "College": "Texas A&M"
- },
- {
    "FirstName": "Dominick",
    "LastName": "Barlow",
    "Position": 4,
@@ -58,16 +38,6 @@
    "DisplayHeight": "6-8",
    "Weight": 215,
    "College": "None"
- },
- {
-   "FirstName": "Jeff",
-   "LastName": "Dowtin Jr.",
-   "Position": 1,
-   "Age": 23,
-   "CollegeYear": 1,
-   "DisplayHeight": "6-3",
-   "Weight": 177,
-   "College": "Rhode Island"
  },
  {
    "FirstName": "Damion",
@@ -100,16 +70,6 @@
    "College": "Virginia"
  },
  {
-   "FirstName": "Keon",
-   "LastName": "Ellis",
-   "Position": 2,
-   "Age": 22,
-   "CollegeYear": 1,
-   "DisplayHeight": "6-4",
-   "Weight": 175,
-   "College": "Alabama"
- },
- {
    "FirstName": "Jordan",
    "LastName": "Bone",
    "Position": 1,
@@ -118,16 +78,6 @@
    "DisplayHeight": "6-2",
    "Weight": 180,
    "College": "Tennessee"
- },
- {
-   "FirstName": "Tosan",
-   "LastName": "Evbuomwan",
-   "Position": 3,
-   "Age": 22,
-   "CollegeYear": 1,
-   "DisplayHeight": "6-7",
-   "Weight": 217,
-   "College": "Princeton"
  },
  {
    "FirstName": "Garrison",
@@ -160,16 +110,6 @@
    "College": "Dayton"
  },
  {
-   "FirstName": "Kyle",
-   "LastName": "Filipowski",
-   "Position": 5,
-   "Age": 20,
-   "CollegeYear": 1,
-   "DisplayHeight": "6-11",
-   "Weight": 250,
-   "College": "Duke"
- },
- {
    "FirstName": "Antonio",
    "LastName": "Campbell",
    "Position": 4,
@@ -178,6 +118,16 @@
    "DisplayHeight": "6-9",
    "Weight": 264,
    "College": "Ohio"
+ },
+ {
+   "FirstName": "Stephon",
+   "LastName": "Castle",
+   "Position": 1,
+   "Age": 19,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-6",
+   "Weight": 215,
+   "College": "UConn"
  },
  {
    "FirstName": "Colin",
@@ -190,14 +140,124 @@
    "College": "Florida"
  },
  {
-   "FirstName": "Stephon",
-   "LastName": "Castle",
-   "Position": 1,
+   "FirstName": "Sidy",
+   "LastName": "Cissoko",
+   "Position": 3,
    "Age": 19,
    "CollegeYear": 1,
    "DisplayHeight": "6-6",
-   "Weight": 215,
-   "College": "UConn"
+   "Weight": 200,
+   "College": "None"
+ },
+ {
+   "FirstName": "Terrence",
+   "LastName": "Clarke",
+   "Position": 2,
+   "Age": 19,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-8",
+   "Weight": 195,
+   "College": "Kentucky"
+ },
+ {
+   "FirstName": "Keandre",
+   "LastName": "Cook",
+   "Position": 2,
+   "Age": 23,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-5",
+   "Weight": 187,
+   "College": "Missouri State"
+ },
+ {
+   "FirstName": "Ricky",
+   "LastName": "Council IV",
+   "Position": 2,
+   "Age": 22,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-6",
+   "Weight": 207,
+   "College": "Arkansas"
+ },
+ {
+   "FirstName": "N'Faly",
+   "LastName": "Dante",
+   "Position": 5,
+   "Age": 22,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-11",
+   "Weight": 230,
+   "College": "Oregon"
+ },
+ {
+   "FirstName": "Nate",
+   "LastName": "Darling",
+   "Position": 2,
+   "Age": 22,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-5",
+   "Weight": 200,
+   "College": "Delaware"
+ },
+ {
+   "FirstName": "Mike",
+   "LastName": "Daum",
+   "Position": 4,
+   "Age": 23,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-9",
+   "Weight": 236,
+   "College": "South Dakota State"
+ },
+ {
+   "FirstName": "Dexter",
+   "LastName": "Dennis",
+   "Position": 2,
+   "Age": 24,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-5",
+   "Weight": 210,
+   "College": "Texas A&M"
+ },
+ {
+   "FirstName": "Jeff",
+   "LastName": "Dowtin Jr.",
+   "Position": 1,
+   "Age": 23,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-3",
+   "Weight": 177,
+   "College": "Rhode Island"
+ },
+ {
+   "FirstName": "Keon",
+   "LastName": "Ellis",
+   "Position": 2,
+   "Age": 22,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-4",
+   "Weight": 175,
+   "College": "Alabama"
+ },
+ {
+   "FirstName": "Tosan",
+   "LastName": "Evbuomwan",
+   "Position": 3,
+   "Age": 22,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-7",
+   "Weight": 217,
+   "College": "Princeton"
+ },
+ {
+   "FirstName": "Kyle",
+   "LastName": "Filipowski",
+   "Position": 5,
+   "Age": 20,
+   "CollegeYear": 1,
+   "DisplayHeight": "6-11",
+   "Weight": 250,
+   "College": "Duke"
  },
  {
    "FirstName": "Samson",
@@ -240,16 +300,6 @@
    "College": "Kansas"
  },
  {
-   "FirstName": "Sidy",
-   "LastName": "Cissoko",
-   "Position": 3,
-   "Age": 19,
-   "CollegeYear": 1,
-   "DisplayHeight": "6-6",
-   "Weight": 200,
-   "College": "None"
- },
- {
    "FirstName": "Martinas",
    "LastName": "Geben",
    "Position": 5,
@@ -258,36 +308,6 @@
    "DisplayHeight": "6-10",
    "Weight": 247,
    "College": "Notre Dame"
- },
- {
-   "FirstName": "Terrence",
-   "LastName": "Clarke",
-   "Position": 2,
-   "Age": 19,
-   "CollegeYear": 1,
-   "DisplayHeight": "6-8",
-   "Weight": 195,
-   "College": "Kentucky"
- },
- {
-   "FirstName": "Keandre",
-   "LastName": "Cook",
-   "Position": 2,
-   "Age": 23,
-   "CollegeYear": 1,
-   "DisplayHeight": "6-5",
-   "Weight": 187,
-   "College": "Missouri State"
- },
- {
-   "FirstName": "Ricky",
-   "LastName": "Council IV",
-   "Position": 2,
-   "Age": 22,
-   "CollegeYear": 1,
-   "DisplayHeight": "6-6",
-   "Weight": 207,
-   "College": "Arkansas"
  },
  {
    "FirstName": "Jalen",
@@ -330,16 +350,6 @@
    "College": "DePaul"
  },
  {
-   "FirstName": "N'Faly",
-   "LastName": "Dante",
-   "Position": 5,
-   "Age": 22,
-   "CollegeYear": 1,
-   "DisplayHeight": "6-11",
-   "Weight": 230,
-   "College": "Oregon"
- },
- {
    "FirstName": "D'Moi",
    "LastName": "Hodge",
    "Position": 2,
@@ -358,16 +368,6 @@
    "DisplayHeight": "6-6",
    "Weight": 205,
    "College": "Liberty"
- },
- {
-   "FirstName": "Nate",
-   "LastName": "Darling",
-   "Position": 2,
-   "Age": 22,
-   "CollegeYear": 1,
-   "DisplayHeight": "6-5",
-   "Weight": 200,
-   "College": "Delaware"
  },
  {
    "FirstName": "Jahzare",
