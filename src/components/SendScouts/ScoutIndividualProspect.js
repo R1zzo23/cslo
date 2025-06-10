@@ -9,11 +9,12 @@ import class30 from '../DraftClass/2030_basic.json'
 import class31 from '../DraftClass/2031_basic.json'
 import class32 from '../DraftClass/2032_basic.json'
 import class33 from '../DraftClass/2033_basic.json'
+import class34 from '../DraftClass/2034_basic.json'
 
 const ScoutIndividualProspect = ({key}) =>
   <div>
     <select key={key} className='selection'>
-    { class33.map((prospect, i) =>
+    { class34.map((prospect, i) =>
       <option key={i}
               firstname={prospect.FirstName}
               lastname={prospect.LastName}>
