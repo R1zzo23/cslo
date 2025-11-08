@@ -29,7 +29,7 @@ class Board extends React.Component{
     let prospects = [];
 
     // grab all scouts for this franchise
-    db.collection("class2034")
+    db.collection("class2035")
     .get()
     .then((docSnapshot) => {
       docSnapshot.forEach((doc) => {
