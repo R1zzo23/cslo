@@ -25,6 +25,46 @@ class Admin extends React.Component{
     this.denyArticle = this.denyArticle.bind(this);
     this.runBigBoard = this.runBigBoard.bind(this);
   }
+  newAvailableScouts(franchiseSelection, newAvailableScouts) {
+    const adminUID2 = '7rE2d3qAg6PYFstciBnjqkxLocz2'; // Rizzo
+    const adminUID = 'PGPPyw2tRsaMRabkIbdFdH6vhDO2'; // Andre
+    const adminUID3 = 'YaGTOyJLu4S95G5fouENhazo4hq1'; // KW
+
+    const fire = this.props.firebase;
+    const db = fire.auth.app.firebase_.firestore();
+
+    const currentUID = fire.auth.currentUser.uid;
+    console.log("Updating Available Scouts to " + newAvailableScouts + "for " + franchiseSelection);
+    /*if (currentUID !== adminUID3) { //|| currentUID !== adminUID2 || currentUID !== adminUID3) {
+      alert("Current user does not have admininstrative privileges!");
+    }
+    else {*/
+    if (currentUID == adminUID3 || currentUID == adminUID || currentUID == adminUID2) { 
+      db.collection("franchises")
+      .get()
+      .then((doc) => {
+        doc.forEach((team) => {
+          if (team.data().abrev == franchiseSelection) {
+            db.collection("franchises").doc(franchiseSelection).update({
+              "availableScouts": newAvailableScouts
+            })
+          }
+          /*let abrev = team.data().abrev;
+          for (var i = 0; i < this.state.teamList.length; i++)
+          {
+            if (team.data().abrev == this.state.teamList[i].abrev)
+            {
+              let email = this.state.teamList[i].email;
+              console.log(team.data().email + " => " + email);
+              db.collection("franchises").doc(this.state.teamList[i].abrev).update({
+                "email": email
+              })
+            }
+          }*/
+        });
+      })
+    }
+  }
   updateEmails(teamSelection, newEmail) {
     const adminUID2 = '7rE2d3qAg6PYFstciBnjqkxLocz2'; // Rizzo
     const adminUID = 'PGPPyw2tRsaMRabkIbdFdH6vhDO2'; // Andre
@@ -689,6 +729,7 @@ class Admin extends React.Component{
   render(){
     let articleTable = '';
     let franchiseTable = '';
+    let availableScoutsTable = '';
     if (this.state.articleList) {
       articleTable = (
         <div>
@@ -734,6 +775,28 @@ class Admin extends React.Component{
               <tr>
                 <td>{team.abrev}</td>
                 <td>{team.email}</td>
+              </tr>
+            )}
+            </tbody>
+          </table>
+        </div>
+      );
+    }
+    if (this.state.availableScoutsTable) {
+      availableScoutsTable = (
+        <div>
+          <table className='table table-sm'>
+            <thead>
+              <tr>
+                <th>TEAM</th>
+                <th>Available Scouts</th>
+              </tr>
+            </thead>
+            <tbody>
+            {this.state.availableScoutsTable.map((team, index) =>
+              <tr>
+                <td>{team.abrev}</td>
+                <td>{team.availableScouts}</td>
               </tr>
             )}
             </tbody>
@@ -815,6 +878,20 @@ class Admin extends React.Component{
             <input size="50" type="text" id="newEmail" name="newEmail"></input>
             <button onClick={() => this.updateEmails(document.getElementById("teamSelection").value, document.getElementById("newEmail").value)} className='btn updateEmailsBtn'>Update Email</button>
             {franchiseTable}
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-sm-12 text-center'>
+            <h3>Edit Franchise's Available Scouts</h3>
+            <select id='franchiseSelections'>
+            { this.state.teamList.map((team, i) =>
+              <option abrev={team.abrev}>
+                {team.abrev}
+              </option>
+            )}
+            </select>
+            <input size="50" type="text" id="newScouts" name="newScouts"></input>
+            <button onClick={() => this.newAvailableScouts(document.getElementById("franchiseSelections").value, document.getElementById("newScouts").value)} className='btn updateScoutsBtn'>Update Scouts</button>
           </div>
         </div>
       </div>
