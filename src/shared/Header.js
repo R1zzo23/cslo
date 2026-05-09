@@ -40,6 +40,8 @@ const HeaderAuth = () => (
             <Link className="dropdown-item" to="/draftclass/2034">2034</Link>
             <div className="dropdown-divider"></div>
             <Link className="dropdown-item" to="/draftclass/2035">2035</Link>
+            <div className="dropdown-divider"></div>
+            <Link className="dropdown-item" to="/draftclass/2036">2036</Link>
           </div>
         </li>
         <Link className='nav-item nav-link' to='/bigboard'>Big Board</Link>
